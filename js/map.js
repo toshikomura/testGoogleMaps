@@ -6,3 +6,5 @@ var options = {
   zoom: 4,
   mapTypeId: google.maps.MapTypeId.SATELLITE
 };
+
+var map = new google.maps.Map(mapDiv, options);
