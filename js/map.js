@@ -43,6 +43,7 @@
     document.getElementById('getValues').onclick = function() {
       alert('Current Zoom level is ' + map.getZoom());
       alert('Current center is ' + map.getCenter());
+      alert('The current mapType is ' + map.getMapTypeId());
     }
 
  }
