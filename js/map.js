@@ -1,7 +1,7 @@
 (function() {
   window.onload = function() {
     var mapDiv = document.getElementById('map');
-    var latlng = new google.maps.LatLng(-25.5350, -49.2058);
+    var latlng = new google.maps.LatLng(-25.5300, -49.1700);
 
     var options = {
       center: latlng,
