@@ -32,7 +32,7 @@
         style: google.maps.NavigationControlStyle.ZOOM_PAN
       },
 
-      noClear: true,
+      noClear: false,
       backgroundColor: '#ff0000',
       draggableCursor: 'move'
     };
