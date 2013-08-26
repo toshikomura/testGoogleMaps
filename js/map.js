@@ -55,10 +55,18 @@
     }
 
     // set values
-    document.getElementById('changeValues').onclick = function() {
+    document.getElementById('GoCollegeUFPRPoli').onclick = function() {
       var college_ufpr_poli = new google.maps.LatLng(-25.4500, -49.2337);
       map.setCenter(college_ufpr_poli);
       map.setZoom(16);
+      map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+    }
+
+    // set values
+    document.getElementById('GoAirportCTBA').onclick = function() {
+      var airport_ctba = new google.maps.LatLng(-25.5300, -49.1700);
+      map.setCenter(airport_ctba);
+      map.setZoom(15);
       map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
     }
 
