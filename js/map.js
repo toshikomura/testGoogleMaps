@@ -46,5 +46,11 @@
       alert('The current mapType is ' + map.getMapTypeId());
     }
 
+
+    document.getElementById('changeValues').onclick = function() {
+      var latLng = new google.maps.LatLng(-25.4518, -49.2337);
+      map.setCenter(latLng);
+    }
+
  }
 })();
