@@ -23,7 +23,14 @@
       disableDoubleClickZoom: false,
       draggable: true,
       scrollwheel: true,
-      streetViewControl: true
+      streetViewControl: true,
+
+      disableDefaultUI: false,
+      navigationControl: true,
+      navigationControlOptions: {
+        position: google.maps.ControlPosition.TOP_LEFT,
+        style: google.maps.NavigationControlStyle.ZOOM_PAN
+      }
     };
 
     var map = new google.maps.Map(mapDiv, options);
