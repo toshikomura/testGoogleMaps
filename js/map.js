@@ -33,7 +33,8 @@
       },
 
       noClear: true,
-      backgroundColor: '#ff0000'
+      backgroundColor: '#ff0000',
+      draggableCursor: 'move'
     };
 
     var map = new google.maps.Map(mapDiv, options);
