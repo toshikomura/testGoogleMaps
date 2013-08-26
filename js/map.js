@@ -39,5 +39,10 @@
     };
 
     var map = new google.maps.Map(mapDiv, options);
+
+    document.getElementById('getValues').onclick = function() {
+      alert('Current Zoom level is ' + map.getZoom());
+    }
+
  }
 })();
