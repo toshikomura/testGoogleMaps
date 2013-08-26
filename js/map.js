@@ -32,7 +32,8 @@
         style: google.maps.NavigationControlStyle.ZOOM_PAN
       },
 
-      noClear: true
+      noClear: true,
+      backgroundColor: '#ff0000'
     };
 
     var map = new google.maps.Map(mapDiv, options);
