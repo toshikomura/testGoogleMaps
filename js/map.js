@@ -51,6 +51,7 @@
       var latLng = new google.maps.LatLng(-25.4500, -49.2337);
       map.setCenter(latLng);
       map.setZoom(16);
+      map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
     }
 
  }
