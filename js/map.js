@@ -9,7 +9,8 @@
       mapTypeId: google.maps.MapTypeId.SATELLITE,
       mapTypeControl: true,
       mapTypeControlOptions: {
-        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+        position: google.maps.ControlPosition.TOP
 
       }
     };
