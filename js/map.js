@@ -30,7 +30,9 @@
       navigationControlOptions: {
         position: google.maps.ControlPosition.TOP_LEFT,
         style: google.maps.NavigationControlStyle.ZOOM_PAN
-      }
+      },
+
+      noClear: true
     };
 
     var map = new google.maps.Map(mapDiv, options);
