@@ -34,7 +34,8 @@
 
       noClear: false,
       backgroundColor: '#ff0000',
-      draggableCursor: 'move'
+      draggableCursor: 'move',
+      draggingCursor: 'move'
     };
 
     var map = new google.maps.Map(mapDiv, options);
