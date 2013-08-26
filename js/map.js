@@ -39,7 +39,7 @@
 
       // set container of the map
       noClear: false,
-      backgroundColor: '#ff0000',
+      backgroundColor: '#000000',
       draggableCursor: 'move',
       draggingCursor: 'move'
     };
@@ -76,14 +76,38 @@
     var marker_college_ufpr_poli = new google.maps.Marker({
       position: new google.maps.LatLng(-25.4500, -49.2337),
       map: map,
-      title: 'College UFPR Politecnico'
+      title: 'College UFPR Politecnico',
+      icon: 'http://gmaps-samples.googlecode.com/svn/trunk/markers/blue/blank.png'
     });
 
     // Adding a marker to the map point to airpot CTBA PR BR
     var marker_college_ufpr_poli = new google.maps.Marker({
       position: new google.maps.LatLng(-25.5300, -49.1700),
       map: map,
-      title: 'Airport CTBA'
+      title: 'Airport CTBA',
+      icon: 'http://gmaps-samples.googlecode.com/svn/trunk/markers/circular/greencirclemarker.png'
+    });
+
+    // Creating an InfoWindow with the content text
+    var infowindow_college_ufpr_poli = new google.maps.InfoWindow({
+      content:'<div class="info"> This is College UFPR Politecnico </div>'
+    });
+
+    // Creating an InfoWindow with the content text
+    var infowindow_airport_ctba = new google.maps.InfoWindow({
+      content:'<div class="info"> This is Airport CTBA </div>'
+    });
+
+    // Adding a click event to the marker
+    google.maps.event.addListener(marker_college_ufpr_poli, 'click', function() {
+      // Calling the open method of the infoWindow
+      infowindow_college_ufpr_poli.open(map, marker_college_ufpr_poli);
+    });
+
+    // Adding a click event to the marker
+    google.maps.event.addListener(marker_airport_ctba, 'click', function() {
+      // Calling the open method of the infoWindow
+      infowindow_airport_ctba.open(map, marker_airport_ctba);
     });
  }
 })();
