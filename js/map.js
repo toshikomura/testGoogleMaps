@@ -21,7 +21,8 @@
       scaleControl: true,
       keyboardShortcuts: true,
       disableDoubleClickZoom: false,
-      draggable: true
+      draggable: true,
+      scrollwheel: true
     };
 
     var map = new google.maps.Map(mapDiv, options);
