@@ -18,7 +18,8 @@
         ]
       },
 
-      scaleControl: true
+      scaleControl: true,
+      keyboardShortcuts: true
     };
 
     var map = new google.maps.Map(mapDiv, options);
