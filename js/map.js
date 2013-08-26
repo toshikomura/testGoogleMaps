@@ -62,5 +62,16 @@
       map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
     }
 
+    // Adding a marker to the map point to college ufpr politecnico
+    var marker_college_ufpr_poli = new google.maps.Marker({
+      position: new google.maps.LatLng(-25.4500, -49.2337),
+      map: map
+    });
+
+    // Adding a marker to the map point to airpot CTBA PR BR
+    var marker_college_ufpr_poli = new google.maps.Marker({
+      position: new google.maps.LatLng(-25.5300, -49.1700),
+      map: map
+    });
  }
 })();
