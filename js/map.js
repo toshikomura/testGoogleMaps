@@ -6,7 +6,12 @@
     var options = {
       center: latlng,
       zoom: 15,
-      mapTypeId: google.maps.MapTypeId.SATELLITE
+      mapTypeId: google.maps.MapTypeId.SATELLITE,
+      mapTypeControl: true,
+      mapTypeControlOptions: {
+        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+
+      }
     };
 
     var map = new google.maps.Map(mapDiv, options);
