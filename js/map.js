@@ -79,6 +79,11 @@
     places.push(new google.maps.LatLng(-25.5300, -49.1700)); // airport CTBA
     places.push(new google.maps.LatLng(-25.4500, -49.2337)); // college UFPR Politecnico
 
+    // Declare infowindow as a global variable This will be at placed
+    // outside the for-loop just above it
+    var infowindow;
+
+    // Loop to get all places
     for (var i = 0; i < places.length; i++) {
       // Adding the marker as usual
       var marker = new google.maps.Marker({
@@ -92,9 +97,14 @@
         // Creating the event listener. It now has access to the values of
         // i and marker as they were during its creation
         google.maps.event.addListener(marker, 'click', function() {
-          var infowindow = new google.maps.InfoWindow({
-            content: 'Place number ' + i
-          });
+          // Check to see if the infowindow already exists
+          if (!infowindow) {
+            // Create a new InfoWindow object
+            infowindow = new google.maps.InfoWindow();
+          }
+          // Setting the content of the InfoWindow
+          infowindow.setContent('Place number ' + i);
+          // Tying the InfoWindow to the marker
           infowindow.open(map, marker);
         });
       })(i, marker);
