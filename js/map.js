@@ -39,7 +39,7 @@
 
       // set container of the map
       noClear: false,
-      backgroundColor: '#000000',
+      backgroundColor: 'black',
       draggableCursor: 'move',
       draggingCursor: 'move'
     };
@@ -72,6 +72,12 @@
       });
     }
 
+    // Creating the icon using a sprite
+    var image = 'image/marker.png';
+
+    // Creating the shadow
+    var shadow = 'image/shadow.png';
+
     // Creating an array that will contain the coordinates
     // for New York, San Francisco, and Seattle
     var places = [];
@@ -83,12 +89,17 @@
     // outside the for-loop just above it
     var infowindow;
 
+    // Declar bounds
+    var bounds = new google.maps.LatLngBounds();
+
     // Loop to get all places
     for (var i = 0; i < places.length; i++) {
       // Adding the marker as usual
       var marker = new google.maps.Marker({
         position: places[i],
         map: map,
+        icon: image,
+        shadow: shadow,
         title: 'Place number ' + i
       });
       // Wrapping the event listener inside an anonymous function
@@ -108,6 +119,17 @@
           infowindow.open(map, marker);
         });
       })(i, marker);
+
+      // Extending the bounds object with each LatLng
+      bounds.extend(places[i]);
     }
+
+    // Timout of 3s to adjust map
+    setTimeout(function(){
+      // Adjusting the map to new bounding box
+      map.fitBounds(bounds)
+    },3000);
+
+
   }
 })();
