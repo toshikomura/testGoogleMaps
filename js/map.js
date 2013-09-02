@@ -73,10 +73,38 @@
     }
 
     // Creating the icon using a sprite
-    var image = 'image/marker.png';
+    var image = new google.maps.MarkerImage(
+      'image/marker.png',
+      new google.maps.Size(71, 71),
+      new google.maps.Point(0, 0),
+      new google.maps.Point(17, 34),
+      new google.maps.Size(25, 25)
+    );
+
+    var imageHover = new google.maps.MarkerImage(
+      'image/marker.png',
+      new google.maps.Size(140, 140),
+      new google.maps.Point(0, 0),
+      new google.maps.Point(17, 34),
+      new google.maps.Size(35, 35)
+    );
+
+    var imageClick = new google.maps.MarkerImage(
+      'image/marker.png',
+      new google.maps.Size(71, 71),
+      new google.maps.Point(0, 0),
+      new google.maps.Point(17, 34),
+      new google.maps.Size(50, 50)
+    );
 
     // Creating the shadow
-    var shadow = 'image/shadow.png';
+    var shadow = new google.maps.MarkerImage(
+      'image/shadow.png',
+      new google.maps.Size(90, 90),
+      new google.maps.Point(0, 0),
+      new google.maps.Point(17, 34),
+      new google.maps.Size(25, 25)
+    );
 
     // Creating an array that will contain the coordinates
     // for New York, San Francisco, and Seattle
@@ -122,6 +150,22 @@
 
       // Extending the bounds object with each LatLng
       bounds.extend(places[i]);
+
+      // Hover
+      google.maps.event.addListener(marker, 'mouseover', function() {
+        this.setIcon(imageHover);
+      });
+      google.maps.event.addListener(marker, 'mouseout', function() {
+        this.setIcon(image);
+      });
+
+      // Click
+      google.maps.event.addListener(marker, 'mousedown', function() {
+        this.setIcon(imageClick);
+      });
+      google.maps.event.addListener(marker, 'mouseup', function() {
+        this.setIcon(imageHover);
+      });
     }
 
     // Timout of 3s to adjust map
