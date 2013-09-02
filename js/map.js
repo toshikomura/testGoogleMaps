@@ -73,24 +73,26 @@
     }
 
     // Creating the icon using a sprite
-    var image = new google.maps.MarkerImage(
-      'image/marker.png',
+
+    var typeMarkers = [];
+    typeMarkers['image'] = new google.maps.MarkerImage(
+      'image/hanggliding.png',
       new google.maps.Size(71, 71),
       new google.maps.Point(0, 0),
       new google.maps.Point(17, 34),
       new google.maps.Size(25, 25)
     );
 
-    var imageHover = new google.maps.MarkerImage(
-      'image/marker.png',
+    typeMarkers['imageHover'] = new google.maps.MarkerImage(
+      'image/hanggliding.png',
       new google.maps.Size(140, 140),
       new google.maps.Point(0, 0),
       new google.maps.Point(17, 34),
       new google.maps.Size(35, 35)
     );
 
-    var imageClick = new google.maps.MarkerImage(
-      'image/marker.png',
+    typeMarkers['imageClick'] = new google.maps.MarkerImage(
+      'image/hanggliding.png',
       new google.maps.Size(71, 71),
       new google.maps.Point(0, 0),
       new google.maps.Point(17, 34),
@@ -98,7 +100,7 @@
     );
 
     // Creating the shadow
-    var shadow = new google.maps.MarkerImage(
+    typeMarkers['shadow'] = new google.maps.MarkerImage(
       'image/shadow.png',
       new google.maps.Size(90, 90),
       new google.maps.Point(0, 0),
@@ -126,8 +128,8 @@
       var marker = new google.maps.Marker({
         position: places[i],
         map: map,
-        icon: image,
-        shadow: shadow,
+        icon: typeMarkers['image'],
+        shadow: typeMarkers['shadow'],
         title: 'Place number ' + i
       });
       // Wrapping the event listener inside an anonymous function
@@ -153,18 +155,18 @@
 
       // Hover
       google.maps.event.addListener(marker, 'mouseover', function() {
-        this.setIcon(imageHover);
+        this.setIcon(typeMarkers['imageHover']);
       });
       google.maps.event.addListener(marker, 'mouseout', function() {
-        this.setIcon(image);
+        this.setIcon(typeMarkers['image']);
       });
 
       // Click
       google.maps.event.addListener(marker, 'mousedown', function() {
-        this.setIcon(imageClick);
+        this.setIcon(typeMarkers['imageClick']);
       });
       google.maps.event.addListener(marker, 'mouseup', function() {
-        this.setIcon(imageHover);
+        this.setIcon(typeMarkers['imageHover']);
       });
     }
 
