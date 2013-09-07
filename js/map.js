@@ -79,10 +79,33 @@
     }
 
     // Creating the icon using a sprite
-
     var typeMarkers = [];
     typeMarkers['image'] = new google.maps.MarkerImage(
       'image/hanggliding.png',
+      new google.maps.Size(71, 71),
+      new google.maps.Point(0, 0),
+      new google.maps.Point(17, 34),
+      new google.maps.Size(25, 25)
+    );
+
+    typeMarkers['image1'] = new google.maps.MarkerImage(
+      'image/kitesurfing.png',
+      new google.maps.Size(71, 71),
+      new google.maps.Point(0, 0),
+      new google.maps.Point(17, 34),
+      new google.maps.Size(25, 25)
+    );
+
+    typeMarkers['image2'] = new google.maps.MarkerImage(
+      'image/paragliding.png',
+      new google.maps.Size(71, 71),
+      new google.maps.Point(0, 0),
+      new google.maps.Point(17, 34),
+      new google.maps.Size(25, 25)
+    );
+
+    typeMarkers['image3'] = new google.maps.MarkerImage(
+      'image/parasailing.png',
       new google.maps.Size(71, 71),
       new google.maps.Point(0, 0),
       new google.maps.Point(17, 34),
@@ -182,6 +205,36 @@
       map.fitBounds(bounds)
     },3000);
 
+    // Creating a JSON object with weather data
+    var markersData = {'marker': [
+      {
+        'lat': 40.756054,
+        'lng': -73.986951,
+        'markerType': 'image1'
+      },
+      {
+        'lat': 47.620973,
+        'lng': -122.347276,
+        'markerType': 'image2'
+      },
+      {
+        'lat': 37.775206,
+        'lng': -122.419209,
+        'markerType': 'image3'
+      }
+    ]};
+
+    // Looping through the weather array in weatherData
+    for (var i = 0; i < markersData.marker.length; i++) {
+      // creating a variable that will hold the current weather object
+      var marker_aux = markersData.marker[i];
+        // Creating marker
+        var marker2 = new google.maps.Marker({
+          position: new google.maps.LatLng(marker_aux.lat, marker_aux.lng),
+          map: map,
+          icon: typeMarkers[marker_aux.markerType]
+        });
+    }
 
   }
 })();
