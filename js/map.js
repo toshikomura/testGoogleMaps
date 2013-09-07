@@ -172,8 +172,17 @@
             // Create a new InfoWindow object
             infowindow = new google.maps.InfoWindow();
           }
+
+          // Set content to infoWindow
+          var content = '<div id="info">' +
+          '<img src="img/squirrel.jpg" alt="" />' +
+          '<h2>Place '+ i + '</h2>' +
+          '<p>Description of place ' + i + '</p>' +
+          '<p><a href="http://www.svennerberg.com">A sample link</a></p>' +
+          '</div>';
+
           // Setting the content of the InfoWindow
-          infowindow.setContent('Place number ' + i);
+          infowindow.setContent(content);
           // Tying the InfoWindow to the marker
           infowindow.open(map, marker);
         });
