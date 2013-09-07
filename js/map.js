@@ -73,6 +73,15 @@
     }
 
     // set values
+    document.getElementById('GoShoppingJardimDasAmericas').onclick = function() {
+      map.setOptions({
+        center: new google.maps.LatLng(-25.45153107470084, -49.2282697297095),
+        zoom: 19,
+        mapTypeId: google.maps.MapTypeId.SATELLITE
+        });
+    }
+
+    // set values
     document.getElementById('ViewAllMarkers').onclick = function() {
       // Adjusting the map to new bounding box
       map.fitBounds(bounds)
@@ -143,6 +152,7 @@
 
     places.push(new google.maps.LatLng(-25.5300, -49.1700)); // airport CTBA
     places.push(new google.maps.LatLng(-25.4500, -49.2337)); // college UFPR Politecnico
+    places.push(new google.maps.LatLng(-25.45153107470084, -49.2282697297095)); // shopping Jardim das Américas
 
     // Declare infowindow as a global variable This will be at placed
     // outside the for-loop just above it
@@ -173,16 +183,48 @@
             infowindow = new google.maps.InfoWindow();
           }
 
-          // Set content to infoWindow
-          var content = '<div id="info">' +
-          '<img src="image/squirrel.jpg" alt="" />' +
-          '<h2>Place '+ i + '</h2>' +
-          '<p>Description of place ' + i + '</p>' +
-          '<p><a href="http://www.svennerberg.com">A sample link</a></p>' +
-          '</div>';
+          // BEGIN If place is Shopping Jardim das Américas
+          if ( i != 2) {
+            // Set content to infoWindow
+            var content = '<div id="info">' +
+            '<img src="image/squirrel.jpg" alt="" />' +
+            '<h2>Place '+ i + '</h2>' +
+            '<p>Description of place ' + i + '</p>' +
+            '<p><a href="http://www.svennerberg.com">A sample link</a></p>' +
+            '</div>';
 
-          // Setting the content of the InfoWindow
-          infowindow.setContent(content);
+            // Setting the content of the InfoWindow
+            infowindow.setContent(content);
+          }
+          else {
+            // Creating the div that will contain the detail map
+            var detailDiv = document.createElement('div');
+            detailDiv.style.width = '200px';
+            detailDiv.style.height = '200px';
+            document.getElementById('map').appendChild(detailDiv);
+
+            // Creating MapOptions for the overview map
+            var overviewOpts = {
+              zoom: 14,
+              center: marker.getPosition(),
+              mapTypeId: map.getMapTypeId(),
+              disableDefaultUI: true
+            };
+
+            detailMap = new google.maps.Map(detailDiv, overviewOpts);
+
+            // Create a marker that will show in the detail map
+            var detailMarker = new google.maps.Marker({
+              position: marker.getPosition(),
+              map: detailMap,
+              clickable: false
+            });
+
+            // Setting the content of the InfoWindow
+            infowindow.setContent(detailDiv);
+          }
+          // END If place is Shopping Jardim das Américas
+
           // Tying the InfoWindow to the marker
           infowindow.open(map, marker);
 
