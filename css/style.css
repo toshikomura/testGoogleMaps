@@ -6,6 +6,7 @@ Description: Stylesheet for Google Maps
 ----------------------------------------*/
 
 body {
+  height: 100%;
   font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
   font-size: small;
   background: #fff;
