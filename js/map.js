@@ -233,16 +233,48 @@
       }
     ]};
 
+    // Declare infowindow as a global variable This will be at placed
+    // outside the for-loop just above it
+    var infowindow2;
+
     // Looping through the weather array in weatherData
-    for (var i = 0; i < markersData.marker.length; i++) {
+    for (var j = 0; j < markersData.marker.length; j++) {
       // creating a variable that will hold the current weather object
-      var marker_aux = markersData.marker[i];
-        // Creating marker
-        var marker2 = new google.maps.Marker({
-          position: new google.maps.LatLng(marker_aux.lat, marker_aux.lng),
-          map: map,
-          icon: typeMarkers[marker_aux.markerType]
+      var marker_aux = markersData.marker[j];
+      // Creating marker
+      var marker2 = new google.maps.Marker({
+        position: new google.maps.LatLng(marker_aux.lat, marker_aux.lng),
+        map: map,
+        icon: typeMarkers[marker_aux.markerType]
+      });
+      // Wrapping the event listener inside an anonymous function
+      // that we immediately invoke and passes the variable i to.
+      (function(j, marker2) {
+        // Creating the event listener. It now has access to the values of
+        // i and marker as they were during its creation
+        google.maps.event.addListener(marker2, 'click', function() {
+          // Check to see if the infowindow already exists
+          if (!infowindow2) {
+            // Create a new InfoWindow object
+            infowindow2 = new google.maps.InfoWindow();
+          }
+
+          // Creating a video element and setting its attributes
+          var video = document.createElement('video');
+          video.setAttribute('src',
+          'http://upload.wikimedia.org/wikipedia/commons/3/3f/ACA_Allertor_125_video.ogv');
+          video.setAttribute('width', '300');
+          video.setAttribute('height', '200');
+          video.setAttribute('controls', 'controls');
+          video.setAttribute('autoplay', 'autoplay');
+
+          // Setting the content of the InfoWindow
+          infowindow2.setContent(video);
+          // Tying the InfoWindow to the marker
+          infowindow2.open(map, marker2);
         });
+      })(j, marker2);
+
     }
 
   }

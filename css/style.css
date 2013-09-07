@@ -30,3 +30,8 @@ body {
   float: left;
   margin-right: 10px;
 }
+
+#info2 {
+  width: 400px;
+  height: 400px;
+}
