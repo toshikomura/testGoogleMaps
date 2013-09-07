@@ -185,6 +185,9 @@
           infowindow.setContent(content);
           // Tying the InfoWindow to the marker
           infowindow.open(map, marker);
+
+          // Opening the InfoWindow when the map loads
+          // google.maps.event.trigger(marker, 'click');
         });
       })(i, marker);
 
@@ -272,6 +275,10 @@
           infowindow2.setContent(video);
           // Tying the InfoWindow to the marker
           infowindow2.open(map, marker2);
+
+          // Opening the InfoWindow when the map loads
+          // google.maps.event.trigger(marker, 'click');
+
         });
       })(j, marker2);
 
