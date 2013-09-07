@@ -18,6 +18,15 @@ body {
   border: 1px solid #000;
 }
 
-.info {
-width: 250px;
+#info {
+  width: 350px;
+}
+
+#info h2 {
+  margin-top: 0;
+}
+
+#info img {
+  float: left;
+  margin-right: 10px;
 }

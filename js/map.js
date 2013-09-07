@@ -175,7 +175,7 @@
 
           // Set content to infoWindow
           var content = '<div id="info">' +
-          '<img src="img/squirrel.jpg" alt="" />' +
+          '<img src="image/squirrel.jpg" alt="" />' +
           '<h2>Place '+ i + '</h2>' +
           '<p>Description of place ' + i + '</p>' +
           '<p><a href="http://www.svennerberg.com">A sample link</a></p>' +
