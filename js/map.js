@@ -72,6 +72,12 @@
       });
     }
 
+    // set values
+    document.getElementById('ViewAllMarkers').onclick = function() {
+      // Adjusting the map to new bounding box
+      map.fitBounds(bounds)
+    }
+
     // Creating the icon using a sprite
 
     var typeMarkers = [];
