@@ -197,11 +197,16 @@
             infowindow.setContent(content);
           }
           else {
+            // Creating the div that will contain the infoWindow
+            var detailDivInfo = document.createElement('div');
+            detailDivInfo.style.width = '150px';
+            detailDivInfo.style.height = '250px';
+
             // Creating the div that will contain the detail map
-            var detailDiv = document.createElement('div');
-            detailDiv.style.width = '200px';
-            detailDiv.style.height = '200px';
-            document.getElementById('map').appendChild(detailDiv);
+            var detailDivMap = document.createElement('div');
+            detailDivMap.style.width = '150px';
+            detailDivMap.style.height = '150px';
+            document.getElementById('map').appendChild(detailDivMap);
 
             // Creating MapOptions for the overview map
             var overviewOpts = {
@@ -211,7 +216,7 @@
               disableDefaultUI: true
             };
 
-            detailMap = new google.maps.Map(detailDiv, overviewOpts);
+            detailMap = new google.maps.Map(detailDivMap, overviewOpts);
 
             // Create a marker that will show in the detail map
             var detailMarker = new google.maps.Marker({
@@ -220,8 +225,54 @@
               clickable: false
             });
 
+            // We then create a paragraph element that will contain some text
+            var p = document.createElement('p');
+            p.innerHTML = 'This marker is positioned on Shopping Jardim das Américas.';
+            //We then create a second paragraph element that will contain the clickable link
+            p2 = document.createElement('p');
+            // Creating the clickable link
+            var aZoonIn = document.createElement('a');
+            aZoonIn.innerHTML = 'Zoom in';
+            aZoonIn.href = '#';
+
+            var aZoonOut = document.createElement('a');
+            aZoonOut.innerHTML = 'Zoom out';
+            aZoonOut.href = '#';
+
+            // Adding a click event to the link that performs
+            // the zoom in, and cancels its default action
+            aZoonIn.onclick = function() {
+              // Setting the center of the map to the same as the clicked marker
+              detailMap.setCenter(marker.getPosition());
+              // Setting the zoom level to 15
+              detailMap.setZoom(15);
+              // Canceling the default action
+              return false;
+            };
+
+            // Adding a click event to the link that performs
+            // the zoom out, and cancels its default action
+            aZoonOut.onclick = function() {
+              // Setting the center of the map to the same as the clicked marker
+              detailMap.setCenter(marker.getPosition());
+              // Setting the zoom level to 13
+              detailMap.setZoom(13);
+              // Canceling the default action
+              return false;
+            };
+
+            // Appending the two paragraphs to the div datailInfo
+            detailDivInfo.appendChild(detailDivMap);
+
+            // Appending the link to the second paragraph element
+            p2.appendChild(aZoonIn);
+            p2.appendChild(aZoonOut);
+            // Appending the two paragraphs to the div datailInfo
+            detailDivInfo.appendChild(p);
+            detailDivInfo.appendChild(p2);
+
             // Setting the content of the InfoWindow
-            infowindow.setContent(detailDiv);
+            infowindow.setContent(detailDivInfo);
           }
           // END If place is Shopping Jardim das Américas
 
