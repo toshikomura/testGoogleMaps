@@ -377,5 +377,17 @@
 
     }
 
+    // Can create var
+    //var polylineOptions = {
+    //  path: places
+    //};
+
+    // Create routes
+    var polyline = new google.maps.Polyline({
+      path: places,
+      map: map
+    });
+    //polyline.setMap(map);
+
   }
 })();
