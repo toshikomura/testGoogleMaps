@@ -434,7 +434,12 @@
 
     var polygon = new google.maps.Polygon({
       paths: points,
-      map: map
+      map: map,
+      strokeColor: '#ff0000',
+      strokeOpacity: 0.9,
+      strokeWeight: 4,
+      fillColor: '#00ff00',
+      fillOpacity: 0.35
     });
 
   }
