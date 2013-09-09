@@ -433,6 +433,7 @@
     ];
 
     var polygon = new google.maps.Polygon({
+      //zIndex: 2,  // indicate sobreposition
       paths: points,
       map: map,
       strokeColor: '#ff0000',
