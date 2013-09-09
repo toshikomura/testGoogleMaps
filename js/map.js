@@ -392,5 +392,29 @@
     });
     //polyline.setMap(map);
 
+    // Create new routes
+    // Creating an empty MVCArray
+    var route = new google.maps.MVCArray();
+
+    // Creating the Polyline object
+    var polyline = new google.maps.Polyline({
+      path: route,
+      strokeColor: "#0000ff",
+      strokeOpacity: 0.6,
+      strokeWeight: 7
+    });
+
+    // Adding the polyline to the map
+    polyline.setMap(map);
+
+    // Adding a click event to the map object
+    google.maps.event.addListener(map, 'click', function(e) {
+      // Getting a reference to the MVCArray
+      var path = polyline.getPath();
+      // Adding the position clicked which is in fact
+      // a google.maps.LatLng object to the MVCArray
+      path.push(e.latLng);
+    });
+
   }
 })();
