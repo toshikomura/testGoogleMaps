@@ -87,6 +87,15 @@
       map.fitBounds(bounds)
     }
 
+    // set values
+    document.getElementById('ViewAllMap').onclick = function() {
+      map.setOptions({
+        center: new google.maps.LatLng( 0, 0),
+        zoom: 2,
+        mapTypeId: google.maps.MapTypeId.SATELLITE
+      });
+    }
+
     // Creating the icon using a sprite
     var typeMarkers = [];
     typeMarkers['image'] = new google.maps.MarkerImage(
