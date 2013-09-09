@@ -385,7 +385,10 @@
     // Create routes
     var polyline = new google.maps.Polyline({
       path: places,
-      map: map
+      map: map,
+      strokeColor: "#ff0000",
+      strokeWeight: 8,
+      strokeOpacity: 0.5
     });
     //polyline.setMap(map);
 
