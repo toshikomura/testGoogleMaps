@@ -416,5 +416,17 @@
       path.push(e.latLng);
     });
 
+    // Create polygon
+    var points = [
+      new google.maps.LatLng(markersData.marker[0].lat, markersData.marker[0].lng),
+      new google.maps.LatLng(markersData.marker[1].lat, markersData.marker[1].lng),
+      new google.maps.LatLng(markersData.marker[2].lat, markersData.marker[2].lng)
+    ];
+
+    var polygon = new google.maps.Polygon({
+      paths: points,
+      map: map
+    });
+
   }
 })();
