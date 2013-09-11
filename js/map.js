@@ -466,5 +466,21 @@
       fillOpacity: 0.35
     });
 
+    // Change color polygon when mouse over
+    google.maps.event.addListener(polygon, 'mouseover', function() {
+      polygon.setOptions({
+        fillColor: '#0000ff',
+        strokeColor: '#0000ff'
+      });
+    });
+
+    // Return color polygon when mouse out
+    google.maps.event.addListener(polygon, 'mouseout', function() {
+      polygon.setOptions({
+        fillColor: '#ff0000',
+        strokeColor: '#00ff00'
+      });
+    });
+
   }
 })();
