@@ -335,6 +335,21 @@
         'lat': 37.775206,
         'lng': -122.419209,
         'markerType': 'image3'
+      },
+      {
+        'lat': 42.756054,
+        'lng': -89.986951,
+        'markerType': 'image1'
+      },
+      {
+        'lat': 42.620973,
+        'lng': -103.347276,
+        'markerType': 'image2'
+      },
+      {
+        'lat': 39.775206,
+        'lng': -103.419209,
+        'markerType': 'image3'
       }
     ]};
 
@@ -426,15 +441,23 @@
     });
 
     // Create polygon
-    var points = [
+    var points1 = [
       new google.maps.LatLng(markersData.marker[0].lat, markersData.marker[0].lng),
       new google.maps.LatLng(markersData.marker[1].lat, markersData.marker[1].lng),
       new google.maps.LatLng(markersData.marker[2].lat, markersData.marker[2].lng)
     ];
 
+    var points2 = [
+      new google.maps.LatLng(markersData.marker[3].lat, markersData.marker[3].lng),
+      new google.maps.LatLng(markersData.marker[4].lat, markersData.marker[4].lng),
+      new google.maps.LatLng(markersData.marker[5].lat, markersData.marker[5].lng)
+    ];
+
+    var pointsall = [ points1, points2];
+
     var polygon = new google.maps.Polygon({
       //zIndex: 2,  // indicate sobreposition
-      paths: points,
+      paths: pointsall,
       map: map,
       strokeColor: '#ff0000',
       strokeOpacity: 0.9,
