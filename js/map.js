@@ -345,7 +345,10 @@
       }
 
       // Creating a MarkerClusterer object and adding the markers array to it
-      var markerclusterer = new MarkerClusterer(map, markers);
+      var markerclusterer = new MarkerClusterer(map, markers, {
+        'gridSize': 100,
+        'zoomOnClick': false
+      });
     });
 
 
