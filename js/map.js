@@ -328,18 +328,24 @@
       var northEast = bounds.getNorthEast();
       var latSpan = northEast.lat() - southWest.lat();
       var lngSpan = northEast.lng() - southWest.lng();
+      var markers = [];
 
       for (var i = 0; i < 100; i++) {
         var lat = southWest.lat() + latSpan * Math.random();
         var lng = southWest.lng() + lngSpan * Math.random();
         var latlng = new google.maps.LatLng(lat, lng);
 
-        new google.maps.Marker({
-          position: latlng,
-          map: map
+        // Creating a marker. Note that we don't add it to the map
+        var marker = new google.maps.Marker({
+          position: latlng
         });
+
+        // Adding the marker to the markers array
+        markers.push(marker);
       }
 
+      // Creating a MarkerClusterer object and adding the markers array to it
+      var markerclusterer = new MarkerClusterer(map, markers);
     });
 
 
