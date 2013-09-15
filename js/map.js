@@ -254,7 +254,7 @@
         // i and marker as they were during its creation
         google.maps.event.addListener( marker, 'click', function() {
           // Check to see if the infowindow already exists
-          if (!infowindow) {
+          if ( !infowindow) {
             // Create a new InfoWindow object
             infowindow = new google.maps.InfoWindow();
           }
@@ -441,6 +441,78 @@
 
     });
 
+    // Function to find location
+    document.getElementById( 'addressButton').onclick = function() {
+      // Var to find location
+      var geocoder;
+
+      // get values
+      // Getting a reference to the HTML form
+      var form = document.getElementById('addressForm');
+
+      // Catching the forms submit event
+      form.onsubmit = function() {
+        // Getting the address from the text input
+        var address = document.getElementById( 'address').value;
+        // Making the Geocoder call
+        getCoordinates( map, geocoder, infowindow, address);
+
+        // BEGIN function getCoordinates
+        function getCoordinates( map, geocoder, infowindow, address) {
+          // Check to see if we already have a geocoded object. If not we create one
+          if( !geocoder) {
+            geocoder = new google.maps.Geocoder();
+          }
+
+          // Creating a GeocoderRequest object
+          var geocoderRequest = {
+            address: address
+          }
+
+          // Making the Geocode request
+          geocoder.geocode( geocoderRequest, function( results, status) {
+            // Check if status is OK before proceeding
+            if ( status == google.maps.GeocoderStatus.OK) {
+
+              // Creating a new marker and adding it to the map
+              var marker = new google.maps.Marker({
+                map: map
+              });
+
+              // Setting the position of the marker to the returned location
+              marker.setPosition( results[ 0].geometry.location);
+
+              // Check to see if we've already got an InfoWindow object
+              if ( !infowindow) {
+                // Creating a new InfoWindow
+                infowindow = new google.maps.InfoWindow();
+              }
+
+              // Creating the content of the InfoWindow to the address
+              // and the returned position
+              var content = '<div id="info">' +
+              '<strong>' + results[ 0].formatted_address + '</strong><br />' +
+              'Lat: ' + results[ 0].geometry.location.lat() + '<br />' +
+              'Lng: ' + results[ 0].geometry.location.lng() +
+              '</div>';
+
+              // Adding the content to the InfoWindow
+              infowindow.setContent( content);
+              // Opening the InfoWindow
+              infowindow.open( map, marker);
+
+            }
+            else {
+              alert ( "Address not found");
+            }
+          });
+        }
+        // END function getCoordinates
+
+        // Preventing the form from doing a page submit
+        return false;
+      }
+    }
 
     // Creating a JSON object with weather data
     var markersData = { 'marker': [
@@ -606,4 +678,5 @@
     });
 
   }
+
 })();
