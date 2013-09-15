@@ -158,9 +158,25 @@
     // Creating an array that will contain the coordinates
     var states = [];
 
-    states.push(new google.maps.LatLng(-25.4800, -49.2000)); // PR
-    states.push(new google.maps.LatLng(-23.9265, -45.9513)); // SP
-    states.push(new google.maps.LatLng(-23.1206, -42.6334)); // RJ
+    states.push(new google.maps.Marker({
+      position: new google.maps.LatLng(-25.4800, -49.2000),
+      icon: typeMarkers['image']
+    })); // PR
+    states.push(new google.maps.Marker({
+      position: new google.maps.LatLng(-23.6265, -46.5013),
+      icon: typeMarkers['image']
+    })); // SP
+    states.push(new google.maps.Marker({
+      position: new google.maps.LatLng(-23.0006, -43.1934),
+      icon: typeMarkers['image']
+    })); // RJ
+
+    var citys = [];
+
+    citys.push(new google.maps.Marker({position: new google.maps.LatLng(-25.5800, -49.2000)})); // SJP
+    citys.push(new google.maps.Marker({position: new google.maps.LatLng(-25.4565, -45.9513)})); // CTB
+    citys.push(new google.maps.Marker({position: new google.maps.LatLng(-23.6265, -46.5013)})); // SP - SP
+    citys.push(new google.maps.Marker({position: new google.maps.LatLng(-23.0006, -43.1934)})); // RJ - RJ
 
     var places = [];
 
@@ -174,71 +190,6 @@
 
     // Declar bounds
     var bounds = new google.maps.LatLngBounds();
-
-    // OBS: To Clusterizing function is necessary
-    // remove declaration marker on the map
-    // of the loops
-
-    // BEGIN OF FOR
-    // Loop to get all states
-    for (var i = 0; i < states.length; i++) {
-      // Adding the marker as usual
-      var marker = new google.maps.Marker({
-        position: states[i],
-        map: map,
-        icon: typeMarkers['image'],
-        shadow: typeMarkers['shadow'],
-        title: 'State number ' + i
-      });
-
-      // Wrapping the event listener inside an anonymous function
-      // that we immediately invoke and passes the variable i to.
-      (function(i, marker) {
-        // Creating the event listener. It now has access to the values of
-        // i and marker as they were during its creation
-        google.maps.event.addListener(marker, 'click', function() {
-          // Check to see if the infowindow already exists
-          if (!infowindow) {
-            // Create a new InfoWindow object
-            infowindow = new google.maps.InfoWindow();
-          }
-
-          // Set content to infoWindow
-          var content = '<div id="info">' +
-          '<img src="image/squirrel.jpg" alt="" />' +
-          '<h2>State '+ i + '</h2>' +
-          '<p>Description of state ' + i + '</p>' +
-          '<p><a href="http://www.svennerberg.com">A sample link</a></p>' +
-          '</div>';
-
-          // Setting the content of the InfoWindow
-          infowindow.setContent(content);
-
-          // Tying the InfoWindow to the marker
-          infowindow.open(map, marker);
-
-          // Opening the InfoWindow when the map loads
-          // google.maps.event.trigger(marker, 'click');
-        });
-      })(i, marker);
-
-      // Hover
-      google.maps.event.addListener(marker, 'mouseover', function() {
-        this.setIcon(typeMarkers['imageHover']);
-      });
-      google.maps.event.addListener(marker, 'mouseout', function() {
-        this.setIcon(typeMarkers['image']);
-      });
-
-      // Click
-      google.maps.event.addListener(marker, 'mousedown', function() {
-        this.setIcon(typeMarkers['imageClick']);
-      });
-      google.maps.event.addListener(marker, 'mouseup', function() {
-        this.setIcon(typeMarkers['imageHover']);
-      });
-    }
-    // END OF FOR
 
     // BEGIN OF FOR
     // Loop to get all places
@@ -426,15 +377,15 @@
 
       // Making sure the MarkerManager is properly loaded before we use it
       google.maps.event.addListener(mgr, 'loaded', function() {
+
         // Adding the markers to the MarkerManager
         mgr.addMarkers(markers, 1);
 
-        // Get OBS before the loops
         // These markers will only be visible between zoom level 1 and 5
-        mgr.addMarkers(states, 2, 20);
+        mgr.addMarkers(states, 2, 9);
 
         // These markers will be visible at zoom level 6 and deeper
-        mgr.addMarkers(places, 21);
+        mgr.addMarkers(citys, 10);
 
         // Adding the markers to the map
         mgr.refresh();
