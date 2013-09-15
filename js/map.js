@@ -397,7 +397,11 @@
       var latSpan = northEast.lat() - southWest.lat();
       var lngSpan = northEast.lng() - southWest.lng();
       var markers = [];
-      var mgr = new MarkerManager( map);
+      var mgr = new MarkerManager( map, {
+        'maxZoom': 20,
+        'borderPadding': 200,
+        'trackMarkers': true
+      });
 
       for (var i = 0; i < 100; i++) {
         var lat = southWest.lat() + latSpan * Math.random();
