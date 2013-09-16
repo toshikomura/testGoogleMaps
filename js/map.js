@@ -1,12 +1,40 @@
 (function() {
+
+  // Loading the Google Maps API
+  google.load('maps', 3, {
+    'other_params': 'sensor=false&language=en'
+  });
+
   window.onload = function() {
     // set var position and get id
     var mapDiv = document.getElementById( 'map');
     var airport_ctba = new google.maps.LatLng( -25.5300, -49.1700);
 
+    // Getting the position
+    if ( google.loader.ClientLocation.latitude && google.loader.ClientLocation.longitude) {
+
+      // Defining the position
+      var latLng = new google.maps.LatLng(
+        google.loader.ClientLocation.latitude,
+        google.loader.ClientLocation.longitude
+      );
+
+      // Creating the content for the InfoWindow
+      var location = 'You are located in '
+      location += google.loader.ClientLocation.address.city + ', ';
+      location += google.loader.ClientLocation.address.country;
+
+    }
+    else {
+
+      // Providing default values as a fallback
+      var latLng = airport_ctba;
+      var location = 'Your location is unknown';
+    }
+
     // set options of the map
     var options = {
-      center: airport_ctba,
+      center: latLng,
       zoom: 15,
       mapTypeId: google.maps.MapTypeId.SATELLITE,
 
@@ -235,6 +263,24 @@
     // Declar bounds
     var bounds = new google.maps.LatLngBounds();
 
+    // Adding a marker to the map
+    var marker_user = new google.maps.Marker({
+      position: latLng,
+      map: map
+    });
+
+    // Check to see if the infowindow already exists
+    if ( !infowindow) {
+      // Create a new InfoWindow object
+      infowindow = new google.maps.InfoWindow();
+    }
+
+    // Setting the content of the InfoWindow
+    infowindow.setContent( location);
+
+    // Adding the InfoWindow to the map
+    infowindow.open( map, marker_user);
+
     // BEGIN OF FOR
     // Loop to get all places
     for (var i = 0; i < places.length; i++) {
@@ -274,7 +320,7 @@
           }
           else {
             // Creating the div that will contain the infoWindow
-            var detailDivInfo = document.createElement( 'div');
+           var detailDivInfo = document.createElement( 'div');
             detailDivInfo.style.width = '150px';
             detailDivInfo.style.height = '250px';
 
@@ -385,7 +431,7 @@
     setTimeout( function(){
       // Adjusting the map to new bounding box
       map.fitBounds( bounds)
-    }, 3000);
+    }, 10000);
 
     // Generate random markers on the map
     // Get bound of the map
