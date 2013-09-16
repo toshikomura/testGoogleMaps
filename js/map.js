@@ -159,17 +159,17 @@
     var states = [];
 
     var parana = new google.maps.Marker({
-      position: new google.maps.LatLng( -25.4800, -49.2000),
+      position: new google.maps.LatLng( -25.2520888, -52.02154150000001),
       icon: typeMarkers[ 'image']
     });
 
     var sao_paulo = new google.maps.Marker({
-      position: new google.maps.LatLng( -23.5565, -46.6513),
+      position: new google.maps.LatLng( -23.5489433, -46.6388182),
       icon: typeMarkers[ 'image']
     });
 
     var rio_de_janeiro = new google.maps.Marker({
-      position: new google.maps.LatLng( -22.9006, -43.1934),
+      position: new google.maps.LatLng( -22.9035393, -43.20958689999998),
       icon: typeMarkers[ 'image']
     });
 
@@ -180,19 +180,19 @@
     var citys = [];
 
     var sao_jose_dos_pinhais = new google.maps.Marker({
-      position: new google.maps.LatLng( -25.5800, -49.2000)
+      position: new google.maps.LatLng( -25.5307489, -49.195815400000015)
     });
 
     var curitiba = new google.maps.Marker({
-      position: new google.maps.LatLng( -25.4565, -45.9513)
+      position: new google.maps.LatLng( -25.4283563, -49.273251500000015)
     });
 
     var sao_paulo_sp = new google.maps.Marker({
-      position: new google.maps.LatLng( -23.5565, -46.6513)
+      position: new google.maps.LatLng( -23.5489433, -46.6388182)
     });
 
     var rio_de_janeiro_rj = new google.maps.Marker({
-      position: new google.maps.LatLng( -22.9006, -43.1934)
+      position: new google.maps.LatLng( -22.9035393, -43.20958689999998)
     });
 
     citys.push( sao_jose_dos_pinhais); // SJP
@@ -443,8 +443,6 @@
 
     // Function to find location
     document.getElementById( 'addressButton').onclick = function() {
-      // Var to find location
-      var geocoder;
 
       // get values
       // Getting a reference to the HTML form
@@ -454,14 +452,17 @@
       form.onsubmit = function() {
         // Getting the address from the text input
         var address = document.getElementById( 'address').value;
+
         // Making the Geocoder call
-        getCoordinates( map, geocoder, infowindow, address);
+        getCoordinates( map, infowindow, address);
 
         // BEGIN function getCoordinates
-        function getCoordinates( map, geocoder, infowindow, address) {
+        function getCoordinates( map, infowindow, address) {
+          // Var to find location
+          var geocoder_address;
           // Check to see if we already have a geocoded object. If not we create one
-          if( !geocoder) {
-            geocoder = new google.maps.Geocoder();
+          if( !geocoder_address) {
+            geocoder_address = new google.maps.Geocoder();
           }
 
           // Creating a GeocoderRequest object
@@ -470,7 +471,7 @@
           }
 
           // Making the Geocode request
-          geocoder.geocode( geocoderRequest, function( results, status) {
+          geocoder_address.geocode( geocoderRequest, function( results, status) {
             // Check if status is OK before proceeding
             if ( status == google.maps.GeocoderStatus.OK) {
 
@@ -628,11 +629,64 @@
 
     // Adding a click event to the map object
     google.maps.event.addListener( map, 'click', function(e) {
+
       // Getting a reference to the MVCArray
       var path = polyline.getPath();
       // Adding the position clicked which is in fact
       // a google.maps.LatLng object to the MVCArray
       path.push( e.latLng);
+
+      // Getting the address for the position being clicked
+      getAddress( map, infowindow, e.latLng);
+
+      // BEGIN function getCoordinates
+      function getAddress( map, infowindow, latLng) {
+
+        // Var to find location
+        var geocoder_reverse
+        // Check to see if a geocoder object already exists
+        if ( !geocoder_reverse) {
+          geocoder_reverse = new google.maps.Geocoder();
+        }
+
+        // Creating a GeocoderRequest object
+        var geocoderRequest = {
+          latLng: latLng
+        }
+
+        geocoder_reverse.geocode( geocoderRequest, function( results, status) {
+          // If the infoWindow hasn't yet been created we create it
+          if ( !infowindow) {
+            infowindow = new google.maps.InfoWindow();
+          }
+
+          // Setting the position for the InfoWindow
+          infowindow.setPosition( latLng);
+
+          // Creating content for the InfoWindow
+          var content = '<h3>Position: ' + latLng.toUrlValue() + '</h3>';
+          // Check to see if the request went allright
+          if ( status == google.maps.GeocoderStatus.OK) {
+            // Looping through the result
+            for ( var i = 0; i < results.length; i++) {
+              if ( results[ 0].formatted_address) {
+                content += i + '. ' + results[ i].formatted_address + '<br />';
+              }
+            }
+          }
+          else {
+            content += '<p>No address could be found. Status = ' + status + '</p>';
+          }
+
+          // Adding the content to the InfoWindow
+          infowindow.setContent( content);
+          // Opening the InfoWindow
+          infowindow.open( map);
+        });
+
+      }
+      // END function getCoordinates
+
     });
 
     // Create polygon
