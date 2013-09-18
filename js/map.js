@@ -9,12 +9,13 @@
     // set var position and get id
     var mapDiv = document.getElementById( 'map');
     var airport_ctba = new google.maps.LatLng( -25.5300, -49.1700);
+    var start_latLng;
 
     // Getting the position
     if ( google.loader.ClientLocation.latitude && google.loader.ClientLocation.longitude) {
 
       // Defining the position
-      var latLng = new google.maps.LatLng(
+      start_latLng = new google.maps.LatLng(
         google.loader.ClientLocation.latitude,
         google.loader.ClientLocation.longitude
       );
@@ -28,13 +29,13 @@
     else {
 
       // Providing default values as a fallback
-      var latLng = airport_ctba;
+      start_latLng = airport_ctba;
       var location = 'Your location is unknown';
     }
 
     // set options of the map
     var options = {
-      center: latLng,
+      center: start_latLng,
       zoom: 15,
       mapTypeId: google.maps.MapTypeId.SATELLITE,
 
@@ -80,6 +81,15 @@
       alert( 'Current Zoom level is ' + map.getZoom());
       alert( 'Current center is ' + map.getCenter());
       alert( 'The current mapType is ' + map.getMapTypeId());
+    }
+
+    // set values
+    document.getElementById( 'GoYourPosition').onclick = function() {
+      map.setOptions({
+        center: start_latLng,
+        zoom: 16,
+        mapTypeId: google.maps.MapTypeId.SATELLITE
+        });
     }
 
     // set values
@@ -265,7 +275,7 @@
 
     // Adding a marker to the map
     var marker_user = new google.maps.Marker({
-      position: latLng,
+      position: start_latLng,
       map: map
     });
 
