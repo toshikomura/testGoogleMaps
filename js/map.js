@@ -11,6 +11,47 @@
     var airport_ctba = new google.maps.LatLng( -25.5300, -49.1700);
     var start_latLng;
 
+    // Checking if geo positioning is available
+    if ( geo_position_js.init()) {
+      // Try to determine the location of the device
+      // Creating a settings object
+      var settings = {
+        enableHighAccuracy: true
+      };
+
+      // Trying to determine the location of the device
+      geo_position_js.getCurrentPosition( setPosition, handleError, settings);
+    }
+    else {
+      alert('Geo functionality is not available');
+    }
+
+    function handleError(error) {
+      alert('Error = ' + error.message);
+    }
+
+    function setPosition(position) {
+      // Creating a LatLng from the position info
+      var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+      // Adding a marker to the map
+      var marker = new google.maps.Marker({
+        position: latLng,
+        map: map
+      });
+
+      // Creating an InfoWindow
+      var infoWindow = new google.maps.InfoWindow({
+        content: 'You are here!'
+      });
+
+      // Adding the InfoWindow to the map
+      infoWindow.open(map, marker);
+
+      // Zooming in on the map
+      map.setZoom(6);
+    }
+
     // Getting the position
     if ( google.loader.ClientLocation.latitude && google.loader.ClientLocation.longitude) {
 
