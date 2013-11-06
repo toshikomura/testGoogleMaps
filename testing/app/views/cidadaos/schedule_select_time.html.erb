@@ -1,0 +1,33 @@
+<div id="texto-maior">
+
+<h2>Agendamento</h2>
+<h4>Passo 5 de 6 - Selecione um dos horários disponíveis para agendamento em
+    <%= session[:agendamento_data].strftime("%d/%m/%Y") %>:</h4>
+
+<% unless session[:erro_agendado].nil? %>
+    <div id="error_explanation">
+      <h2>1 erro, o agendamento não pode ser confirmado:</h2>
+      <ul>
+        <li>O horário agendado já foi agendado! Por favor, selecione outro horário.</li>
+      </ul>
+    </div>
+<% end %>
+
+<div id="formulario-horizontal">
+<%= form_tag(cidadaos_agendamentos_selecionar_horario_path, method: :get) do %>
+
+  <div class="field">
+    <%= collection_select('agendamento', 'id', @agendamentos, :id,
+        :data_agendamento,
+        {:include_blank => "Selecione um horário" }) %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "Voltar", :name => "anterior" %>
+    <%= submit_tag "Continuar" %>
+  </div>
+
+<% end %>
+</div>
+
+</div>

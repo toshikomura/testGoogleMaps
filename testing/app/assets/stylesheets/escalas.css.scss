@@ -1,0 +1,30 @@
+// Place all the styles related to the Escalas controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.visualiza_escala {
+	position: absolute;
+	top: 50%;
+	left: 40%;
+	width: 500px;
+	height: 300px;
+	padding: 20px 20px 20px 20px;
+	border-style: solid;
+	background: #EAF2D3;
+	display: none;
+}
+
+input#limpar_atend{
+	width: 60px;
+	height: 24px;
+	border-style: outset;
+  border-color: black;
+}
+
+fieldset#fieldset_scale{
+  border-style: solid;
+  border-color: red;
+  border-width: 2px;
+}

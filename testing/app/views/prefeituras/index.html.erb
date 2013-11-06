@@ -1,0 +1,119 @@
+<div id="texto-maior">
+<h2> Informações Prefeitura:</h2>
+
+<h4><%= @prefeitura.nome %></h4>
+
+<p>
+  <b>Nome:</b>
+  <%= @prefeitura.nome %>
+</p>
+
+<p>
+  <b>CEP:</b>
+  <%= @prefeitura.cep %>
+</p>
+
+<p>
+  <b>Bairro:</b>
+  <%= @prefeitura.bairro %>
+</p>
+
+<p>
+  <b>Endereço:</b>
+  <%= @prefeitura.endereco %>
+</p>
+
+<p>
+  <b>Número:</b>
+  <%= @prefeitura.numero_endereco %>
+</p>
+
+<p>
+  <b>Complemento:</b>
+  <%= @prefeitura.complemento_endereco %>
+</p>
+
+<p>
+  <b>Telefone 1:</b>
+  <%= @prefeitura.telefone1 %>
+</p>
+
+<p>
+  <b>Telefone 2:</b>
+  <%= @prefeitura.telefone2 %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @prefeitura.email %>
+</p>
+
+<p>
+  <b>Logo:</b>
+  <%= @prefeitura.logo %>
+</p>
+
+<p>
+  <b>Estado:</b>
+  <%= estado(@prefeitura) %>
+</p>
+
+<p>
+  <b>Município:</b>
+  <%= municipio(@prefeitura) %>
+</p>
+
+<p>
+  <b>Número de dias de impedimento de novos agendamentos:</b>
+  <%= @prefeitura.dias_bloqueio %>
+</p>
+
+<p>
+  <b>Limite de cancelamento(horas):</b>
+  <%= @prefeitura.limite_cancelamento %>
+</p>
+
+<p>
+  <b>Número máximo de agendamentos(por cidadão):</b>
+  <%= @prefeitura.max_agendamentos %>
+</p>
+
+<p>
+  <b>Período para contagem de agendamentos(dias):</b>
+  <%= @prefeitura.periodo_agendamentos %>
+</p>
+
+<p>
+  <b>Número de faltas que gera impedimento de novos agendamentos:</b>
+  <%= @prefeitura.max_faltas %>
+</p>
+
+<p>
+  <b>Antecedência para enviar email avisando de um agendamento(horas):</b>
+  <%= @prefeitura.antecedencia_avisos %>
+</p>
+
+<p>
+  <b>Locais de Atendimento:</b>
+    <ul>
+      <% @prefeitura.orgaos.each do |orgao| %>
+	    <li><%= link_to "#{orgao.nome} (#{situacao(orgao)})", orgao %></li>	
+	  <% end %>
+    </ul>
+</p>
+
+<p>
+  <b>Atualizado em:</b>
+  <%= @prefeitura.updated_at %>
+</p>
+
+<p>
+  <b>Criado em:</b>
+  <%= @prefeitura.created_at %>
+</p>
+
+<%= link_to 'Alterar', edit_prefeitura_path(@prefeitura) %>
+
+<%= link_to 'Voltar', root_path %>
+
+</div>

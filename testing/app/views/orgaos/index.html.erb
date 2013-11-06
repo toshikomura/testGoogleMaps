@@ -1,0 +1,55 @@
+<div id="texto-maior">
+<h2>Locais de Atendimento</h2>
+
+<div id="search-form">
+<h4>Buscar Locais de Atendimento:</h4>
+  <%= search_form_for(@search, :remote => true) do |f| %>
+    <div class="field">
+	  <%= f.label :nome, "Nome: " %><br />
+	  <%= f.text_field :nome_cont, :class => "search-field"%>
+    </div>
+
+    <div class="field">
+	  <%= f.label :cep, "CEP: " %><br />
+	  <%= f.text_field :cep_cont, :class => "search-field" %>
+    </div>
+
+    <div class="field">
+	  <%= f.label :bairro, "Bairro: " %><br />
+	  <%= f.text_field :bairro_cont, :class => "search-field" %>
+	</div>
+
+    <div class="field">
+      <%= f.label :tufibge, "Estado: " %><br />
+      <%= f.text_field :tufibge_nome_uf_cont, :class => "search-field" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :tmibge, "Município: " %><br />
+      <%= f.text_field :tmibge_nome_municipio_cont, :class => "search-field" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :ativo, "Situação: " %><br />
+      <%= f.select :ativo_eq,
+options_for_select([["Ativo",true],["Inativo",false]],@search.ativo_eq),
+{:include_blank => "Todos"},{:class => "search-field"} %>
+    </div>
+
+	<div class="actions">
+	  <%= f.submit "Buscar" %>
+	  <%= f.submit "Limpar campos", :id => "reset_btn" %>
+	</div>
+  <% end %>
+<hr>
+</div>
+
+<div id="tabela_orgaos">
+  <%= render "tabela_orgaos" %>
+</div>
+
+<br />
+
+<%= link_to 'Novo Local de Atendimento', new_orgao_path %>
+
+</div>

@@ -1,0 +1,135 @@
+tufibge_AC:
+  sigla_uf: AC
+  nome_uf: Acre
+  codigo_ibge: 12
+
+tufibge_AL:
+  sigla_uf: AL
+  nome_uf: Alagoas
+  codigo_ibge: 27
+
+tufibge_AP:
+  sigla_uf: AP
+  nome_uf: Amapá
+  codigo_ibge: 16
+
+tufibge_AM:
+  sigla_uf: AM
+  nome_uf: Amazonas
+  codigo_ibge: 13
+
+tufibge_BA:
+  sigla_uf: BA
+  nome_uf: Bahia 
+  codigo_ibge: 29
+
+tufibge_CE:
+  sigla_uf: CE
+  nome_uf: Ceará
+  codigo_ibge: 23
+
+tufibge_DF:
+  sigla_uf: DF
+  nome_uf: Distrito Federal 
+  codigo_ibge: 53
+
+tufibge_ES:
+  sigla_uf: ES
+  nome_uf: Espírito Santo
+  codigo_ibge: 32
+
+tufibge_GO:
+  sigla_uf: GO
+  nome_uf: Goiás
+  codigo_ibge: 52
+
+tufibge_MA:
+  sigla_uf: MA
+  nome_uf: Maranhão
+  codigo_ibge: 21
+
+tufibge_MT:
+  sigla_uf: MT
+  nome_uf: Mato Grosso
+  codigo_ibge: 51
+
+tufibge_MS:
+  sigla_uf: MS
+  nome_uf: Mato Grosso do Sul
+  codigo_ibge: 50
+
+tufibge_MG:
+  sigla_uf: MG
+  nome_uf: Minas Gerais
+  codigo_ibge: 31
+
+tufibge_PA:
+  sigla_uf: PA
+  nome_uf: Pará
+  codigo_ibge: 15
+
+tufibge_PB:
+  sigla_uf: PB
+  nome_uf: Paraíba
+  codigo_ibge: 25
+
+tufibge_PR:
+  sigla_uf: PR
+  nome_uf: Paraná
+  codigo_ibge: 41
+
+tufibge_PE:
+  sigla_uf: PE
+  nome_uf: Pernambuco
+  codigo_ibge: 26
+
+tufibge_PI:
+  sigla_uf: PI
+  nome_uf: Piauí
+  codigo_ibge: 22
+
+tufibge_RJ:
+  sigla_uf: RJ
+  nome_uf: Rio de Janeiro
+  codigo_ibge: 33
+
+tufibge_RN:
+  sigla_uf: RN
+  nome_uf: Rio Grande do Norte
+  codigo_ibge: 24
+
+tufibge_RS:
+  sigla_uf: RS
+  nome_uf: Rio Grande do Sul
+  codigo_ibge: 43
+
+tufibge_RO:
+  sigla_uf: RO
+  nome_uf: Rondônia
+  codigo_ibge: 11
+
+tufibge_RR:
+  sigla_uf: RR
+  nome_uf: Roraima
+  codigo_ibge: 14
+
+tufibge_SC:
+  sigla_uf: SC
+  nome_uf: Santa Catarina
+  codigo_ibge: 42
+
+tufibge_SP:
+  sigla_uf: SP
+  nome_uf: São Paulo
+  codigo_ibge: 35
+
+tufibge_SE:
+  sigla_uf: SE
+  nome_uf: Sergipe
+  codigo_ibge: 28
+
+tufibge_TO:
+  sigla_uf: TO
+  nome_uf: Tocantins
+  codigo_ibge: 17
+

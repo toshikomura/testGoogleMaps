@@ -1,0 +1,13 @@
+<div id="texto-maior">
+<h2>Agendamentos <span><%= current_profissional.orgao.nome %></span></h2>
+
+<% if session[:cpf].nil? %>
+  <%= render :partial => 'agendamento_cidadao_cpf_form', :locals => { :cidadao => @cidadao } %>
+<% else %>
+  <h2>Cidadão <span><%= @cidadao.nome %></span></h2>
+  <%= render :partial => 'agendamento_search_form', :locals => { :agendamentos => @agendamentos, :search => @search } %>
+<% end %>
+
+<br />
+
+</div>

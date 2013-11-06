@@ -1,0 +1,77 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+tcbos_Administrador:
+  codigo_cbo: 2521-05
+  descricao: Administrador
+
+tcbos_Advogado:
+  codigo_cbo: 2410-05
+  descricao: Advogado
+
+tcbos_Enfermeiro:
+  codigo_cbo: 2235-05 
+  descricao: Enfermeiro
+
+tcbos_Engenheiro_Ambiental:
+  codigo_cbo: 2140-05
+  descricao: Engenheiro Ambiental
+
+tcbos_Engenheiro_Civil:
+  codigo_cbo: 2142-05 
+  descricao: Engenheiro Civil
+
+tcbos_Engenheiro_Eletricista:
+  codigo_cbo: 2143-05
+  descricao: Engenheiro Eletricista
+
+tcbos_Engenheiro_Eletronico:
+  codigo_cbo: 2143-10
+  descricao: Engenheiro Eletrônico
+
+tcbos_Escrivao_Civil:
+  codigo_cbo: 3514-10
+  descricao: Escrivão Civil
+
+tcbos_Medico_Anestesiologista:
+  codigo_cbo: 2251-51
+  descricao: Médico Anestesiologista
+
+tcbos_Medico_Cardiologista:
+  codigo_cbo: 2251-20
+  descricao: Médico Cardiologista
+
+tcbos_Medico_Cirurgiao_Geral:
+  codigo_cbo: 2252-25
+  descricao: Médico Cirurgião Geral
+
+tcbos_Medico_Pediatra:
+  codigo_cbo: 2251-24
+  descricao: Médico Pediatra
+
+tcbos_Procurador_Municipio:
+  codigo_cbo: 2412-25
+  descricao: Procurador do Município
+
+tcbos_Programador_Sistemas_Informacao:
+  codigo_cbo: 3171-20
+  descricao: Programador de Sistemas de Informação
+
+tcbos_Promotor_Justica:
+  codigo_cbo: 2422-35
+  descricao: Promotor de Justiça
+
+tcbos_Psicologo_Clinico:
+  codigo_cbo: 2515-10
+  descricao: Psicólogo Clĩnico
+
+tcbos_Urbanista:
+  codigo_cbo: 2141-30
+  descricao: Urbanista
+
+tcbos_Digitador:
+  codigo_cbo: 4121-10
+  descricao: Digitador
+
+tcbos_Nutricionista:
+  codigo_cbo: 2237-10
+  descricao: Nutricionista

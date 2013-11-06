@@ -1,0 +1,64 @@
+<div id="texto-maior">
+<h2>Agendamento</h2>
+<h4>Passo 4 de 6 - Selecione uma das datas disponíveis para agendamento</h4>
+
+<div id="formulario-horizontal">
+<%= form_tag(cidadaos_agendamentos_selecionar_dia_path, method: :get) do %>
+
+  <div id="calendario_agendamento">
+    <%= calendar_for(@agendamentos, :day => @data_agendamento.day,
+                     :month => @data_agendamento.month) do |calendar| %>
+
+      <%= calendar.head do %>
+        <%= calendar.r(:class => "navmes") do %>
+          <th>
+            <% unless @data_agendamento < Time.now %>
+              <%= submit_tag "Mês anterior", :name => "mes_anterior",
+                  :class => "mes_anterior" %>
+            <% end %>
+          </th>
+            
+          <th colspan="5"><%= l(@data_agendamento, :format => '%B de %Y') %></th>
+
+          <th><%= submit_tag "", :name => "mes_proximo" %></th>
+        <% end %>
+
+        <%= calendar.r do %>
+          <%= calendar.h('Dom') %>
+          <%= calendar.h('Seg') %>
+          <%= calendar.h('Ter') %>
+          <%= calendar.h('Qua') %>
+          <%= calendar.h('Qui') %>
+          <%= calendar.h('Sex') %>
+          <%= calendar.h('Sab') %>
+        <% end %>
+      <% end %>
+
+      <%= calendar.day(:day_method => :horario_inicio_consulta,
+                       :id => 'day_%d') do |data, agendamentos| %>
+
+        <% unless agendamentos.empty? %>
+          <%= submit_tag data.day, :name => 'dia_agendamento' %>
+        <% else %>
+          <%= data.day %>
+        <% end %>
+      <% end %>
+
+    <% end %>
+  </div>
+
+  <%= hidden_field_tag :data_calendario, @data_agendamento.strftime("%Y_%m") %>
+
+  <div id="legenda">
+    <div class="caixa-verde"></div>
+    <p>Dias disponíveis para agendamentos</p>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "Voltar", :name => "anterior" %>
+  </div>
+
+<% end %>
+</div>
+
+</div>

@@ -1,0 +1,43 @@
+<div id="texto-maior">
+<h2>Agendamento</h2>
+<h4>Passo 2 de 6 - Tipo de atendimento:</h4>
+
+<% unless params[:tipo_atendimento].nil? %>
+  <% if params[:tipo_atendimento][:id].empty? %>
+    <div id="error_explanation">
+      <h2>1 erro, o agendamento não pode prosseguir:</h2>
+      <ul>
+        <li>Nenhum tipo de atendimento foi selecionado!</li>
+      </ul>
+    </div>
+  <% elsif @tipo_atendimento.empty? %>
+    <div id="error_explanation">
+      <h2>1 erro, o agendamento não pode prosseguir:</h2>
+      <ul>
+        <li>O tipo de atendimento selecionado não é um tipo de atendimento válido!</li>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
+
+<div id="formulario-horizontal">
+<%= form_for(@tipo_atendimentos, :as => :tipo_atendimento,
+             :url => cidadaos_agendamentos_selecionar_tipo_atendimento_path,
+             :method => :get,
+             :html => { :class => "selecionar_tipo_atendimento",
+                        :id => "selecionar_tipo_atendimento"}) do |f| %>
+
+  <div class="field">
+    <%= collection_select(:tipo_atendimento, :id, @tipo_atendimentos,
+                          :id, :descricao, { :include_blank =>
+                          "Selecione um tipo de atendimento" }) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Voltar", :name => "anterior" %>
+    <%= f.submit "Continuar" %>
+  </div>
+<% end %>
+</div>
+  
+</div>

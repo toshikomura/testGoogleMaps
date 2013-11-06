@@ -1,0 +1,7 @@
+--charset utf-8
+--private
+--protected
+-o doc/yard/
+--main 'doc/README_FOR_APP'
+--files 'doc/README_FOR_APP','Gemfile','Capfile','README.rdoc'
+--type-name-tag 'bug:Bugs'

@@ -1,0 +1,35 @@
+<div class="form">
+  <%= form_for(@tipo_atendimento) do |f| %>
+    <% if @tipo_atendimento.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@tipo_atendimento.errors.count, "erro") %>, Tipo de atendimento não pode ser salvo:</h2>
+
+        <ul>
+        <% @tipo_atendimento.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field-required">
+      <%= f.label :ativo, "Situação*:" %><br />
+      <% if @tipo_atendimento.new_record? %>
+        <%= f.text_field :ativo, :value => "Ativo", :disabled => true %>
+      <% else %>
+        <%= f.select :ativo, [["Ativo",true],["Inativo",false]] %>  
+      <% end %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :descricao, "Descrição*:" %><br />
+      <%= f.text_field :descricao %>
+    </div>
+
+    <p><font color="red"> Campos com (*) são de preenchimento obrigatório.</font></p>
+
+    <div class="actions">
+      <%= f.submit  %>
+    </div>
+  <% end %>
+</div>

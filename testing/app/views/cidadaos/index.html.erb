@@ -1,0 +1,44 @@
+<%= search_form_for(@q, :url => cidadaos_path)  do |f| %>
+<h3>Buscar agendamentos disponíveis</h3>
+<div class="field">
+  <%= f.label :orgao_id_eq, "Órgão" %><br />
+  <%= collection_select(:q, :orgao_id_eq, Orgao.all, :id, :nome, { :prompt => "Selecione um Órgão"}) %>
+  Sobre o Órgão
+</div>
+<div class="field">
+  <%= f.label :escala_tipo_atendimento_id_eq, "Tipo de atendimento" %><br />
+  <%= collection_select(:q, :escala_tipo_atendimento_id_eq, TipoAtendimento.all, :id, :descricao, { :prompt => "Selecione um Tipo de Atendimento" }) %>
+</div>
+<div class="field">
+  <%= f.label :horario_inicio_consulta_gteq, "Data e horário" %><br />
+  <%= datetime_select(:q, :horario_inicio_consulta_gteq, { :minute_step => 5 }) %>
+</div>
+<div class="actions">
+  <%= f.submit "Buscar" %>
+</div>
+<% end %>
+<br />
+<% unless @agendamentos.empty? %>
+  <table>
+    <tr>
+      <th>Local de atendimento</th>
+      <th>Atendimento</th>
+      <th>Data</th>
+      <th><%= sort_link @q, :horario_inicio_consulta, "Início" %></th>
+      <th>Término</th>
+      <th></th>
+    </tr>
+  <% @agendamentos.each do |agendamento| %>
+    <tr>
+      <td><%= agendamento.orgao.nome %></td>
+      <td><%= agendamento.escala.tipo_atendimento.descricao %></td>
+      <td><%= agendamento.horario_inicio_consulta.strftime("%d/%m/%Y") %></td>
+      <td><%= agendamento.horario_inicio_consulta.strftime("%H:%M") %></td>
+      <td><%= agendamento.horario_fim_consulta.strftime("%H:%M") %></td>
+      <td><%= link_to 'Agendar', edit_cidadao_path(agendamento) %></td>
+    </tr>
+  <% end %>
+  </table>
+<% else %>
+  <p><b>Nenhum agendamento disponível encontrado.</b></p>
+<% end %>

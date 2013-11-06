@@ -1,0 +1,51 @@
+<table class="list">
+  <thead>
+  <tr>
+    <th><%= sort_link(@search, :profissional_2_nome, "Profissional") %></th>
+    <th><%= sort_link(@search, :tipo_atendimentos, "Tipo de Atendimento") %></th>
+    <th><%= sort_link(@search, :data_execucao, "Data") %></th>
+    <th><%= sort_link(@search, :horario_inicio_execucao, "Horário Início")%></th>
+    <th><%= sort_link(@search, :horario_fim_execucao, "Horário Fim" )%></th>
+    <th>Ação</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @escalas.each do |escala| %>
+    <tr>
+      <td>
+      <% if escala.profissional_2.nil? %>
+        Nenhum profissional especificado
+      <% else %>
+        <%= escala.profissional_2.nome %>
+      <% end %>
+      </td>
+      <td>
+	  <% if escala.tipo_atendimento.nil? %>
+	    ERRO: Escala não possui tipo de atendimento, por favor atualize!
+      <% else %>
+	    <%= escala.tipo_atendimento.descricao %>
+	  <% end %>
+      </td>
+      <td><%= escala.data_execucao.strftime("%d/%m/%Y") %></td>
+      <td><%= escala.horario_inicio_execucao.strftime("%H:%M") %></td>
+      <td><%= escala.horario_fim_execucao.strftime("%H:%M") %></td>
+      <td>
+      <% if escala.tipo_acao.nil? %>
+        ERRO: Escala não possui tipo de ação, por favor atualize!
+      <% else %>
+        <%= escala.tipo_acao.descricao %>
+      <% end %>
+      </td>
+      <td>
+        <%= link_to 'Mostrar', escala %>
+        <% if escala.horario_inicio_execucao < Time.now &&
+                  escala.data_execucao >= Date.today %>
+          <%= link_to 'Alterar', edit_escala_path(escala) %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,6 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+bloqueios_Jose_Artur:
+  data_entrada: 2013-04-20
+  data_expira: 2150-12-21
+  cidadao_id: cidadaos_Jose_Artur

@@ -1,0 +1,21 @@
+<table class="list">
+  <thead>
+  <tr>
+    <th><%= sort_link(@search, :descricao, "Descrição") %></th>
+    <th><%= sort_link(@search, :ativo, "Situação") %></th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @tipo_atendimentos.each do |tipo_atendimento| %>
+    <tr>
+      <td><%= tipo_atendimento.descricao %></td>
+      <td><%= situacao(tipo_atendimento) %></td>
+      <td><%= link_to 'Mostrar', tipo_atendimento %><br />
+          <%= link_to 'Alterar', edit_tipo_atendimento_path(tipo_atendimento) %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

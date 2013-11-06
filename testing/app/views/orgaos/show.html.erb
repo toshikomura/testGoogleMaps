@@ -1,0 +1,113 @@
+<div id="texto-maior">
+<h2>Informações Local de Atendimento:</h2>
+
+<h4><%= @orgao.nome %></h4>
+
+<p>
+  <b>Situação:</b>
+  <%= situacao(@orgao) %>
+</p>
+
+<p>
+  <b>Nome:</b>
+  <%= @orgao.nome %>
+</p>
+
+<p>
+  <b>Prefeitura:</b>
+  <% if @orgao.prefeitura.nil? %>
+    ERRO: não possui prefeitura, por favor atualize!
+  <% else %>
+    <%= link_to @orgao.prefeitura.nome, @orgao.prefeitura %>
+  <% end %>
+</p>
+
+<p>
+  <b>CEP:</b>
+  <%= @orgao.cep %>
+</p>
+
+<p>
+  <b>Bairro:</b>
+  <%= @orgao.bairro %>
+</p>
+
+<p>
+  <b>Endereço:</b>
+  <%= @orgao.endereco %>
+</p>
+
+<p>
+  <b>Número:</b>
+  <%= @orgao.numero_endereco %>
+</p>
+
+<p>
+  <b>Complemento:</b>
+  <%= @orgao.complemento_endereco %>
+</p>
+
+<p>
+  <b>Telefone 1:</b>
+  <%= @orgao.telefone1 %>
+</p>
+
+<p>
+  <b>Telefone 2:</b>
+  <%= @orgao.telefone2 %>
+</p>
+
+<p>
+  <b>E-mail:</b>
+  <%= @orgao.email %>
+</p>
+
+<p>
+  <b>Site:</b>
+  <%= link_to @orgao.url, @orgao.url %>
+</p>
+
+<p>
+  <b>Estado:</b>
+  <%= estado(@orgao) %>
+</p>
+
+<p>
+  <b>Município:</b>
+  <%= municipio(@orgao) %>
+</p>
+
+<p>
+  <b>Serviços: </b>
+  <ul>
+    <% @orgao.tipo_atendimentos.each do |tta| %>
+	  <li><%= link_to "#{tta.descricao} (#{situacao(tta)})", tta %></li>
+	<% end %>
+  </ul>
+</p>
+
+<p>
+  <b>Profissionais: </b>
+  <ul>
+    <% @orgao.profissionais.each do |pro| %>
+	  <li><%= link_to "#{pro.nome} (#{pro.role}, #{situacao(pro)})", pro
+%></li>
+	<% end %>
+  </ul>
+</p>
+
+<p>
+  <b>Atualizado em:</b>
+  <%= @orgao.updated_at %>
+</p>
+
+<p>
+  <b>Criado em:</b>
+  <%= @orgao.created_at %>
+</p>
+
+<%= link_to 'Alterar', edit_orgao_path(@orgao) %>
+
+<%= link_to 'Voltar', orgaos_path %>
+
+</div>

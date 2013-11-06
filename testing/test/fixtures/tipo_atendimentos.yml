@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+tipo_atendimentos_Consulta_Ambulatorial:
+  descricao: Consulta Ambulatorial
+  ativo: true
+
+tipo_atendimentos_Consulta_Pediatrica:
+  descricao: Consulta Pediátrica
+  ativo: true
+
+tipo_atendimentos_Consulta_Cardiologia:
+  descricao: Consulta Cardiologia
+  ativo: false
+
+tipo_atendimentos_Consulta_Radioterapia:
+  descricao: Consulta Radioterapia
+  ativo: false

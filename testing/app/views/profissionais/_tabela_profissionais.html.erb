@@ -1,0 +1,47 @@
+<table class="list">
+  <thead>
+  <tr>
+    <th><%= sort_link(@search, :nome, "Nome") %></th>
+    <th><%= sort_link(@search, :matricula, "Matrícula") %></th>
+    <th><%= sort_link(@search, :orgao_nome, "Local de Atendimento") %></th>
+    <th><%= sort_link(@search, :role, "Permissão") %></th>
+    <th><%= sort_link(@search, :tcbo_descricao,"Ocupação") %></th>
+    <th><%= sort_link(@search, :cpf, "CPF") %></th>
+    <th>Telefone</th>
+    <th>E-mail</th>
+    <th><%= sort_link(@search, :ativo, "Situação") %></th>
+    <th></th>
+  </tr>
+  </thead>
+  
+  <tbody>
+  <% @profissionais.each do |profissional| %>
+    <tr>
+      <td><%= profissional.nome %></td>
+      <td><%= profissional.matricula %></td>
+      <td>
+        <% if profissional.orgao.nil? %>
+          ERRO: não possui local de atendimento, por favor atualize!
+        <% else %>
+          <%= profissional.orgao.nome %>
+        <% end %>
+      </td>
+      <td><%= profissional.role %></td>
+      <td>
+        <% if profissional.tcbo.nil? %>
+          ERRO: não possui ocupação, por favor atualize!
+        <% else %>
+          <%= profissional.tcbo.descricao %>
+        <% end %>
+      </td>
+      <td><%= profissional.cpf %></td>
+      <td><%= profissional.telefone1 %></td>
+      <td><%= profissional.email %></td>
+      <td><%= situacao(profissional) %></td>
+      <td><%= link_to 'Mostrar', profissional%><br />
+          <%= link_to 'Alterar', edit_profissional_path(profissional) %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

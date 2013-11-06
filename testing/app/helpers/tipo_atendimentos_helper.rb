@@ -1,0 +1,2 @@
+module TipoAtendimentosHelper
+end

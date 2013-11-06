@@ -1,0 +1,116 @@
+<div id="texto-maior">
+<h2>Informações Escala:</h2>
+
+<p>
+	<b> Local de atendimento: </b>
+    <% if @escala.orgao.nil? %>
+      ERRO: Escala não possui local de atendimento, por favor atualize!
+    <% else %>
+      <%= @escala.orgao.nome %>
+    <% end %>
+</p>
+
+<p>
+	<b> Profissional: </b>
+		<% if @escala.profissional_2.nil? %>
+      <font color="red">Profissional não especificado para esta escala!</font>
+    <% else %>
+      <%= @escala.profissional_2.nome %>
+    <% end %>
+</p>
+
+<p>
+	<b> Responsável: </b>
+    <% if @escala.profissional.nil? %>
+     <font color="red"> ERRO: Escala não possui profissional responsável, por favor atualize!</font>
+    <% else %>
+      <%= @escala.profissional.nome %>
+    <% end %>
+</p>
+
+<p>
+	<b> Tipo de Atendimento: </b>
+    <% if @escala.tipo_atendimento.nil? %>
+      <font color="red">ERRO: Escala não possui tipo de atendimento, por favor atualize!</font>
+    <% else %>
+      <%= @escala.tipo_atendimento.descricao %>
+    <% end %>
+</p>
+
+<p>
+  <b>Data:</b>
+  <%= @escala.data_execucao.strftime("%d/%m/%Y") %>
+</p>
+
+<p>
+  <b>Horário Inicio:</b>
+  <%= @escala.horario_inicio_execucao.strftime("%H:%M:%S") %>
+</p>
+
+<p>
+  <b>Horário Fim:</b>
+  <%= @escala.horario_fim_execucao.strftime("%H:%M:%S") %>
+</p>
+
+<p>
+  <b>Observações:</b>
+  <%= @escala.observacoes %>
+</p>
+
+<p>
+  <b>Número de Atendimentos:</b>
+  <%= @escala.numero_atendimentos %>
+</p>
+
+<p>
+  <b>Agendamentos:</b>
+  <% if @escala.agendamentos.count < @escala.numero_atendimentos %>
+    <font color="red">ERRO: Escala possui número incorreto de agendamentos, por favor contate o suporte!</font>
+  <% end %>
+  <ul>
+    <% @escala.agendamentos.each do |agenda| %>
+      <li>
+        <%= link_to "#{agenda.horario_inicio_consulta.strftime("%d/%m/%Y
+- %H:%M")} - #{agenda.horario_fim_consulta.strftime("%H:%M")}",agenda
+  %>
+        <% if agenda.tipo_situacao.nil? %>
+          <font color="red">ERRO: Agendamento não possui situação, por favor contate o suporte!</font>
+        <% else %>
+          <%= agenda.tipo_situacao.descricao %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<p/>
+
+<p>
+  <b>Ação:</b>
+  <% if @escala.tipo_acao.nil? %>
+    <font color="red">ERRO: Escala não possui tipo de ação, por favor atualize!</font>
+  <% else %>
+    <%= @escala.tipo_acao.descricao %>
+  <% end %>
+</p>
+
+<p>
+  <b>Número de Sequência: </b>
+  <%= @escala.numero_sequencia %>
+</p>
+
+<p>
+  <b>Criado em:</b>
+  <%= @escala.created_at.strftime("%d/%m/%Y - %H:%M:%S") %>
+</p>
+
+<p>
+  <b>Atualizado em:</b>
+  <%= @escala.updated_at.strftime("%d/%m/%Y - %H:%M:%S") %>
+</p>
+
+<%= link_to 'Voltar', escalas_path %>
+
+<%= link_to 'Alterar', edit_escala_path(@escala) %>
+
+<br />
+
+</div>

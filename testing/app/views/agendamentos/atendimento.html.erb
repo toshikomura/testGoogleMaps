@@ -1,0 +1,64 @@
+<div id="texto-maior">
+<h2>Atendimentos <span>
+<% if @profissional.orgao.nil? %>
+  ERRO: Profissional não possui local de atendimento, por favor contate o suporte!
+<% else %>
+  <%=@profissional.orgao.nome%>
+<% end %></span>
+</h2>
+
+<div id="search-form">
+<h4>Buscar Agendamentos</h4>
+<%= search_form_for(@search, :remote => true,
+                    url: agendamentos_atendimento_path) do |f| %>
+  <div class="field">
+    <%= f.label :cidadao_nome, "Cidadão: " %><br />
+    <%= f.text_field :cidadao_nome_cont, :class => "search-field"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :cidadao_cpf, "CPF: " %><br />
+    <%= f.text_field :cidadao_cpf_eq, :class => "cpf"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :escala_profissional_executor_id, "Profissional: " %><br />
+    <%= f.select :escala_profissional_executor_id_eq,
+options_from_collection_for_select(Profissional.where("orgao_id = ? AND
+ativo = ?", current_profissional.orgao_id,true),"id","nome",
+@search.escala_profissional_executor_id_eq),
+{:include_blank => "Todos"}, {:class => "search-field"} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :escala_tipo_atendimento_id, "Tipo Atendimento: " %><br />
+    <%= f.select :escala_tipo_atendimento_id_eq,
+options_from_collection_for_select(TipoAtendimento.joins(:orgaos).where("orgao_id
+= ? AND tipo_atendimentos.ativo = ?", current_profissional.orgao_id,true),"id","descricao",
+@search.escala_tipo_atendimento_id_eq),
+{:include_blank => "Todos"}, {:class => "search-field"} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tipo_situacao_id, "Situação: " %><br />
+    <%= f.select :tipo_situacao_id_eq,
+options_from_collection_for_select(TipoSituacao.all,"id","descricao",@search.tipo_situacao_id_eq),
+{:include_blank => "Todos"}, {:class => "search-field"} %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Buscar" %>
+    <%= f.submit "Limpar campos", :id => "reset_btn" %>
+  </div>
+
+<% end %>
+<hr>
+</div>
+
+<div id="tabela_agendamentos_atendimento">
+  <%= render "tabela_agendamentos_atendimento" %>
+</div>
+
+<br />
+
+</div>

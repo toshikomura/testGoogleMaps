@@ -1,0 +1,93 @@
+<script type='text/javascript'>
+
+function message(){
+	if(<%= $array_escalas.size%> != 0 && !window.btn_clicked){
+       return("Você não salvou suas escalas, deseja sair realmente?");
+  	};
+};
+
+window.onbeforeunload = message;
+
+</script>
+
+
+<div id="texto-maior">
+<h4><font color=red><%= flash[:scale_alert] if !flash[:scale_alert].nil? %></font></h4>
+
+<h2>Criar escalas</h2>
+
+<%= render 'form2' %>
+
+<% if $array_escalas.size > 0 %>
+	<% if flash[:scale_alert].nil? %>
+		<fieldset>
+			<p id="agendamentos"></p>
+			<legend>Escalas</legend>
+	<% else %>
+		<fieldset id='fieldset_scale'>
+			<p id="agendmantos"></p>
+			<legend><font color=red>Escalas com Conflitos de Horário: </font></legend>
+	<% end %>
+
+	<table class="list">
+        <thead>
+		<tr>
+			<th>Tipo Atendimento</th>
+			<th>Data</th>
+			<th>Horário Inicio</th>
+			<th>Horário Fim</th>
+			<th>Atendimentos</th>
+			<th></th>
+		</tr>
+        </thead>
+
+        <tbody>
+		<% for i in 0..($array_escalas.size-1) %>
+			<tr>
+				<td><% tipo = TipoAtendimento.find($array_escalas[i][:tipo_atendimento_id]) %>
+					<center> <%= tipo.descricao %> </center>
+				</td>
+				<td><center><%= $array_escalas[i]["data_execucao(3i)"] %>/<%= $array_escalas[i]["data_execucao(2i)"] %></center></td>
+				<td><center><%= $array_escalas[i]["horario_inicio_execucao(4i)"] %>:<%= $array_escalas[i]["horario_inicio_execucao(5i)"] %></center></td>
+				<td><center><%= $array_escalas[i]["horario_fim_execucao(4i)"] %>:<%= $array_escalas[i]["horario_fim_execucao(5i)"] %></center></td>
+				<td><center><%= $array_escalas[i]["numero_atendimentos"] %></center></td>
+				<td>
+					<%= form_tag(:controller => :escalas, :action => :remove_escala, :method => :post, :escala_pos => i) do  %>
+						<center><div class="actions">	<%= submit_tag "Remover", :class => "remove_scale_btn" %></div></center>
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+        </tbody>
+	</table>
+<% end %>
+
+</fieldset>
+<br>
+<% if $array_escalas.empty? %>
+	<%= link_to 'Voltar', escalas_path %>
+<% else %>
+	<%= form_tag(:controller => :escalas, :method => :post) do %>
+		<div class="actions">
+			<%= submit_tag "Salvar Escalas", :class => "save_scale_btn" %>
+		</div>
+	<% end %>
+	<%= link_to 'Voltar', escalas_path %>
+<% end %>
+<br>
+
+</div>
+
+<script type='text/javascript'>
+
+  document.getElementById("escala_horario_inicio_execucao_1i").disabled = false;
+  document.getElementById("escala_horario_inicio_execucao_2i").disabled = false;
+  document.getElementById("escala_horario_inicio_execucao_3i").disabled = false;
+  document.getElementById("escala_horario_fim_execucao_1i").disabled = false;
+  document.getElementById("escala_horario_fim_execucao_2i").disabled = false;
+  document.getElementById("escala_horario_fim_execucao_3i").disabled = false;
+  document.getElementById("n_atendimentos").readOnly = true;
+  document.getElementById("n_atendimentos").style.backgroundColor = "#D3D3D3";
+  document.getElementById("select_atend").disabled = true;
+
+</script>

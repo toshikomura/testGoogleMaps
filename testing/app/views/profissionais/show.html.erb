@@ -1,0 +1,139 @@
+<div id="texto-maior">
+<h2> Informações Profissional:</h2>
+<h4><%= @profissional.nome %></h4>
+
+<p>
+  <b>Situação:</b>
+  <%= situacao(@profissional) %>
+</p>
+
+<p>
+  <b>Nome:</b>
+  <%= @profissional.nome %>
+</p>
+
+<p>
+  <b>Data de nascimento:</b>
+    <%= @profissional.data_nascimento.strftime("%d/%m/%Y") %>
+</p>
+
+<p>
+  <b>CPF:</b>
+  <%= @profissional.cpf %>
+</p>
+
+<p>
+  <b>RG:</b>
+  <%= @profissional.rg %>
+</p>
+
+<p>
+  <b>Órgão emissor do RG:</b>
+  <%= @profissional.emissao_rg %>
+</p>
+
+<p>
+  <b>Matrícula:</b>
+  <%= @profissional.matricula %>
+</p>
+
+<p>
+  <b>CEP:</b>
+  <%= @profissional.cep %>
+</p>
+
+<p>
+  <b>Bairro:</b>
+  <%= @profissional.bairro %>
+</p>
+
+<p>
+  <b>Endereço</b>
+  <%= @profissional.endereco %>
+</p>
+
+<p>
+  <b>Número:</b>
+  <%= @profissional.numero_endereco %>
+</p>
+
+<p>
+  <b>Complemento:</b>
+  <%= @profissional.complemento_endereco %>
+</p>
+
+<p>
+  <b>Telefone 1:</b>
+  <%= @profissional.telefone1 %>
+</p>
+
+<p>
+  <b>Telefone 2:</b>
+  <%= @profissional.telefone2 %>
+</p>
+
+<p>
+  <b>E-mail:</b>
+  <%= @profissional.email %>
+</p>
+
+<p>
+  <b>Estado:</b>
+    <% unless @profissional.tufibge.nil? %>
+      <%= @profissional.tufibge.nome_uf %>
+    <% end %>
+</p>
+
+<p>
+  <b>Município:</b>
+    <% unless @profissional.tmibge.nil? %>
+      <%= @profissional.tmibge.nome_municipio %>
+    <% end %>
+</p>
+
+<p>
+  <b>Ocupação:</b>
+  <% if @profissional.tcbo.nil? %>
+    ERRO: não possui ocupação, por favor atualize!
+  <% else %>
+    <%= @profissional.tcbo.descricao %>
+  <% end %>
+</p>
+
+<p>
+  <b>Conselho:</b>
+  <% unless @profissional.tconselho.nil? %>
+    <%= @profissional.tconselho.descricao %>
+  <% end %>
+</p>
+
+<p>
+  <b>Local de Atendimento:</b>
+  <% if @profissional.orgao.nil? %>
+    ERRO: não possui local de atendimento, por favor atualize!
+  <% else %>
+    <%= link_to "#{@profissional.orgao.nome}
+(#{situacao(@profissional.orgao)})", @profissional.orgao %>
+  <% end %>
+</p>
+
+<p>
+  <b>Permissão:</b>
+  <%= @profissional.role %>
+</p>
+
+<p>
+  <b>Atualizado em:</b>
+  <%= @profissional.updated_at %>
+</p>
+
+<p>
+  <b>Criado em:</b>
+  <%= @profissional.created_at %>
+</p>
+
+<%= link_to 'Alterar', edit_profissional_path(@profissional) %>
+
+<%= link_to 'Voltar', profissionais_path %>
+
+</div>

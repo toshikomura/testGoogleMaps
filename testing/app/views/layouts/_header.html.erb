@@ -1,0 +1,24 @@
+<!--
+<div id="barra-brasil">
+  <div class="barra-brasil-left"></div>
+  <div class="barra-brasil-container">
+    <div class="barra-brasil-container-ai">
+      <a href="http://www.brasil.gov.br" class="brasilgov" title="Portal de Estado do Brasil"></a>
+      <a href="http://www.acessoainformacao.gov.br" class="ai" title="Acesso à informação"></a>
+    </div>
+  </div>
+  <div class="barra-brasil-right"></div>
+</div>
+-->
+<div id="acessibilidade">
+  <p>Tamanho da fonte:
+    <%= link_to "A-", "javascript:void(0);", :id => "diminuir-fonte" %>
+    <%= link_to "A", "javascript:void(0);", :id => "fonte-padrao" %>
+    <%= link_to "A+", "javascript:void(0);", :id => "aumentar-fonte" %>
+  </p>
+</div>
+
+<div id="header">
+  <h1>Agendador</h1>
+  <h2><%= Prefeitura.first.nome %></h2>
+</div>

@@ -1,0 +1,12 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+tipo_acoes_Inclusao:
+  descricao: Inclusão
+
+tipo_acoes_Alteracao:
+  descricao: Alteração
+  
+tipo_acoes_Remocao:
+  descricao: Remoção
+
+tipo_acoes_Fechamento:
+  descricao: Fechamento

@@ -1,0 +1,4 @@
+pt-BR:
+  unauthorized:
+    manage:
+      all: "Sem autorização para %{action} %{subject}."

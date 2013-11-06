@@ -1,0 +1,14 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+escalas_Oswaldo_Cruz:
+  numero_sequencia: 1
+  data_execucao: 2013-04-29
+  horario_inicio_execucao: 2013-04-29 15:10:00
+  horario_fim_execucao: 2013-04-29 15:10:00
+  observacoes: Texto Observacoes
+  numero_atendimentos: 1
+  profissional_executor_id: profissionais_Administrador_Sistema_Oswaldo_Cruz
+  profissional_responsavel_id: profissionais_Administrador_Zilda_Arns
+  tipo_atendimento_id: tipo_atendimentos_Consulta_Ambulatorial
+  orgao_id: orgaos_Unidade_Saude_Cajuru
+  tipo_acao_id: tipo_acoes_Inclusao

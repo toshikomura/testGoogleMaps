@@ -1,0 +1,18 @@
+<li> <%= link_to 'Alterar Minha Conta', edit_profissional_registration_path %> </li>
+<li> <%= link_to 'Minhas Escalas', profissionais_escalas_path %></li>
+<li> <%= link_to 'Meus Atendimentos', profissionais_atendimento_path %></li>
+<HR>
+<% if current_profissional.administradorsistema? %>
+  <li> <%= link_to 'Prefeitura', prefeituras_path %> </li>
+  <li> <%= link_to 'Tipos de Atendimento', tipo_atendimentos_path %> </li>
+  <li> <%= link_to 'Locais de Atendimento', orgaos_path %> </li>
+  <li> <%= link_to 'Profissionais', profissionais_path %> </li>
+  <HR>
+<% end %>
+<% if current_profissional.administrador? %>
+  <li> <%= link_to 'Escalas', escalas_path %> </li>
+<% end %>
+<% if current_profissional.atendente? %>
+  <li> <%= link_to 'Agendamentos', agendamentos_path %> </li>
+  <li> <%= link_to 'Atendimentos', agendamentos_atendimento_path %> </li>
+<% end %>

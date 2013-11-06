@@ -1,0 +1,95 @@
+<table class="list">
+  <thead>
+  <tr>
+    <th>Cidadão</th>
+    <th>CPF</th>
+    <th>Observações</th>
+    <th>Telefone</th>
+    <th><%= sort_link(@search, :horario_inicio_consulta, "Horário Início") %></th>
+    <th>Horário Fim</th>
+    <th>Tipo de Atendimento</th>
+    <th>Situação</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @agendamentos.each do |agendamento| %>
+    <tr>
+      <% if agendamento.tipo_situacao.nil? %>
+          <td>ERRO: Agendamento não possui tipo de situação, por favor
+contate o suporte!</td>
+          <td></td>
+          <td></td>
+          <td></td>
+      <% else %>
+        <% if agendamento.tipo_situacao.descricao == "Vago" %>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        <% else %>
+          <% if agendamento.cidadao.nil? %>
+            <% if agendamento.tipo_situacao.descricao == "Cancelado" %>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            <% else %>
+              <td>ERRO: Não possui cidadão, por favor contate o suporte!</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            <% end %>
+          <% else %>
+            <td><%= agendamento.cidadao.nome %></td>
+  	        <td><%= agendamento.cidadao.cpf %></td>
+            <td><%= agendamento.observacao %></td>
+	        <td><%= agendamento.cidadao.telefone1 %></td>
+          <% end %>
+        <% end %>
+      <% end %>
+	  <td><%= agendamento.horario_inicio_consulta.strftime("%H:%M") %></td>
+	  <td><%= agendamento.horario_fim_consulta.strftime("%H:%M") %></td>
+      <% if agendamento.escala.nil? %>
+        <td>ERRO: Agendamento não possui escala, por favor contate o
+suporte!</td>
+        <td></td>
+      <% else %>
+        <% if agendamento.escala.tipo_atendimento.nil? %>
+          <td>ERRO: Agendamento não possui tipo de atendimento, por favor
+contate o suporte!</td>
+        <% else %>
+          <td><%= agendamento.escala.tipo_atendimento.descricao %></td>
+        <% end %>
+      <% end %>
+      <% if agendamento.tipo_situacao.nil? %>
+        <td>ERRO: Agendamento não possui tipo de situação, por favor contate
+o suporte!</td>
+        <td></td>
+      <% else %>
+        <% if agendamento.tipo_situacao.descricao == "Agendado" %>
+          <td>
+     	    <%= form_tag(:controller => :profissionais, :action =>
+                         :atendimento_update, :method => :put, 
+                         :agendamento_id => agendamento.id ) do %>
+
+              <div class="field">
+	            <%= collection_select(:agendamento, :tipo_situacao_id,
+                    TipoSituacao.select("id, descricao").where(:descricao =>
+                    ["Agendado","Compareceu","Não Compareceu"]),
+                    :id, :descricao) %>
+              </div>
+
+              <div class="actions">
+                <%= submit_tag "Atualizar" %>
+              </div>
+	        <% end %>
+          </td>
+        <% else %>
+          <td><%= agendamento.tipo_situacao.descricao %></td>
+        <% end %>
+      <% end %>
+    </tr>
+  <%end%>
+  </tbody>
+</table>

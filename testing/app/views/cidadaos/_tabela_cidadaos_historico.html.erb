@@ -1,0 +1,63 @@
+<table class="list">
+  <thead>
+    <tr>
+      <th>Local de atendimento</th>
+      <th>Tipo de Atendimento</th>
+      <th>Data</th>
+      <th>Horário de início</th>
+      <th>Horário de término</th>
+      <th>Observações</th>
+      <th>Situação</th>
+      <% if @pode_cancelar %>
+        <th></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @agendamentos.each do |agendamento| %>
+    <tr>
+      <td>
+        <% if agendamento.orgao.nil? %>
+          ERRO: Agendamento não possui local de atendimento, por favor
+contate o suporte!
+        <% else %>
+          <%= agendamento.orgao.nome %>
+        <% end %>
+      </td>
+      <td>
+        <% if agendamento.escala.nil? %>
+          ERRO: Agendamento não possui escala, por favor contate o suporte!
+        <% elsif agendamento.escala.tipo_atendimento.nil? %>
+          ERRO: Agendamento não possui tipo de atendimento, por favor
+contate o suporte!
+        <% else %>
+          <%= agendamento.escala.tipo_atendimento.descricao %>
+        <% end %>
+      </td>
+      <td><%= agendamento.horario_inicio_consulta.strftime("%d/%m/%Y") %></td>
+      <td><%= agendamento.horario_inicio_consulta.strftime("%H:%M") %></td>
+      <td><%= agendamento.horario_fim_consulta.strftime("%H:%M") %></td>
+      <td><%= agendamento.observacao %></td>
+      <td>
+        <% if agendamento.tipo_situacao.nil? %>
+          ERRO: Agendamento não possui situação, por favor contate
+o suporte!
+        <% else %>
+          <%= agendamento.tipo_situacao.descricao %>
+        <% end %>
+      </td>
+        <% if @pode_cancelar %>
+          <td>
+            <% if agendamento.pode_cancelar?(DateTime.now + @limite_cancelamento.hours,
+                                             Date.today) %>
+              <%= link_to "Cancelar", { :controller => "cidadaos", :action => "destroy",
+                  :id => agendamento.id }, :method => :delete,
+                  :confirm => "Deseja realmente cancelar este agendamento?" %>
+            <% end %>
+          </td>
+        <% end %>
+    </tr>
+  <% end %>
+  </body>
+</table>

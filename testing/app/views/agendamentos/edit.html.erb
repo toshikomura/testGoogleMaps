@@ -1,0 +1,97 @@
+<div id="texto-maior">
+<h2>Confirmação de agendamento</h2>
+
+<% if (not session[:cpf].nil?) and (not @cidadao.nil?) %>
+  <% if @agendamento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@agendamento.errors.count, "erro") %> não permitiu(ram) que este agendamento fosse salvo:</h2>
+
+      <ul>
+      <% @agendamento.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h4>Dados do Cidadão</h4>
+  <p><b>Nome:</b>
+    <%= @cidadao.nome %>
+  </p>
+
+  <p><b>CPF:</b>
+    <%= @cidadao.cpf %>
+  </p>
+
+  <p><b>RG:</b>
+    <%= @cidadao.rg %>
+  </p>
+
+  <p><b>Situação de bloqueio:</b></p>
+  <% unless cidadao_bloqueado?(@cidadao_agendamentos, @max_agendamentos, @bloqueio) %>
+    <span id="span-aviso"><%= @cidadao.nome %> pode efetuar novos agendamentos.</span>
+  <% else %>
+    <span id="span-alerta"><%= @cidadao.nome %> não pode efetuar novos agendamentos!</span>
+    <p><b>Possíveis motivos:</b></p>
+      <ul>
+        <li><%= @cidadao.nome %> <u>não compareceu</u> a um dos agendamentos marcados.</li>
+        <li><%= @cidadao.nome %> efetuou o <u>número máximo</u> (<b><%=
+            @max_agendamentos %></b>) de agendamentos por cidadão.</li>
+      </ul>
+  <% end %>
+
+  <hr>
+
+  <h4>Dados do Agendamento</h4>
+  <p><b>Local de atendimento:</b>
+    <%= @agendamento.orgao.nome %>
+  </p>
+
+  <p><b>Tipo de atendimento:</b>
+    <%= @agendamento.escala.tipo_atendimento.descricao %>
+  </p>
+
+  <p><b>Data:</b>
+    <%= @agendamento.escala.data_execucao.strftime("%d/%m/%Y") %>
+  </p>
+
+  <p><b>Horário de início da consulta:</b>
+    <%= @agendamento.horario_inicio_consulta.strftime("%H:%M") %>
+  </p>
+
+  <p><b>Horário de término da consulta:</b>
+    <%= @agendamento.horario_fim_consulta.strftime("%H:%M") %>
+  </p>
+
+  <p><b>Profissional:</b>
+    <% if profissional_executor.nil? %>
+      Nenhum profissional especificado
+    <% else %>
+      <%= profissional_executor %>
+    <% end %>
+  </p>
+
+  <hr>
+
+  <h4>Confirmação</h4>
+  <%= form_for(@agendamento) do |f| %>
+    <p><b>Observação*:</b></p>
+    <div class="field">
+      <%= f.text_area :observacao, { rows: 5, style: 'width: 350px; resize: none; border: 0.5px solid #CCC;' } %>
+      <p><small><b>* Caso esse agendamento seja para outra pessoa, informe o
+                   nome completo e número do documento dela</b></small></p>
+    </div>
+
+    <div class="actions">
+      <%= f.submit 'Confirmar' %>
+      <%= f.submit 'Cancelar', :name => 'cancelar_agendamento' %>
+    </div>
+  <% end %>
+<% else %>
+    <p>Não foi possível confirmar o agendamento!</p>
+    <p><%= link_to 'Voltar', agendamentos_path %></p>
+<% end %>
+
+<br />
+
+</div>

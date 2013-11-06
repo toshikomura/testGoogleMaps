@@ -1,0 +1,17 @@
+<%= form_tag( agendamentos_path, :method => 'get') do %>
+  <% if not @form_error.nil? %>
+    <div id="error_explanation">
+      <h2>1 erro não permitiu que o agendamento prosseguisse:</h2>
+      <ul>
+        <li><%= @form_error %></li>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= label_tag('cpf', 'Digite o CPF do Cidadão') %><br />
+    <%= text_field_tag(:cpf, '', { :class => 'cpf' }) %>
+  </div>
+  <div class="actions">
+    <%= submit_tag("Prosseguir") %>
+  </div>
+<% end %>

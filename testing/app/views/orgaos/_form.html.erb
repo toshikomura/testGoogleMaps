@@ -1,0 +1,112 @@
+<div class="form">
+  <%= form_for(@orgao) do |f| %>
+    <% if @orgao.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@orgao.errors.count, "erro") %>, Local de atendimento não pode ser salvo:</h2>
+
+        <ul>
+        <% @orgao.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field-required">
+      <%= f.label :ativo, "Situação*:" %><br />
+      <% if @orgao.new_record? %>
+        <%= f.text_field :ativo, :value => "Ativo", :disabled => true %>
+      <% else %>
+        <%= f.select :ativo, [["Ativo",true],["Inativo",false]] %>
+      <% end %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :nome, "Nome do Local de atendimento*: " %><br />
+      <%= f.text_field :nome %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :cep, "CEP*: " %><br />
+      <%= f.text_field :cep, :class => "cep" %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :endereco, "Endereço*: " %><br />
+      <%= f.text_field :endereco %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :numero_endereco, "Número*: " %><br />
+      <%= f.number_field :numero_endereco %>
+    </div>
+
+    <div class="field">
+      <%= f.label :complemento_endereco, "Complemento: " %><br />
+      <%= f.text_field :complemento_endereco %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :bairro, "Bairro*: " %><br />
+      <%= f.text_field :bairro %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :tufibge_id, "Estado*: " %><br />
+      <%= collection_select(:orgao, :tufibge_id,
+Tufibge.all, :id, :nome_uf, { :include_blank => "Selecione um Estado" }) %>
+    </div>
+
+    <div class="field-required">
+      <%= hidden_field_tag :lista_municipios, root_url %>
+      <%= f.label :tmibge_id, "Município*: " %><br />
+      <p id="orgao_tmibge_id_loading" style="display: none;"><i>Carregando lista de municípios...</i></p>
+      <% if @orgao.tufibge.nil? %>
+        <%= select(:orgao, :tmibge_id, %w[], { :include_blank => "Selecione um Município" }, { :disabled => "disabled" }) %>
+      <% else %>
+        <%= collection_select(:orgao, :tmibge_id,
+Tmibge.where("tufibge_id = ?", @orgao.tufibge_id), :id,
+:nome_municipio, { :include_blank => "Selecione um Município" }) %>
+      <% end %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :prefeitura, "Prefeitura*:" %><br />
+      <%= f.text_field :prefeitura, :value => Prefeitura.first.nome, :disabled => true %>
+    </div>
+
+    <div class="field">
+      <label> Tipos de Atendimento: </label><br />
+      <% for tta in TipoAtendimento.where("ativo = ?",true) %>
+	    <%= check_box_tag "orgao[tipo_atendimento_ids][]", tta.id, @orgao.tipo_atendimentos.include?(tta) %>
+        <%= tta.descricao %><br />
+	  <% end %>
+	</div>
+
+    <div class="field">
+      <%= f.label :telefone1, "Telefone 1: " %><br />
+      <%= f.text_field :telefone1, :class => "phone" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :telefone2, "Telefone 2: "%><br />
+      <%= f.text_field :telefone2, :class => "phone" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :email, "E-mail: " %><br />
+      <%= f.text_field :email %>
+    </div>
+
+    <div class="field">
+      <%= f.label :url, "Site: " %><br />
+      <%= f.text_field :url %>
+    </div>
+
+	<p><font color="red"> Campos com (*) são de preenchimento obrigatório.</font></p>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

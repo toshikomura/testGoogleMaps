@@ -1,0 +1,21 @@
+<div id="texto">
+<h2>Esqueceu sua senha?</h2>
+
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :cpf, "CPF:" %><br />
+    <%= f.text_field :cpf, :class => 'cpf', :autofocus => true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Recuperar senha" %>
+  </div>
+<% end %>
+
+<%= render "cidadaos/shared/links" %>
+
+</div>
+
+<%= image_tag("calendario_exemplo.png", id: "calendario") %>

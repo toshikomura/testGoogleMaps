@@ -1,0 +1,123 @@
+<div class="form">
+  <%= form_for(@prefeitura) do |f| %>
+    <% if @prefeitura.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@prefeitura.errors.count, "erro") %>, Prefeitura não pode ser salva:</h2>
+
+        <ul>
+        <% @prefeitura.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field-required">
+      <%= f.label :nome, "Nome*: " %><br />
+      <%= f.text_field :nome %>
+    </div>
+  
+    <div class="field-required">
+      <%= f.label :cep, "CEP*: " %><br />
+      <%= f.text_field :cep, :class => "cep" %>
+    </div>
+  
+    <div class="field-required">
+      <%= f.label :endereco, "Endereço da Sede*: " %><br />
+      <%= f.text_field :endereco %>
+    </div>
+  
+    <div class="field-required">
+      <%= f.label :numero_endereco, "Número*: " %><br />
+      <%= f.number_field :numero_endereco %>
+    </div>
+  
+    <div class="field">
+      <%= f.label :complemento_endereco, "Complemento: " %><br />
+      <%= f.text_field :complemento_endereco %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :bairro, "Bairro*: " %><br />
+      <%= f.text_field :bairro %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :tufibge_id, "Estado*: " %><br />
+      <%= collection_select(:prefeitura, :tufibge_id,
+Tufibge.all, :id, :nome_uf, { :include_blank => "Selecione um Estado" }) %>
+    </div>
+
+    <div class="field-required">
+      <%= hidden_field_tag :lista_municipios, root_url %>
+      <%= f.label :tmibge_id, "Município*: " %><br />
+      <p id="prefeitura_tmibge_id_loading" style="display: none;"><i>Carregando lista de municípios...</i></p>
+      <% if @prefeitura.tufibge.nil? %>
+        <%= select(:prefeitura, :tmibge_id, %w[], { :include_blank => "Selecione um Município" }, { :disabled => "disabled" }) %>
+      <% else %>
+        <%= collection_select(:prefeitura, :tmibge_id,
+Tmibge.where("tufibge_id = ?", @prefeitura.tufibge_id), :id,
+:nome_municipio, { :include_blank => "Selecione um Município" }) %>
+      <% end %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :dias_bloqueio, "Número de dias de impedimento de novos agendamentos*: " %><br />
+      <%= f.number_field :dias_bloqueio %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :limite_cancelamento, "Limite de cancelamento(horas)*: " %><br />
+      <%= f.number_field :limite_cancelamento %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :max_agendamentos, "Número máximo de agendamentos(por cidadão)*: " %><br />
+      <%= f.number_field :max_agendamentos %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :periodo_agendamentos, "Período para contagem de
+agendamentos(dias)*: " %><br />
+      <%= f.number_field :periodo_agendamentos %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :max_faltas, "Número de faltas que gera impedimento de
+novos agendamentos*: " %><br />
+      <%= f.number_field :max_faltas %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :antecedencia_avisos, "Antecedência para enviar email
+avisando de um agendamento(horas)*: " %><br />
+      <%= f.number_field :antecedencia_avisos %>
+    </div>
+
+    <div class="field">
+      <%= f.label :telefone1, "Telefone 1: " %><br />
+      <%= f.text_field :telefone1, :class => "phone" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :telefone2, "Telefone 2: " %><br />
+      <%= f.text_field :telefone2, :class => "phone" %>
+    </div>
+ 
+    <div class="field">
+      <%= f.label :email, "Email: " %><br />
+      <%= f.text_field :email %>
+    </div>
+ 
+    <div class="field">
+      <%= f.label :logo, "Logotipo: " %><br />
+      <%= f.text_field :logo %>
+    </div>
+
+    <p><font color="red"> Campos com (*) são de preenchimento obrigatório.</font></p>
+  
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

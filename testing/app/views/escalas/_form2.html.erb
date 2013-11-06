@@ -1,0 +1,97 @@
+<%= form_for @escala, :url => "", :method => :get do |f| %>
+  <% if @escala.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@escala.errors.count, "error") %>, Escala não pode ser salva:</h2>
+
+      <ul>
+      <% @escala.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :orgao_id, :value => current_profissional.orgao.id %>
+
+  <div class="field-required">
+    <%= f.label :profissional_responsavel_id, "Profissional Responsável*: " %><br />
+    <%= f.text_field :profissional_responsavel,
+        :value => current_profissional.nome, :disabled => true %>
+    <%= f.hidden_field :profissional_responsavel_id,
+        :value => current_profissional.id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :profissional_executor_id, "Profissional: " %><br />
+    <%= f.select("profissional_executor_id",
+        Profissional.where("orgao_id = ? AND ativo = ?",
+        current_profissional.orgao,true).collect {|p| [ p.nome, p.id ] },
+        { :include_blank => true }) %>
+  </div>
+
+  <div class="field-required">
+    <%= f.label :tipo_atendimento_id, "Tipo de Atendimento*: " %><br />
+	<%= f.select("tipo_atendimento_id",
+        TipoAtendimento.joins(:orgaos).where("orgao_id = ? AND tipo_atendimentos.ativo = ?",
+        current_profissional.orgao,true).collect {|t| [ t.descricao, t.id ] }) %>
+    <font id=erro_ta color='red'></font>
+  </div>
+
+  <div class="field-required">
+    <%= f.label :data_execucao, "Data*: " %><br />
+    <%= f.date_select :data_execucao,
+        {:start_year => (Time.now.year), :end_year => (Time.now.year),
+         prompt: { day: 'Dia', month: 'Mês', year: 'Ano'},
+         order: [:year, :month, :day], disabled: true} %>
+  </div>
+
+  <div class="field-required"> 
+    <%= f.label :horario_inicio_execucao, "Horário de Início*: " %><br />
+    <%= f.time_select :horario_inicio_execucao, 
+        {:minute_step => 5, disabled: true, prompt: {hour: 'Hora', minute: 'Minutos'},
+         selected: {year: Time.now.year, month: Time.now.month, day: Time.now.day}}%>
+  </div>
+
+  <div class="field-required">
+    <%= f.label :horario_fim_execucao, "Horário de Fim*: " %><br />
+    <%= f.time_select :horario_fim_execucao, {disabled: true, :minute_step => 5,
+        prompt: {hour: 'Hora', minute: 'Minutos'}}%>
+  </div>
+
+  <div class="field">
+    <%= f.label :observacoes, "Observações: " %><br />
+    <%= f.text_area :observacoes, rows: 5, cols: 50 %>
+  </div>
+
+  <h4>Atendimentos:</h4>
+
+  <div class="field-required">
+    <%= radio_button_tag 'rd_btn_atend', 'num' %>
+    <%= f.label :numero_atendimentos, "Número de Atendimentos*: " %>
+    <%= f.text_field :numero_atendimentos, :id => "n_atendimentos" %>
+  </div>
+   
+  <div class="field-required">   
+    <%= radio_button_tag 'rd_btn_atend', 'inter' %>
+	<%= f.label :numero_atendimentos_por_tempo, "Tempo de Atendimento (minutos): "%>
+	<%= select_minute(0, {:minute_step => 5, :prompt => "Intervalo"}, :id => "select_atend") %>
+  </div>
+
+  <p><font color="red"> Campos com (*) são de preenchimento obrigatório.</font></p>
+
+  <div class="actions">
+    <%= submit_tag "Adicionar Escala", :class => "create_scale_btn" , disabled: true%>
+  </div>
+<% end %>
+
+<script type='text/javascript'>
+  if (document.getElementById("escala_tipo_atendimento_id").value == ""){
+    document.getElementById("erro_ta").innerHTML = "Nenhum tipo de atendimento esta cadastrado para este local de atendimento, por favor entrar em contato com o administrador!";
+    document.getElementById("escala_data_execucao_1i").disabled = true;
+  }
+  else{
+    document.getElementById("escala_data_execucao_1i").disabled = false;
+    document.getElementById("rd_btn_atend_num").disabled = true;
+    document.getElementById("rd_btn_atend_inter").disabled = true;
+  };
+</script>

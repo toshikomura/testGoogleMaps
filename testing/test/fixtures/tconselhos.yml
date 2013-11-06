@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+tconselhos_CRM_PR:
+  sigla_conselho: CRM-PR
+  descricao: Conselho Regional de Medicina do Paraná
+
+tconselhos_CRM_GO:
+  sigla_conselho: CRM-GO
+  descricao: Conselho Regional de Medicina de Goiás
+
+tconselhos_CFA:
+  sigla_conselho: CFA
+  descricao: Conselho Federal de Administração
+
+tconselhos_CFM:
+  sigla_conselho: CFM
+  descricao: Conselho Federal de Medicina
+
+tconselhos_COFEN:
+  sigla_conselho: COFEN
+  descricao: Conselho Federal de Enfermagem
+
+tconselhos_CONFEA:
+  sigla_conselho: CONFEA
+  descricao: Conselho Federal de Engenharia e Agronomia
+
+tconselhos_ITI:
+  sigla_conselho: ITI
+  descricao: Instituto Nacional de Tecnologia da Informação
+
+tconselhos_IAB:
+  sigla_conselho: IAB
+  descricao: Instituto dos Advogados Brasileiros

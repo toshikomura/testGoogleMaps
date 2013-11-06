@@ -1,0 +1,14 @@
+<h3>Você não pode efetuar agendamentos no momento.</h3>
+
+<p>Possíveis motivos:</p>
+<ul>
+  <li>Você <u>não compareceu</u> a um dos agendamentos marcados.</li>
+  <li>Você efetuou o <u>número máximo</u> (<b><%= max_agendamentos %></b>) de agendamentos por cidadão.</li>
+</ul>
+
+<% unless situacao_bloqueio.nil? %>
+  <% if (Date.current < situacao_bloqueio.data_expira) %>
+    <p>Você poderá efetuar novos agendamentos a partir de: <%= situacao_bloqueio.data_expira.strftime("%d/%m/%Y") %></p>
+  <% end %>
+<% end %>
+<p><b>Para atendimentos emergenciais, consulte o local de atendimento responsável pelo atendimento ou ligue para a Prefeitura.</b></p>

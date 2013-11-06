@@ -1,0 +1,35 @@
+<table class="list">
+  <thead>
+  <tr>
+    <th><%= sort_link(@search, :nome, "Nome") %></th>
+    <th><%= sort_link(@search, :cep, "CEP") %></th>
+    <th><%= sort_link(@search, :bairro, "Bairro") %></th>
+    <th><%= sort_link(@search, :tufibge_nome_uf, "Estado") %></th>
+	<th><%= sort_link(@search, :tmibge_nome_municipio, "Município") %></th>
+    <th>Telefone</th>
+    <th>Email</th>
+    <th>Site</th>
+    <th><%= sort_link(@search, :ativo, "Situação") %></th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @orgaos.each do |orgao| %>
+    <tr>
+      <td><%= orgao.nome %></td>
+      <td><%= orgao.cep %></td>
+      <td><%= orgao.bairro %></td>
+      <td><%= estado(orgao) %></td>
+      <td><%= municipio(orgao) %></td>
+      <td><%= orgao.telefone1 %></td>
+      <td><%= orgao.email %></td>
+   	  <td><%= link_to orgao.url, orgao.url %></td>
+      <td><%= situacao(orgao) %></td>
+      <td><%= link_to 'Mostrar', orgao %><br />
+        <%= link_to 'Alterar', edit_orgao_path(orgao) %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

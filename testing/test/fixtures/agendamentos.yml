@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+agendamentos_Jose_Artur:
+  horario_inicio_consulta: 2013-04-29 15:10:04
+  horario_fim_consulta: 2013-04-29 15:10:04
+  tipo_situacao_id: tipo_situacoes_Agendado
+  escala_id: escalas_Oswaldo_Cruz
+  cidadao_id: cidadaos_Jose_Artur
+  orgao_id: orgaos_Unidade_Saude_Cajuru

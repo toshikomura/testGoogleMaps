@@ -1,0 +1,169 @@
+<div id="texto-maior">
+<h2>Alterar Conta Profissional <span>
+<%= @profissional.nome %></span></h2>
+
+<div class="form">
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="field">
+      <p><b>Situação:</b>
+        <%= situacao(@profissional) %></p>
+    </div>
+
+    <div class="field">
+      <p><b>Nome:</b>
+      <%= @profissional.nome %></p>
+    </div>
+
+    <div class="field">
+      <p><b>Data Nascimento:</b>
+      <%= @profissional.data_nascimento.strftime("%d/%m/%Y") %></p>
+    </div>
+
+    <div class="field">
+      <p><b>Local de Atendimento:</b>
+      <% if @profissional.orgao.nil? %>
+        ERRO: não possui local de atendimento, por favor contate o suporte!
+      <% else %>
+        <%= "#{@profissional.orgao.nome} (#{situacao(@profissional.orgao)})"
+%>
+      <% end %>
+      </p>
+    </div>
+
+    <div class="field">
+      <p><b>Ocupação</b>
+      <% if @profissional.tcbo.nil? %>
+        ERRO: não possui ocupação, por favor contate o suporte!
+      <% else %>
+        <%= @profissional.tcbo.descricao %>
+      <% end %>
+      </p>
+    </div>
+
+    <div class="field">
+      <p><b>Conselho:</b>
+      <% unless @profissional.tconselho.nil? %>
+        <%= @profissional.tconselho.descricao %>
+      <% end %>
+      </p>
+    </div>
+
+    <div class="field">
+      <p><b>CPF:</b>
+      <%= @profissional.cpf %></p>
+    </div>
+
+    <div class="field">
+      <p><b>RG:</b>
+      <%= @profissional.rg %></p>
+    </div>
+
+    <div class="field">
+      <p><b>Órgão emissor do RG:</b>
+      <%= @profissional.emissao_rg %></p>
+    </div>
+
+    <div class="field">
+      <p><b>Matrícula:</b>
+      <%= @profissional.matricula %></p>
+    </div>
+
+
+    <div class="field">
+      <p><b>Permissão:</b>
+      <%= @profissional.role %></p>
+    </div>
+
+    <hr>
+
+    <div class="field">
+      <%= f.label :cep, "CEP:" %><br />
+      <%= f.text_field :cep, :class => "cep" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :tufibge_id, "Estado do endereço:" %><br />
+      <%= collection_select(:profissional, :tufibge_id,
+Tufibge.all, :id, :nome_uf, { :include_blank => "Selecione um Estado" }) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :tmibge_id, "Município:" %><br />
+      <p id="profissional_tmibge_id_loading" style="display: none;"><i>Carregando lista de municípios...</i></p>
+      <% if @profissional.tufibge.nil? %>
+        <%= select(:profissional, :tmibge_id, %w[], { :include_blank => "Selecione um Município" }, { :disabled => "disabled" }) %>
+      <% else %>
+        <%= collection_select(:profissional, :tmibge_id,
+Tmibge.where("tufibge_id = ?", @profissional.tufibge_id), :id,
+:nome_municipio, { :include_blank => "Selecione um Município" }) %>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <%= f.label :bairro, "Bairro:" %><br />
+      <%= f.text_field :bairro %>
+    </div>
+
+    <div class="field">
+      <%= f.label :endereco, "Endereço:" %><br />
+      <%= f.text_field :endereco %>
+    </div>
+
+    <div class="field">
+      <%= f.label :numero_endereco, "Número:" %><br />
+      <%= f.number_field :numero_endereco %>
+    </div>
+
+    <div class="field">
+      <%= f.label :complemento_endereco, "Complemento:" %><br />
+      <%= f.text_field :complemento_endereco %>
+    </div>
+
+    <div class="field">
+      <%= f.label :telefone1, "Telefone 1:" %><br />
+      <%= f.text_field :telefone1, :class => "phone" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :telefone2, "Telefone 2:" %><br />
+      <%= f.text_field :telefone2, :class => "phone" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :email, "E-mail:" %><br />
+      <%= f.text_field :email %>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Esperando confirmação para: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :password, "Nova Senha:" %> <i>(Deixe em branco se não deseja alterar sua senha, mínimo 6 caracteres)</i><br />
+      <%= f.password_field :password, :autocomplete => "off" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation, "Confirmar Nova Senha:" %><br />
+      <%= f.password_field :password_confirmation %>
+    </div>
+
+    <div class="field">
+      <%= f.label :current_password, "Senha atual:" %> <i>(Senha atual para confirmar atualização)</i><br />
+      <%= f.password_field :current_password %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Atualizar" %>
+    </div>
+    <i>Para alterar informações cadastrais contate o suporte.</i>
+  <% end %>
+</div>
+
+<br />
+
+<%= link_to 'Voltar', root_path %>
+
+</div>

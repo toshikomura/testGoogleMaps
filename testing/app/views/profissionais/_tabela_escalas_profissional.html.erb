@@ -1,0 +1,43 @@
+<table class="list">
+  <thead>
+  <tr>
+    <th><%= sort_link(@search, :data_execucao, "Data") %></th>
+    <th>Horário Início</th>
+    <th>Horário Fim</th>
+    <th>Local de atendimento</th>
+    <th>Tipo de atendimento</th>
+    <th>Ação</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @escalas.each do |escala| %>
+    <tr>
+      <td><%= escala.data_execucao.strftime("%d/%m/%Y") %></td>
+      <td><%= escala.horario_inicio_execucao.strftime("%H:%M") %></td>
+      <td><%= escala.horario_fim_execucao.strftime("%H:%M") %></td>
+      <td>
+      <% if escala.orgao.nil? %>
+        ERRO: Escala não possui local de atendimento, por favor contate o suporte!
+      <% else %>
+        <%= escala.orgao.nome %>
+      <% end %>
+      </td>
+      <td>
+      <% if escala.tipo_atendimento.nil? %>
+        ERRO: Escala não possui tipo de atendimento, por favor contate o suporte!
+      <% else %>
+        <%= escala.tipo_atendimento.descricao %>
+      <% end %>
+      </td>
+      <td>
+      <% if escala.tipo_acao.nil? %>
+        ERRO: Escala não possui tipo de ação, por favor contate o suporte!
+      <% else %>
+        <%= escala.tipo_acao.descricao %>
+      <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

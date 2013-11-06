@@ -1,0 +1,936 @@
+Run options: 
+
+# Running tests:
+
+FFFF.FF...F...E.F.E.EEFFF.....FEFEFE.EFF....EEFEFE..E......F.......F.FF.......F.FE.F..EE..EEE
+
+Finished tests in 10.494330s, 8.8619 tests/s, 17.7239 assertions/s.
+
+  1) Failure:
+test_agendamento_cidadao_id(AgendamentoTest) [/home/gtk10/testing/test/unit/agendamento_test.rb:22]:
+Agendamento cidadao_id salvo com nil
+
+  2) Failure:
+test_agendamento_escala_id(AgendamentoTest) [/home/gtk10/testing/test/unit/agendamento_test.rb:15]:
+Agendamento escala_id salvo com nil
+
+  3) Failure:
+test_agendamento_horario_fim_consulta(AgendamentoTest) [/home/gtk10/testing/test/unit/agendamento_test.rb:72]:
+Agendamento horario_fim_consulta salvo com nil
+
+  4) Failure:
+test_agendamento_horario_inicio_consulta(AgendamentoTest) [/home/gtk10/testing/test/unit/agendamento_test.rb:43]:
+Agendamento horario_inicio_consulta salvo com nil
+
+  5) Failure:
+test_agendamento_orgao_id(AgendamentoTest) [/home/gtk10/testing/test/unit/agendamento_test.rb:29]:
+Agendamento orgao_id salvo com nil
+
+  6) Failure:
+test_agendamento_tipo_situacao_id(AgendamentoTest) [/home/gtk10/testing/test/unit/agendamento_test.rb:36]:
+Agendamento tipo_situacao_id salvo com nil
+
+  7) Failure:
+test_bloqueio_data_expira(BloqueioTest) [/home/gtk10/testing/test/unit/bloqueio_test.rb:53]:
+Bloquio data_expira salvo com formato inválido DD/MM/YYYY
+
+  8) Error:
+test_cidadao_nome(CidadaoTest):
+ActiveRecord::StatementInvalid: PG::Error: ERRO:  valor é muito longo para tipo character varying(255)
+: UPDATE "cidadaos" SET "nome" = 'a00MuXeGrnykkTCU9WEwA02BAzs0uNQY22aZnyIwMlGqEsksDj3IJsIZzl2MB4z9VACRCGV0ede3ai80z6Mnf1ZRCH4td3NXLUgGf6VD6F8MUrHbc6lkyMwNK6zw1XJ9Pn1VDSEfKN9rpQC2lAKpWjBzXSr19ZkuBbv8DY37AONw01SHSlKJuJfJghxdC57GMNU4ajrzQdHvqQspwoltM84wbBF0W07akrmz5Wt6wnpNLx3qTxCFA8d7HpumIbkr', "updated_at" = '2013-09-17 09:38:11.533019' WHERE "cidadaos"."id" = 92962831
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `async_exec'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `exec_no_cache'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:673:in `block in exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:280:in `block in log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:275:in `log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:672:in `exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:96:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:359:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/locking/optimistic.rb:68:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:74:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/timestamp.rb:71:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `block in update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:403:in `_run__7893806607714684__update__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_update_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:348:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `block in create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:414:in `_run__7893806607714684__save__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_save_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:84:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/validations.rb:50:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:22:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block (2 levels) in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:313:in `block in with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:192:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:208:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:311:in `with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:270:in `rollback_active_record_state!'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:258:in `save'
+    /home/gtk10/testing/test/unit/cidadao_test.rb:25:in `block in <class:CidadaoTest>'
+
+  9) Failure:
+test_cidadao_rg(CidadaoTest) [/home/gtk10/testing/test/unit/cidadao_test.rb:33]:
+cidadao salvo com tamanho do campo 'rg' maior que 11 caracteres.
+
+ 10) Error:
+test_escalas_data_execucao(EscalaTest):
+ActiveRecord::StatementInvalid: PG::Error: ERRO:  operador não existe: date = numeric
+LINE 1: ... ((profissional_executor_id = 0 AND data_execucao = 3.14356 ...
+                                                             ^
+HINT:  Nenhum operador corresponde com o nome e o(s) tipo(s) de argumento(s) informados. Você precisa adicionar conversões de tipo explícitas.
+: SELECT COUNT(*) FROM "escalas"  WHERE ((profissional_executor_id = 0 AND data_execucao = 3.14356 AND (horario_inicio_execucao >= '2000-01-01 12:10:00.000000' AND horario_inicio_execucao < '2000-01-01 12:10:00.000000')) OR (profissional_executor_id = 0 AND data_execucao = 3.14356 AND (horario_inicio_execucao <= '2000-01-01 12:10:00.000000' AND horario_fim_execucao > '2000-01-01 12:10:00.000000' AND horario_fim_execucao <= '2000-01-01 12:10:00.000000')))
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `async_exec'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `exec_no_cache'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:662:in `block in exec_query'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:280:in `block in log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:275:in `log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:661:in `exec_query'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1248:in `select'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:18:in `select_all'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/query_cache.rb:63:in `select_all'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:24:in `select_one'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:30:in `select_value'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/relation/calculations.rb:243:in `execute_simple_calculation'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/relation/calculations.rb:208:in `perform_calculation'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/relation/calculations.rb:159:in `calculate'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/relation/calculations.rb:58:in `count'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/relation.rb:203:in `size'
+    /home/gtk10/testing/app/models/escala.rb:29:in `verify_exist_scale'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:473:in `_run__2823745693022365342__save__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_save_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:84:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/validations.rb:50:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:22:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block (2 levels) in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:313:in `block in with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:192:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:208:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:311:in `with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:270:in `rollback_active_record_state!'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:258:in `save'
+    /home/gtk10/testing/test/unit/escala_test.rb:90:in `block in <class:EscalaTest>'
+
+ 11) Error:
+test_escalas_horario_fim_execucao(EscalaTest):
+ActiveRecord::StatementInvalid: PG::Error: ERRO:  operador não existe: time without time zone < numeric
+LINE 1: ...1-01 12:10:00.000000' AND horario_inicio_execucao < 3.14356)...
+                                                             ^
+HINT:  Nenhum operador corresponde com o nome e o(s) tipo(s) de argumento(s) informados. Você precisa adicionar conversões de tipo explícitas.
+: SELECT COUNT(*) FROM "escalas"  WHERE ((profissional_executor_id = 0 AND data_execucao = '2013-04-29' AND (horario_inicio_execucao >= '2000-01-01 12:10:00.000000' AND horario_inicio_execucao < 3.14356)) OR (profissional_executor_id = 0 AND data_execucao = '2013-04-29' AND (horario_inicio_execucao <= '2000-01-01 12:10:00.000000' AND horario_fim_execucao > '2000-01-01 12:10:00.000000' AND horario_fim_execucao <= 3.14356)))
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `async_exec'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `exec_no_cache'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:662:in `block in exec_query'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:280:in `block in log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:275:in `log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:661:in `exec_query'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1248:in `select'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:18:in `select_all'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/query_cache.rb:63:in `select_all'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:24:in `select_one'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:30:in `select_value'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/relation/calculations.rb:243:in `execute_simple_calculation'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/relation/calculations.rb:208:in `perform_calculation'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/relation/calculations.rb:159:in `calculate'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/relation/calculations.rb:58:in `count'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/relation.rb:203:in `size'
+    /home/gtk10/testing/app/models/escala.rb:29:in `verify_exist_scale'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:473:in `_run__2823745693022365342__save__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_save_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:84:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/validations.rb:50:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:22:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block (2 levels) in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:313:in `block in with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:192:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:208:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:311:in `with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:270:in `rollback_active_record_state!'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:258:in `save'
+    /home/gtk10/testing/test/unit/escala_test.rb:136:in `block in <class:EscalaTest>'
+
+ 12) Error:
+test_escalas_horario_inicio_execucao(EscalaTest):
+ActiveRecord::StatementInvalid: PG::Error: ERRO:  operador não existe: time without time zone >= numeric
+LINE 1: ...cucao = '2013-04-29' AND (horario_inicio_execucao >= 3.14356...
+                                                             ^
+HINT:  Nenhum operador corresponde com o nome e o(s) tipo(s) de argumento(s) informados. Você precisa adicionar conversões de tipo explícitas.
+: SELECT COUNT(*) FROM "escalas"  WHERE ((profissional_executor_id = 0 AND data_execucao = '2013-04-29' AND (horario_inicio_execucao >= 3.14356 AND horario_inicio_execucao < '2000-01-01 12:10:00.000000')) OR (profissional_executor_id = 0 AND data_execucao = '2013-04-29' AND (horario_inicio_execucao <= 3.14356 AND horario_fim_execucao > 3.14356 AND horario_fim_execucao <= '2000-01-01 12:10:00.000000')))
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `async_exec'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `exec_no_cache'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:662:in `block in exec_query'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:280:in `block in log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:275:in `log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:661:in `exec_query'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1248:in `select'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:18:in `select_all'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/query_cache.rb:63:in `select_all'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:24:in `select_one'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:30:in `select_value'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/relation/calculations.rb:243:in `execute_simple_calculation'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/relation/calculations.rb:208:in `perform_calculation'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/relation/calculations.rb:159:in `calculate'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/relation/calculations.rb:58:in `count'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/relation.rb:203:in `size'
+    /home/gtk10/testing/app/models/escala.rb:29:in `verify_exist_scale'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:473:in `_run__2823745693022365342__save__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_save_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:84:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/validations.rb:50:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:22:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block (2 levels) in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:313:in `block in with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:192:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:208:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:311:in `with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:270:in `rollback_active_record_state!'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:258:in `save'
+    /home/gtk10/testing/test/unit/escala_test.rb:113:in `block in <class:EscalaTest>'
+
+ 13) Failure:
+test_escalas_numero_atendimentos(EscalaTest) [/home/gtk10/testing/test/unit/escala_test.rb:158]:
+Escalas numero_atendimentos não salvo como nil
+
+ 14) Failure:
+test_escalas_numero_sequencia(EscalaTest) [/home/gtk10/testing/test/unit/escala_test.rb:61]:
+Escalas numero_sequencia salvo como 0
+
+ 15) Failure:
+test_escalas_observacoes(EscalaTest) [/home/gtk10/testing/test/unit/escala_test.rb:153]:
+Escalas observacoes salvo como maior que 500
+
+ 16) Failure:
+test_orgaos_ativo(OrgaoTest) [/home/gtk10/testing/test/unit/orgao_test.rb:215]:
+Orgaos ativo salvo como integer
+
+ 17) Error:
+test_orgaos_bairro(OrgaoTest):
+ActiveRecord::StatementInvalid: PG::Error: ERRO:  valor é muito longo para tipo character varying(255)
+: UPDATE "orgaos" SET "bairro" = 'nxviFJMv3eh2y2S094ro2QVNURmjBDDffO8OgMblDD4sReakU68lozBG5oin0vpw5hDmC1Oz0CAMI0r41lfVUyQ8TyinQamleko9apEvBXZqcK9fJg4y5Hcn88EfBKEJPd8MGUZLLfOZzdD3wdXpW5tQH7w31xtdkud0vafiYV4fKnIla1qLphXaKTjZwuiOQKfk30U2STFn3R7AGgYgpdgbLgqZFFkpFmK3X0x4x4o1E3YBLXu3hZ4e2ihwh7OD', "updated_at" = '2013-09-17 09:38:11.879527' WHERE "orgaos"."id" = 461200722
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `async_exec'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `exec_no_cache'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:673:in `block in exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:280:in `block in log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:275:in `log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:672:in `exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:96:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:359:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/locking/optimistic.rb:68:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:74:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/timestamp.rb:71:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `block in update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:403:in `_run__1383342250451615803__update__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_update_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:348:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `block in create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:447:in `_run__1383342250451615803__save__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_save_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:84:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/validations.rb:50:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:22:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block (2 levels) in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:313:in `block in with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:192:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:208:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:311:in `with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:270:in `rollback_active_record_state!'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:258:in `save'
+    /home/gtk10/testing/test/unit/orgao_test.rb:76:in `block in <class:OrgaoTest>'
+
+ 18) Failure:
+test_orgaos_cep(OrgaoTest) [/home/gtk10/testing/test/unit/orgao_test.rb:50]:
+Orgaos cep não salvo como nil
+
+ 19) Error:
+test_orgaos_complemento_endereco(OrgaoTest):
+ActiveRecord::StatementInvalid: PG::Error: ERRO:  valor é muito longo para tipo character varying(255)
+: UPDATE "orgaos" SET "complemento_endereco" = '5oFhYhFj4pqmHF2SG6PwdHHaMRhJ3n6jZM0QK7PUUTOYNREEKEF9x57sl3BNZLHKIFiHg1KSaumfonLAKQWwDfhYgywJjpEkMgtwwaXFWC5E4VqICTXgL7XZpS1gUWzAMQs1q10EKcErzsvuFT6rnBVmCFORECn5jRTqUKRvi02GpcXGJWZ6E91JqwvWlZ377ejWxkhZQwXiJ1LQpNTtKRrmd4S4ZOZ727Lj2BKmESgxgg70h8Jy9BkJvUTQ88qr', "updated_at" = '2013-09-17 09:38:11.895593' WHERE "orgaos"."id" = 461200722
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `async_exec'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `exec_no_cache'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:673:in `block in exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:280:in `block in log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:275:in `log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:672:in `exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:96:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:359:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/locking/optimistic.rb:68:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:74:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/timestamp.rb:71:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `block in update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:403:in `_run__1383342250451615803__update__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_update_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:348:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `block in create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:447:in `_run__1383342250451615803__save__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_save_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:84:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/validations.rb:50:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:22:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block (2 levels) in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:313:in `block in with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:192:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:208:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:311:in `with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:270:in `rollback_active_record_state!'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:258:in `save'
+    /home/gtk10/testing/test/unit/orgao_test.rb:121:in `block in <class:OrgaoTest>'
+
+ 20) Failure:
+test_orgaos_email(OrgaoTest) [/home/gtk10/testing/test/unit/orgao_test.rb:178]:
+Orgaos email salvo com formato inválido *@.*
+
+ 21) Error:
+test_orgaos_endereco(OrgaoTest):
+ActiveRecord::StatementInvalid: PG::Error: ERRO:  valor é muito longo para tipo character varying(255)
+: UPDATE "orgaos" SET "endereco" = '7UEU50JslKfGZkgTU5G1YDJqFFRnCAopQcCOGpFmAf9iAxfjPj2edE6sHrucQtH8F7SLBTKPASBRfLZNvS8XlicfecSsROECuJjtB2TFse3Blc9Qk5zLMyyv5RJgK8rVS5FAqONrhXQiFMJ9fIsGzLunyFs9VZqvUFEXNeDsZcs8mD08w0wAHsbpAdq3y8QgwdT9YCB0J0gzLQXU24gReOKW08Us0VNNEfsfmP0JIwbVTfC9m9ymbT4Aurf4zxcl', "updated_at" = '2013-09-17 09:38:11.921775' WHERE "orgaos"."id" = 461200722
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `async_exec'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `exec_no_cache'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:673:in `block in exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:280:in `block in log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:275:in `log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:672:in `exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:96:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:359:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/locking/optimistic.rb:68:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:74:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/timestamp.rb:71:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `block in update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:403:in `_run__1383342250451615803__update__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_update_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:348:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `block in create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:447:in `_run__1383342250451615803__save__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_save_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:84:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/validations.rb:50:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:22:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block (2 levels) in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:313:in `block in with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:192:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:208:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:311:in `with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:270:in `rollback_active_record_state!'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:258:in `save'
+    /home/gtk10/testing/test/unit/orgao_test.rb:87:in `block in <class:OrgaoTest>'
+
+ 22) Error:
+test_orgaos_nome(OrgaoTest):
+ActiveRecord::StatementInvalid: PG::Error: ERRO:  valor é muito longo para tipo character varying(255)
+: UPDATE "orgaos" SET "nome" = 'jMUcd1GIhTL1kwPedDh5Bn1I8gJYOICSalY6VarZBpHj7ljjr1d3CgmANFtmXcCkl7nYR3w51eCYuAlUefvDJ514sATBbVsDbltfrf7W6O5di9CBOPLLXp84RRg9o9jtuf7Jq7Xx2SSYVkwzEbf9aPndUHCS1Fv6lX4Mr3ffXrpMwK9dcmgcVhAinUQOSNnijYe1SfK6Kx3xEMkPyAC6YT6vxV7WCseU6IKlluYt2nyyvXO8qTQDoiQqChO91BFw', "updated_at" = '2013-09-17 09:38:11.936014' WHERE "orgaos"."id" = 461200722
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `async_exec'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `exec_no_cache'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:673:in `block in exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:280:in `block in log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:275:in `log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:672:in `exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:96:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:359:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/locking/optimistic.rb:68:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:74:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/timestamp.rb:71:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `block in update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:403:in `_run__1383342250451615803__update__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_update_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:348:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `block in create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:447:in `_run__1383342250451615803__save__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_save_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:84:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/validations.rb:50:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:22:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block (2 levels) in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:313:in `block in with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:192:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:208:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:311:in `with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:270:in `rollback_active_record_state!'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:258:in `save'
+    /home/gtk10/testing/test/unit/orgao_test.rb:45:in `block in <class:OrgaoTest>'
+
+ 23) Failure:
+test_orgaos_numero_endereco(OrgaoTest) [/home/gtk10/testing/test/unit/orgao_test.rb:101]:
+Orgaos numero_endereco salvo como float
+
+ 24) Failure:
+test_orgaos_prefeitura_id(OrgaoTest) [/home/gtk10/testing/test/unit/orgao_test.rb:31]:
+Orgaos prefeitura_id salvo como nil
+
+ 25) Error:
+test_orgaos_url(OrgaoTest):
+ActiveRecord::StatementInvalid: PG::Error: ERRO:  valor é muito longo para tipo character varying(255)
+: UPDATE "orgaos" SET "url" = '1lwIJdw31bHOlzaOyBMRVFKOM5dYpTiEXiJztlXqw0fnuvqZ3HL7AywyfOtSQZOmkf6QilSjDs0dcX78rmQ4HdvidlI7NoriEXME45YeKH22pUGI2ZScNoML7xjeLID7KwHcW8PFaJO1PHmL752rb1d1RaKnYcJUdlMSFm8vEfRv5x3EQqJN2DwfeXB9rd1jVo2AH1iO3onAb23357iMjuOklwdUfYzVgGxbT6NJC20d62dEtjt5TNL12YWLcSz5', "updated_at" = '2013-09-17 09:38:12.012751' WHERE "orgaos"."id" = 461200722
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `async_exec'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `exec_no_cache'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:673:in `block in exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:280:in `block in log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:275:in `log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:672:in `exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:96:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:359:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/locking/optimistic.rb:68:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:74:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/timestamp.rb:71:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `block in update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:403:in `_run__1383342250451615803__update__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_update_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:348:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `block in create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:447:in `_run__1383342250451615803__save__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_save_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:84:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/validations.rb:50:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:22:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block (2 levels) in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:313:in `block in with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:192:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:208:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:311:in `with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:270:in `rollback_active_record_state!'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:258:in `save'
+    /home/gtk10/testing/test/unit/orgao_test.rb:198:in `block in <class:OrgaoTest>'
+
+ 26) Error:
+test_Prefeitura_bairro(PrefeituraTest):
+ActiveRecord::StatementInvalid: PG::Error: ERRO:  valor é muito longo para tipo character varying(255)
+: UPDATE "prefeituras" SET "bairro" = 'ciftNVf3lATNcjAIu1t9eLOtgwj3XJH8eauRApW3bgU0xdVS5cmFKiPhgn61pjT5nPmQUO5AEVP8lCJhO5wcXXEiv6WRUyAlxgWDwlDJZZBlb4MNln6djZyIrZm18peiODWymtryKsveQaCns8ihgCaD3cLRBObauJy24e6mYkQhuYr7aQAUboVCoUftO3xXJAcB9WTAbqdNnZLWixUKDPV6kzAw5s0QO0VQf5K675Bq5xQe4MGXJvdB0wEiwsPi', "updated_at" = '2013-09-17 09:38:12.145404' WHERE "prefeituras"."id" = 349185350
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `async_exec'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `exec_no_cache'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:673:in `block in exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:280:in `block in log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:275:in `log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:672:in `exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:96:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:359:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/locking/optimistic.rb:68:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:74:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/timestamp.rb:71:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `block in update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:403:in `_run__2398776462842776656__update__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_update_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:348:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `block in create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:436:in `_run__2398776462842776656__save__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_save_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:84:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/validations.rb:50:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:22:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block (2 levels) in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:313:in `block in with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:192:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:208:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:311:in `with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:270:in `rollback_active_record_state!'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:258:in `save'
+    /home/gtk10/testing/test/unit/prefeitura_test.rb:68:in `block in <class:PrefeituraTest>'
+
+ 27) Failure:
+test_Prefeitura_cep(PrefeituraTest) [/home/gtk10/testing/test/unit/prefeitura_test.rb:48]:
+prefeitura cep salvo com string invalido: abcde-999
+
+ 28) Error:
+test_Prefeitura_complemento_endereco(PrefeituraTest):
+ActiveRecord::StatementInvalid: PG::Error: ERRO:  valor é muito longo para tipo character varying(255)
+: UPDATE "prefeituras" SET "complemento_endereco" = 'l1SmWNDSKZrFdZqtjtnyFTgBjFnKpu7mYegyjtGxocoLH52h6g4vhR5pDGU5JmpOjz4LfFXJUj7RUzy1pRoLzed9wChnocQeL77oGxk6l2BnhDu0axNsjbSpI4t1dRT5i43Dc4rYPqkhLgIvABKOBL8qgaXD6SkqALZaVHeKvtBAYhPERKM3MDVqfykoNxf2Ed7aFsZkoYnmvJcqALHEvMrBLx766HTQS73bFy8QqLz4VkSBRZUnXEdUnXZmAGUx', "updated_at" = '2013-09-17 09:38:12.162607' WHERE "prefeituras"."id" = 349185350
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `async_exec'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `exec_no_cache'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:673:in `block in exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:280:in `block in log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:275:in `log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:672:in `exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:96:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:359:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/locking/optimistic.rb:68:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:74:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/timestamp.rb:71:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `block in update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:403:in `_run__2398776462842776656__update__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_update_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:348:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `block in create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:436:in `_run__2398776462842776656__save__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_save_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:84:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/validations.rb:50:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:22:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block (2 levels) in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:313:in `block in with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:192:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:208:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:311:in `with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:270:in `rollback_active_record_state!'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:258:in `save'
+    /home/gtk10/testing/test/unit/prefeitura_test.rb:95:in `block in <class:PrefeituraTest>'
+
+ 29) Failure:
+test_Prefeitura_email(PrefeituraTest) [/home/gtk10/testing/test/unit/prefeitura_test.rb:132]:
+prefeitura email salvo com string invalido: asd$%#&*asd@asd.asd
+
+ 30) Error:
+test_Prefeitura_endereco(PrefeituraTest):
+ActiveRecord::StatementInvalid: PG::Error: ERRO:  valor é muito longo para tipo character varying(255)
+: UPDATE "prefeituras" SET "endereco" = 'wbwrGODube0abhgUn5UQbZp5Bxy9B6eW9T0hM3fHYBoOyJ3znCsaXfeocu4XsUfNcGgNdLj3JxbM8lGM6ZrEJ0sgIbm99dzKFUpzYRyIEZ0J2QUKU0P9PHGFD360G3E4bfgzMPFxyJWFrXZYF86J6kWahTuZJAO46S9iTRQP338czUCR7pPO5kyNQsbdEmCrFpZPe5w5lACSK6qpMjsvYrryAAkv6pAldt9QSB4u9HDisSaxRdBUhYHHlM4jXxDW', "updated_at" = '2013-09-17 09:38:12.181606' WHERE "prefeituras"."id" = 349185350
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `async_exec'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `exec_no_cache'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:673:in `block in exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:280:in `block in log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:275:in `log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:672:in `exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:96:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:359:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/locking/optimistic.rb:68:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:74:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/timestamp.rb:71:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `block in update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:403:in `_run__2398776462842776656__update__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_update_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:348:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `block in create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:436:in `_run__2398776462842776656__save__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_save_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:84:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/validations.rb:50:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:22:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block (2 levels) in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:313:in `block in with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:192:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:208:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:311:in `with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:270:in `rollback_active_record_state!'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:258:in `save'
+    /home/gtk10/testing/test/unit/prefeitura_test.rb:79:in `block in <class:PrefeituraTest>'
+
+ 31) Error:
+test_Prefeitura_nome(PrefeituraTest):
+ActiveRecord::StatementInvalid: PG::Error: ERRO:  valor é muito longo para tipo character varying(255)
+: UPDATE "prefeituras" SET "nome" = 'ciODq4Ncy0K8MzKUUbFrshdWf2pi8DOZw3lmtSf1IvFpJ3QSDxKc21s9S2FXSSXPWE3JjQf2JoOh0jxjO699PSMKxrO1idtJQVZXOOndGM7SpPjMZCtsfbOdd0jpkbNoRjFTpklKMq3JlDoKszzUS0olQbhR0GrtqmEDHha3cWYLJbO3zn9KukpyxQXCxI9UOrDpzm4FG2euqeZrNswjmBoSWqRv1nqfpYSXZ8EiQTL7gtuXRmEon0ncvJTrUd9n', "updated_at" = '2013-09-17 09:38:12.195849' WHERE "prefeituras"."id" = 349185350
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `async_exec'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `exec_no_cache'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:673:in `block in exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:280:in `block in log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:275:in `log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:672:in `exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:96:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:359:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/locking/optimistic.rb:68:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:74:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/timestamp.rb:71:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `block in update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:403:in `_run__2398776462842776656__update__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_update_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:348:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `block in create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:436:in `_run__2398776462842776656__save__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_save_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:84:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/validations.rb:50:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:22:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block (2 levels) in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:313:in `block in with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:192:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:208:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:311:in `with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:270:in `rollback_active_record_state!'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:258:in `save'
+    /home/gtk10/testing/test/unit/prefeitura_test.rb:37:in `block in <class:PrefeituraTest>'
+
+ 32) Failure:
+test_profissional_cpf_unico(ProfissionalTest) [/home/gtk10/testing/test/unit/profissional_test.rb:24]:
+salvo profissional cujo cpf já havia sido cadastrado.
+
+ 33) Failure:
+test_profissional_tconselho_id(ProfissionalTest) [/home/gtk10/testing/test/unit/profissional_test.rb:103]:
+profissional com campo 'tconselho_id' vazio foi salvo
+
+ 34) Failure:
+test_profissional_tmibge_id(ProfissionalTest) [/home/gtk10/testing/test/unit/profissional_test.rb:88]:
+profissional com campo 'tmibge_id' vazio foi salvo
+
+ 35) Failure:
+test_profissional_tufibge_id(ProfissionalTest) [/home/gtk10/testing/test/unit/profissional_test.rb:93]:
+profissional com campo 'tufibge_id' vazio foi salvo
+
+ 36) Failure:
+test_tipo_acoes_descricao(TipoAcaoTest) [/home/gtk10/testing/test/unit/tipo_acao_test.rb:15]:
+Tipo_acoes descricao salva como nil
+
+ 37) Failure:
+test_Tipo_atendimento_ativo(TipoAtendimentoTest) [/home/gtk10/testing/test/unit/tipo_atendimento_test.rb:32]:
+tipo_atendimento ativo aceitou uma string diferente de true/false
+
+ 38) Error:
+test_Tipo_atendimento_descricao(TipoAtendimentoTest):
+ActiveRecord::StatementInvalid: PG::Error: ERRO:  valor é muito longo para tipo character varying(255)
+: UPDATE "tipo_atendimentos" SET "descricao" = 'CujoSYsC1Jm3hWY6I2DoUQfMpZsvAbAliXug5VAJWmFGrPhCq1szej2zVJLWgZvyJ9gskTqAwb8YSfFhHblImidU65yHc4ghFzjK21wRYNLsviwElCYnE6aU8mzlDPBIxr5WVgBfUcZFDDw0tYND8a4vQfsTtrjjFJVNnVuIOLR8Wvpey4PcmENkDyZ73ENINgSg8q8NWBM3IC1Ylz8Kl3Ns5GR1zjdEiUCWxZyWbubtthdro3JQdkXicfzcs0VS', "updated_at" = '2013-09-17 09:38:12.448768' WHERE "tipo_atendimentos"."id" = 715964076
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `async_exec'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `exec_no_cache'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:673:in `block in exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:280:in `block in log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:275:in `log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:672:in `exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:96:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:359:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/locking/optimistic.rb:68:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:74:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/timestamp.rb:71:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `block in update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:403:in `_run__1849506482767636675__update__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_update_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:348:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `block in create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:414:in `_run__1849506482767636675__save__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_save_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:84:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/validations.rb:50:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:22:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block (2 levels) in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:313:in `block in with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:192:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:208:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:311:in `with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:270:in `rollback_active_record_state!'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:258:in `save'
+    /home/gtk10/testing/test/unit/tipo_atendimento_test.rb:21:in `block in <class:TipoAtendimentoTest>'
+
+ 39) Failure:
+test_tipo_situacoes_descricao(TipoSituacaoTest) [/home/gtk10/testing/test/unit/tipo_situacao_test.rb:15]:
+Tipo_situacoes descricao salva como nil
+
+ 40) Error:
+test_tmibge_codigo_ibge(TmibgeTest):
+ActiveRecord::StatementInvalid: PG::Error: ERRO:  valor nulo na coluna "codigo_ibge" viola a restrição não-nula
+: UPDATE "tmibges" SET "codigo_ibge" = NULL, "updated_at" = '2013-09-17 09:38:12.626948' WHERE "tmibges"."id" = 174322706
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `async_exec'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `exec_no_cache'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:673:in `block in exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:280:in `block in log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:275:in `log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:672:in `exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:96:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:359:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/locking/optimistic.rb:68:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:74:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/timestamp.rb:71:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `block in update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:403:in `_run__3211171118105900772__update__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_update_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:348:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `block in create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:425:in `_run__3211171118105900772__save__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_save_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:84:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/validations.rb:50:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:22:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block (2 levels) in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:313:in `block in with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:192:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:208:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:311:in `with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:270:in `rollback_active_record_state!'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:258:in `save'
+    /home/gtk10/testing/test/unit/tmibge_test.rb:39:in `block in <class:TmibgeTest>'
+
+ 41) Error:
+test_tmibge_nome_municipio(TmibgeTest):
+ActiveRecord::StatementInvalid: PG::Error: ERRO:  valor nulo na coluna "nome_municipio" viola a restrição não-nula
+: UPDATE "tmibges" SET "nome_municipio" = NULL, "updated_at" = '2013-09-17 09:38:12.634742' WHERE "tmibges"."id" = 174322706
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `async_exec'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `exec_no_cache'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:673:in `block in exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:280:in `block in log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:275:in `log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:672:in `exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:96:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:359:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/locking/optimistic.rb:68:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:74:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/timestamp.rb:71:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `block in update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:403:in `_run__3211171118105900772__update__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_update_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:348:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `block in create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:425:in `_run__3211171118105900772__save__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_save_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:84:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/validations.rb:50:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:22:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block (2 levels) in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:313:in `block in with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:192:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:208:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:311:in `with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:270:in `rollback_active_record_state!'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:258:in `save'
+    /home/gtk10/testing/test/unit/tmibge_test.rb:22:in `block in <class:TmibgeTest>'
+
+ 42) Error:
+test_tufibge_codigo_ibge(TufibgeTest):
+ActiveRecord::StatementInvalid: PG::Error: ERRO:  valor nulo na coluna "codigo_ibge" viola a restrição não-nula
+: UPDATE "tufibges" SET "codigo_ibge" = NULL, "updated_at" = '2013-09-17 09:38:12.664219' WHERE "tufibges"."id" = 758607580
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `async_exec'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `exec_no_cache'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:673:in `block in exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:280:in `block in log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:275:in `log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:672:in `exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:96:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:359:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/locking/optimistic.rb:68:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:74:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/timestamp.rb:71:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `block in update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:403:in `_run__2852394869433992395__update__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_update_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:348:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `block in create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:414:in `_run__2852394869433992395__save__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_save_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:84:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/validations.rb:50:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:22:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block (2 levels) in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:313:in `block in with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:192:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:208:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:311:in `with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:270:in `rollback_active_record_state!'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:258:in `save'
+    /home/gtk10/testing/test/unit/tufibge_test.rb:49:in `block in <class:TufibgeTest>'
+
+ 43) Error:
+test_tufibge_nome_uf(TufibgeTest):
+ActiveRecord::StatementInvalid: PG::Error: ERRO:  valor nulo na coluna "nome_uf" viola a restrição não-nula
+: UPDATE "tufibges" SET "nome_uf" = NULL, "updated_at" = '2013-09-17 09:38:12.670331' WHERE "tufibges"."id" = 758607580
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `async_exec'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `exec_no_cache'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:673:in `block in exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:280:in `block in log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:275:in `log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:672:in `exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:96:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:359:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/locking/optimistic.rb:68:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:74:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/timestamp.rb:71:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `block in update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:403:in `_run__2852394869433992395__update__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_update_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:348:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `block in create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:414:in `_run__2852394869433992395__save__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_save_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:84:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/validations.rb:50:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:22:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block (2 levels) in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:313:in `block in with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:192:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:208:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:311:in `with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:270:in `rollback_active_record_state!'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:258:in `save'
+    /home/gtk10/testing/test/unit/tufibge_test.rb:32:in `block in <class:TufibgeTest>'
+
+ 44) Error:
+test_tufibge_sigla_uf(TufibgeTest):
+ActiveRecord::StatementInvalid: PG::Error: ERRO:  valor nulo na coluna "sigla_uf" viola a restrição não-nula
+: UPDATE "tufibges" SET "sigla_uf" = NULL, "updated_at" = '2013-09-17 09:38:12.674993' WHERE "tufibges"."id" = 758607580
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `async_exec'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:1153:in `exec_no_cache'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:673:in `block in exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:280:in `block in log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract_adapter.rb:275:in `log'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/postgresql_adapter.rb:672:in `exec_delete'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:96:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:359:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/locking/optimistic.rb:68:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:74:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/timestamp.rb:71:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `block in update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:403:in `_run__2852394869433992395__update__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_update_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:272:in `update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:348:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `block in create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:414:in `_run__2852394869433992395__save__2328848960736246342__callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_save_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/callbacks.rb:264:in `create_or_update'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/persistence.rb:84:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/validations.rb:50:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/attribute_methods/dirty.rb:22:in `save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block (2 levels) in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:313:in `block in with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/database_statements.rb:192:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:208:in `transaction'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:311:in `with_transaction_returning_status'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:259:in `block in save'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:270:in `rollback_active_record_state!'
+    /usr/local/rvm/gems/ruby-1.9.3-p429/gems/activerecord-3.2.12/lib/active_record/transactions.rb:258:in `save'
+    /home/gtk10/testing/test/unit/tufibge_test.rb:15:in `block in <class:TufibgeTest>'
+
+93 tests, 186 assertions, 25 failures, 19 errors, 0 skips
+Run options: 
+
+# Running tests:
+
+
+
+Finished tests in 0.004193s, 0.0000 tests/s, 0.0000 assertions/s.
+
+0 tests, 0 assertions, 0 failures, 0 errors, 0 skips
+Errors running test:units! #<RuntimeError: Command failed with status (44): [ruby -I"lib:test" -I"/usr/local/rvm/gems/ruby-1.9.3-p429@global/gems/rake-10.0.4/lib" "/usr/local/rvm/gems/ruby-1.9.3-p429@global/gems/rake-10.0.4/lib/rake/rake_test_loader.rb" "test/unit/**/*_test.rb" ]>

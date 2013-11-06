@@ -1,0 +1,49 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+orgaos_Unidade_Saude_Cajuru:
+  nome: Unidade de Saúde - Cajuru
+  cep: 88321-760
+  bairro: Cajuru
+  endereco: R. Pedro Bochino
+  numero_endereco: 750
+  complemento_endereco:
+  telefone1: (41)3361-2343
+  telefone2: (99)9999-9999
+  email: usc@org.br
+  url: www.usc.org.br
+  tufibge_id: tufibge_PR
+  tmibge_id: tmibge_Curitiba
+  prefeitura: prefeituras_Curitiba
+  ativo: true
+
+orgaos_Administracao_Sistema:
+  nome: Administração do Sistema
+  cep:
+  bairro: Prado Velho
+  endereco: R. Manoel Martins de Abreu
+  numero_endereco: 25
+  complemento_endereco:
+  telefone1: (41)3218-2400
+  telefone2:
+  email:
+  url:  
+  tufibge_id: tufibge_PR
+  tmibge_id: tmibge_Curitiba
+  prefeitura: prefeituras_Curitiba
+  ativo: true
+
+orgaos_Unidade_Saude_Oswaldo_Cruz:
+  nome: Unidade de Saúde - Oswaldo Cruz
+  cep:
+  bairro: Cidade Industrial
+  endereco: R. Pedro Gusso
+  numero_endereco: 3749
+  complemento_endereco:
+  telefone1: (41)3212-1418
+  telefone2:
+  email:
+  url:
+  tufibge_id: tufibge_PR
+  tmibge_id: tmibge_Curitiba
+  prefeitura: prefeituras_Curitiba
+  ativo: false

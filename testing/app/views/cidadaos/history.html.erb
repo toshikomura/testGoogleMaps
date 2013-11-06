@@ -1,0 +1,65 @@
+<div id="texto-maior">
+
+<h2>Situação de agendamentos</h2>
+<% unless cidadao_bloqueado?(@num_agendamentos, @max_agendamentos, @bloqueio) %>
+  <div id="nao-bloqueado">
+    <h3>Você pode efetuar novos agendamentos.</h3>
+  </div>
+<% else %>
+  <div id="bloqueado">
+  <%= render :partial => 'citizen_blocked',
+             :locals => { :situacao_bloqueio => @bloqueio,
+                          :max_agendamentos => @max_agendamentos } %>
+  </div>
+<% end %>
+
+<h2>Histórico de agendamentos</h2>
+<p>Agendamentos podem ser cancelados em até <%= @limite_cancelamento %>
+hora(s) antes do horário de início do atendimento.</p>
+
+<div id="search-form">
+<h4>Buscar Agendamentos</h4>
+
+<%= search_form_for(@search, :remote => true,
+                    url: cidadaos_agendamentos_historico_path) do |f| %>
+  <div class="field">
+    <%= f.label :escala_orgao_id, "Local de Atendimento: " %><br />
+    <%= f.select :escala_orgao_id_eq,
+    options_from_collection_for_select(Orgao.where("ativo = ?",
+    true),"id","nome", @search.escala_orgao_id_eq),
+    {:include_blank => "Todos"}, {:class => "search-field"} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :escala_tipo_atendimento_id, "Tipo Atendimento: " %><br />
+    <%= f.select :escala_tipo_atendimento_id_eq,
+    options_from_collection_for_select(TipoAtendimento.where("ativo = ?",
+    true),"id","descricao", @search.escala_tipo_atendimento_id_eq),
+    {:include_blank => "Todos"}, {:class => "search-field"} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tipo_situacao_id, "Situação: " %><br />
+    <%= f.select :tipo_situacao_id_eq,
+    options_from_collection_for_select(TipoSituacao.where(:descricao =>
+    ["Agendado","Compareceu","Não Compareceu"]),"id","descricao",
+    @search.tipo_situacao_id_eq),
+    {:include_blank => "Todos"}, {:class => "search-field"} %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Buscar" %>
+    <%= f.submit "Limpar campos", :id => "reset_btn" %>
+  </div>
+<% end %>
+
+<hr>
+</div>
+
+<div id="tabela_cidadaos_historico">
+  <%= render "tabela_cidadaos_historico" %>
+</div>
+
+<br />
+
+</div>

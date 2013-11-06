@@ -1,0 +1,21 @@
+<div id="login-info">
+  <% if cidadao_signed_in? %>
+    <ul>
+      <li> Você está logado como: </li>
+      <li class="nome"><b><%= dividir_nome(current_cidadao.nome) %></b></li>
+      <li><%= link_to 'Alterar Conta', edit_cidadao_registration_path %></li>
+      <li><%= link_to 'Sair', destroy_cidadao_session_path, :method => :delete %></li>
+    </ul>
+    <div class="bar"></div>
+  <% elsif profissional_signed_in? %>
+    <ul>
+      <li> Você está logado como:</li>
+      <li class="nome"><b><%= dividir_nome(current_profissional.nome) %>.</b></li>
+      <li><%= link_to 'Alterar Conta', edit_profissional_registration_path %></li>
+      <li><%= link_to 'Sair', destroy_profissional_session_path, :method => :delete %></li>
+    </ul>
+    <div class="bar"></div>
+    <% else %>
+    <div class="bar-nologin"></div>
+  <% end %> 
+</div>

@@ -1,0 +1,39 @@
+<div id="texto-maior">
+<h2>Informações Tipo de Atendimento:</h2>
+
+<h4><%= @tipo_atendimento.descricao %></h4>
+
+<p>
+  <b>Situação:</b>
+  <%= situacao(@tipo_atendimento) %>
+</p>
+
+<p>
+  <b>Descrição:</b>
+  <%= @tipo_atendimento.descricao %>
+</p>
+
+<p>
+  <b>Locais de Atendimento:</b>
+  <ul>
+    <% @tipo_atendimento.orgaos.each do |orgao| %>
+	  <li><%= link_to "#{orgao.nome} (#{situacao(orgao)})", orgao %></li>	
+	<% end %>
+  </ul>
+</p>
+
+<p>
+  <b>Atualizado em:</b>
+  <%= @tipo_atendimento.updated_at %>
+</p>
+
+<p>
+  <b>Criado em:</b>
+  <%= @tipo_atendimento.created_at %>
+</p>
+
+<%= link_to 'Alterar', edit_tipo_atendimento_path(@tipo_atendimento) %>
+
+<%= link_to 'Voltar', tipo_atendimentos_path %>
+
+</div>

@@ -1,0 +1,35 @@
+<div id="texto-maior">
+<h2>Tipos de Atendimento</h2>
+
+<div id="search-form">
+<h4>Buscar Tipos de Atendimento:</h4>
+  <%= search_form_for(@search, :remote => true) do |f| %>
+    <div class="field">
+      <%= f.label :descricao, "Descrição:" %><br />
+      <%= f.text_field :descricao_cont, :class => "search-field" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :ativo, "Situação:" %><br />
+      <%= f.select :ativo_eq,
+options_for_select([["Ativo",true],["Inativo",false]],@search.ativo_eq),
+{:include_blank => "Todos"},{:class => "search-field"} %>
+    </div>
+    
+    <div class="actions">
+      <%= f.submit "Buscar" %>
+      <%= f.submit "Limpar campos",  :id => :reset_btn  %>
+    </div>
+  <% end %>
+<hr>
+</div>
+
+<div id="tabela_tipo_atendimentos">
+  <%= render "tabela_tipo_atendimentos" %>
+</div>
+
+<br />
+
+<%= link_to 'Novo Tipo de Atendimento', new_tipo_atendimento_path %>
+
+</div>

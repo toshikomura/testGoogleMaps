@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+tipo_situacoes_Agendado:
+  descricao: Agendado
+
+tipo_situacoes_Cancelado:
+  descricao: Cancelado
+
+tipo_situacoes_Compareu:
+  descricao: Compareceu 
+  
+tipo_situacoes_Nao_Compareu:
+  descricao: Não Compareceu 
+
+tipo_situacoes_Vago:
+  descricao: Vago

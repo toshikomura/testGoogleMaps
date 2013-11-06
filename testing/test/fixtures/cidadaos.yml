@@ -1,0 +1,30 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+# A senha é o nome da fixture (por exemplo a senha de JoseArtur é o hash da string "Jose_Artur"
+# Pode ser gerada com "echo Jose_Artur | md5sum"
+
+cidadaos_Jose_Artur:
+  nome: Jose Artur
+  cpf: 611.075.429-36
+  rg: 4.032.894-40
+  telefone1: (99)9999-9999
+  email: jose@artur
+  cartao_sus: JA123456
+  encrypted_password: 9e7160233f503ae5ec2bb07200ec50dd
+
+cidadaos_Jose_Silva:
+  nome: Jose da Silva
+  cpf: 875.234.876-32
+  rg: 41.875.789-6
+  telefone1: (53)6532-8431
+  email: josesilva@ymail.com
+  cartao_sus:
+  encrypted_password: 34929b848ee4332d299dd8678d93601d
+
+cidadaos_Maria_Silva:
+  nome: Maria da Silva
+  cpf: 123.664.773-12
+  rg: 4.032.894.40
+  telefone1: (41)6654-8843
+  email: maria@hotmail.com
+  cartao_sus:
+  encrypted_password: d93370564680b891cf7737bb19145a60

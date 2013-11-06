@@ -1,0 +1,147 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+#echo profissional_Medico_Arambulo | md5sum 
+#208792144b1220e880de215baa600f98  -
+
+profissionais_Administrador_Sistema_Oswaldo_Cruz:
+  nome: Oswaldo Cruz
+  data_nascimento: 1872-08-05
+  cpf: 864.167.506-00
+  encrypted_password: 208792144b1220e880de215baa600f98
+  rg: 41.875.789-6
+  emissao_rg: IISP
+  cep: 80.035-10
+  bairro: Cabral
+  endereco: R. Bom Jesus
+  numero_endereco: 23
+  complemento_endereco: Casa 23
+  telefone1: (99)9999-9999
+  telefone2: (99)9999-9999
+  email: oswalvo@hotmail.com
+  tufibge_id: tufibge_RO
+  tmibge_id: tmibge_alta_floresta_doeste
+  tcbo_id: tcbos_Administrador
+  tconselho_id: tconselhos_CRM_PR
+  orgao_id: orgaos_Administracao_Sistema
+  matricula: 2013-01 
+  role: administradorsistema
+  ativo: true
+
+profissionais_Administrador_Zilda_Arns:
+  nome: Zilda Arns
+  data_nascimento: 1934-08-25
+  cpf: 655.885.570-42
+  encrypted_password: 4e1a50b4d8ac01c8e23ffb08317e6c1a
+  rg: 91.122.534-1
+  emissao_rg: IISC
+  cep:
+  bairro:
+  endereco:
+  numero_endereco:
+  complemento_endereco:
+  telefone1:
+  telefone2:
+  email:
+  tufibge_id:
+  tmibge_id:
+  tcbo_id: tcbos_Medico_Pediatra
+  tconselho_id:
+  orgao_id: orgaos_Unidade_Saude_Cajuru
+  matricula:
+  role: administrador
+  ativo: true
+
+profissionais_Atendente_Rinaldo_Victor_De_Lamare:
+  nome: Rinaldo Victor De Lamare
+  data_nascimento: 1910-01-02
+  cpf: 233.523.971-63
+  encrypted_password: 4e1a50b4d8ac01c8e23ffb08317e6c1a
+  rg: 4.032.894-40
+  emissao_rg: IISC
+  cep:
+  bairro:
+  endereco:
+  numero_endereco:
+  complemento_endereco:
+  telefone1:
+  telefone2:
+  email:
+  tufibge_id:
+  tmibge_id:
+  tcbo_id: tcbos_Medico_Pediatra
+  tconselho_id:
+  orgao_id: orgaos_Unidade_Saude_Cajuru
+  matricula:
+  role: atendente
+  ativo: true
+
+profissionais_Tecnico_Adib_Jatene:
+  nome: Adib Jatene
+  data_nascimento: 1929-01-04
+  cpf: 438.153.744-05
+  encrypted_password: 4e1a50b4d8ac01c8e23ffb08317e6c1a
+  rg: 41.875.789-6
+  emissao_rg: IIAC
+  cep:
+  bairro:
+  endereco:
+  numero_endereco:
+  complemento_endereco:
+  telefone1:
+  telefone2:
+  email:
+  tufibge_id:
+  tmibge_id:
+  tcbo_id: tcbos_Medico_Cardiologista
+  tconselho_id:
+  orgao_id: orgaos_Unidade_Saude_Cajuru
+  matricula:
+  role: tecnico
+  ativo: true
+
+profissionais_Atendente_Ivo_Pitanguy:
+  nome: Ivo Pitanguy
+  data_nascimento: 1926-07-05
+  cpf: 169.272.906-30
+  encrypted_password: 4e1a50b4d8ac01c8e23ffb08317e6c1a
+  rg: 91.122.534-1
+  emissao_rg: IIBH
+  cep:
+  bairro:
+  endereco:
+  numero_endereco:
+  complemento_endereco:
+  telefone1:
+  telefone2:
+  email:
+  tufibge_id:
+  tmibge_id:
+  tcbo_id: tcbos_Medico_Pediatra
+  tconselho_id:
+  orgao_id: orgaos_Unidade_Saude_Cajuru
+  matricula:
+  role: atendente
+  ativo: false
+
+profissionais_Administrador_Miguel_Nicolelis:
+  nome: Miguel Nicolelis
+  data_nascimento: 1961-03-07
+  cpf: 572.650.241-84
+  encrypted_password: 4e1a50b4d8ac01c8e23ffb08317e6c1a
+  rg: 4.032.894-40
+  emissao_rg: IISP
+  cep:
+  bairro:
+  endereco:
+  numero_endereco:
+  complemento_endereco:
+  telefone1:
+  telefone2:
+  email:
+  tufibge_id:
+  tmibge_id:
+  tcbo_id: tcbos_Medico_Pediatra
+  tconselho_id:
+  orgao_id: orgaos_Unidade_Saude_Oswaldo_Cruz
+  matricula:
+  role: administrador
+  ativo: true

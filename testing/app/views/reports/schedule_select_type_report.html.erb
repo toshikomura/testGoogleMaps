@@ -1,0 +1,18 @@
+<div id="texto-maior">
+<h2>Relatórios</h2>
+
+<%= form_for(@reports, :as => :report, :method => :post,
+    :url => { :action => :show, :format => :pdf, :report => @report }) do |f| %>
+
+  <div class="field">
+    <%= collection_select(:report, :id, @reports, :id, :description,
+        { :prompt => "Selecione um tipo de relatório" }) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Continuar" %>
+  </div>
+
+<% end %>
+
+</div>

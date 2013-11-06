@@ -1,0 +1,68 @@
+<div id="texto-maior">
+<h2>Agendamento:</h2>
+
+<% unless @agendamento.cidadao.nil? %>
+  <p>
+    <b>Agendado para:</b>
+    <%= @agendamento.cidadao.nome %>
+    (CPF: <%= @agendamento.cidadao.cpf %>)
+  </p>
+<% end %>
+
+<p>
+  <b>Local de atendimento:</b>
+  <% if @agendamento.orgao.nil? %>
+    ERRO: Agendamento não possui local de atendimento, por favor contate o suporte!
+  <% else %>
+    <%= @agendamento.orgao.nome %>
+  <% end %>
+</p>
+
+<% if @agendamento.escala.nil? %>
+  ERRO: Agendamento não possui escala, por favor contate o suporte!
+<% else %>
+  <p>
+    <b>Tipo de atendimento:</b>
+    <% if @agendamento.escala.tipo_atendimento.nil? %>
+      ERRO: Agendamento não possui tipo de atendimento, por favor contate o
+suporte!
+    <% else %>
+      <%= @agendamento.escala.tipo_atendimento.descricao %>
+    <% end %>
+  </p>
+
+  <p>
+    <b>Data:</b>
+    <%= @agendamento.escala.data_execucao.strftime("%d/%m/%Y") %>
+  </p>
+<% end %>
+
+<p>
+  <b>Horário de início da consulta</b>
+  <%= @agendamento.horario_inicio_consulta.strftime("%H:%M:%S") %>
+</p>
+
+<p>
+  <b>Horário de término da consulta:</b>
+  <%= @agendamento.horario_fim_consulta.strftime("%H:%M:%S") %>
+</p>
+
+<p>
+  <b>Observações:</b>
+  <%= @agendamento.observacao %>
+</p>
+
+<p>
+  <b>Situação:</b>
+  <% if @agendamento.tipo_situacao.nil? %>
+    ERRO: Agendamento não possui situação, por favor contate o suporte!
+  <% else %>
+    <%= @agendamento.tipo_situacao.descricao %>
+  <% end %>
+</p>
+
+<%= link_to 'Voltar', agendamentos_path %>
+
+<br />
+
+</div>

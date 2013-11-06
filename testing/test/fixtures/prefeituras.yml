@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+prefeituras_Curitiba:
+  nome: Prefeitura Municipal de curitiba
+  cep: 80530-908
+  bairro: Centro Cívico
+  endereco: Av. Cândido de Abreu
+  numero_endereco: 817
+  complemento_endereco: Casa 23
+  telefone1: (41)3350-8484
+  telefone2: (99)9999-9999
+  email: curitiba@org.br
+  logo: /path/logo
+  tufibge_id: tufibge_PR
+  tmibge_id: tmibge_curitiba
+  limite_cancelamento: 48
+  max_agendamentos: 3
+  dias_bloqueio: 30
+  max_faltas: 1
+  periodo_agendamentos: 90
+  antecedencia_avisos: 48

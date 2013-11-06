@@ -1,0 +1,634 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ */
+
+/*
+Cores:
+Azul claro: #a0e2e0
+Azul escuro: #1cbbb4
+Laranja: #ff8c03
+Amarelo: #ffe327
+Vermelho: #ec1d27
+Verde: #39b54a
+*/
+body {
+  line-height: 1.5;
+  background-color: #a0e2e0;
+  min-width: 1280px; /* Resolução mínima */
+  min-height: 600px;
+  height: 100%;
+  margin: 0;
+  margin-bottom: 25px;
+  padding: 0;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 16px;
+}
+#content {
+  background-color: white;
+  overflow: auto;
+  height: 100%;
+}
+#content .main {
+  margin-left: 40px;
+}
+#texto {
+  float:left;
+  display: block;
+  width: 65%;
+  margin-bottom: 20px;
+}
+#texto h2 span {
+  text-decoration: underline;
+}
+#texto-maior {
+  float:left;
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+}
+#texto-maior h2 span {
+  text-decoration: underline;
+}
+#texto-maior h4 {
+  color: #ff8c03; 
+}
+#calendario {
+  position: absolute;
+  top: 260px;  
+}
+
+/* ------------------------------- */
+/*            Footer               */
+/* ------------------------------- */
+#footer {
+  background-color: #1cbbb4;
+  clear: both;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+#footer ul{
+  margin-left: 25%;
+}
+#footer li{
+  list-style: none;
+  display: inline;
+}
+#footer li a {
+  text-decoration: none;
+  padding: 15px;
+  color: white;
+}
+#footer li a:hover {
+  background: transparent;
+  color: white;
+}
+#footer-images {
+  background-color: white;
+  clear: both;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: -25px;
+}
+#footer-images ul{
+  margin-left: 20%;
+}
+#footer-images li{
+  padding: 15px;
+  list-style: none;
+  display: inline;
+}
+#footer-images li a{
+  text-decoration: none;
+  background: transparent; 
+}
+#footer li a:hover {
+  background: transparent; 
+}
+/* ------------------------------- */
+
+/* ------------------------------- */
+/*           Header                */
+/* ------------------------------- */
+#header {
+  margin-left: 210px;
+  width: 50%;
+  padding: 20px;
+  padding-left: 75px;
+  padding-right: 30px;
+  height: 100px;
+}
+#barra-brasil {
+  overflow: hidden;
+  width: 100%;
+  background: none repeat scroll 0% 0% rgb(0, 75, 130);
+  display: inline-block;
+  height: 28px;
+}
+.barra-brasil-left {
+  background: url("barra-brasil-v3-bgx.gif") repeat-x scroll 0px 26px transparent;
+  height: 28px;
+  float: left;
+  width: 50%;
+  margin: 0px;
+}
+.barra-brasil-container {
+  display: block;
+  height: 28px;
+  background: url("barra-brasil-v3-bgx.gif") repeat-x scroll 0px 26px rgb(0, 75, 130);
+  padding: 0px;
+  margin: 0px auto;
+  text-align: right;
+  width: 950px;
+}
+.barra-brasil-container-ai {
+  display: inline-block;
+  height: 28px;
+}
+.barra-brasil-container-ai .brasilgov {
+  display: block;
+  width: 108px;
+  height: 28px;
+  background: url("brasil.png") no-repeat scroll 0px 4px rgb(0, 75, 130);
+  float: right;
+}
+.barra-brasil-container-ai .ai {
+  display: block;
+  width: 161px;
+  height: 28px;
+  background: url("ai.png") no-repeat scroll 0px 4px rgb(0, 75, 130);
+  float: right;  
+}
+.barra-brasil-right {
+  background: url("barra-brasil-v3-bgx.gif") repeat-x scroll 0px 26px transparent;
+  height: 28px;
+  float: right;
+  width: 50%;
+  margin: 0px auto;
+}
+#acessibilidade {
+  font-size: 16px;
+  float: right;
+}
+#acessibilidade a {
+  padding: 5px;
+  color: black;
+  text-decoration: none;
+}
+#acessibilidade a:hover { 
+  text-decoration: underline;
+}
+#diminuir-fonte {
+  font-size: 15px;
+}
+#aumentar-fonte {
+  font-size: 17px;
+}
+
+/* ------------------------------- */
+/*      Formulários e Tabelas      */
+/* ------------------------------- */
+#formulario-horizontal .field {
+  display: inline-block;
+  padding: 5px;
+}
+#search-form .field {
+  display: inline-block;
+  padding: 5px;
+}
+hr {
+  border: 0px;
+  background-color: #a0e2e0;
+  height: 2px;
+  width: 103%;
+  margin-left: -40px;
+  margin-top: 25px;
+}
+.field textarea {
+  background: #EEE;
+}
+.field input, textarea {
+  padding: 5px;
+  border: 1px solid #999;
+  -webkit-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.field-required input {
+  padding: 5px;
+  border: 1px solid #999; /* #ec1d27; */
+  -webkit-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.field select {
+  padding: 5px 35px 5px 5px;
+  overflow: hidden;
+  border: 1px solid #a0e2e0;
+  background: url("down_arrow_select.jpg") no-repeat right #a0e2e0;
+  -webkit-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  text-overflow: ""; /* Remove a flecha padrão no firefox */ 
+  text-indent: 0.01px;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.field-required select {
+  padding: 5px 35px 5px 5px;
+  overflow: hidden;
+  border: 1px solid #a0e2e0; /* #ec1d27;*/
+  background: url("down_arrow_select.jpg") no-repeat right #a0e2e0;
+  -webkit-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  text-overflow: "";  /* Remove a flecha padrão no firefox */
+  text-indent: 0.01px;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.actions input, button {
+  padding: 5px;
+  background-color: #ff8c03;
+  border: 1px solid #ff8c03;
+  -webkit-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  color: white;
+}
+.list {
+  margin-top: 25px;
+  width: 95%;
+  border: 2px solid #1cbbb4;
+  border-collapse: separate;
+  border-spacing: 0px;
+  background-color: white;
+  -webkit-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.list td {
+  border-left: 2px dashed #a0e2e0;
+  border-top: 2px solid #1cbbb4;
+  border-bottom: 2px solid #1cbbb4;  
+  text-align: center;
+  padding: 5px;
+}
+.list td:first-child {
+  border-left: 0px;
+}
+.list thead a { color: white; }
+.list thead a:visited { color: white; }
+.list thead a:hover { 
+  color: white;
+  background-color: transparent;
+}
+.list thead th {
+  background-color: #1cbbb4;
+  color: white;
+  height: 40px;
+  overflow: hidden;
+  border-left: 2px dashed #a0e2e0;
+  padding: 5px;
+}
+.list thead th:first-child {
+  border: 0px;
+}
+
+/* ------------------------------- */
+/*       Tabs e Subtabs            */
+/* ------------------------------- */
+.tabs {
+  margin: 48px 0px -24px 280px;
+}
+.tabs, .tabs ul, .tabs ul li, .tabs ul li span, .tabs ul li a,
+.subtabs, .subtabs ul, .subtabs ul li, .subtabs ul li span, .subtabs ul li a {
+  padding: 0;
+  line-height: 1;
+}
+.tabs, .tabs a, .tabs a:visited, .tabs a:hover {
+  color: #444;
+}
+.tabs li.disabled, .tabs li.disabled a, .tabs li.disabled a:visited,
+.tabs li.disabled a:hover, .subtabs li.disabled, .subtabs li.disabled a,
+.subtabs li.disabled a:visited, .subtabs li.disabled a:hover {
+  color: #888;
+}
+.tabs a {
+  text-decoration: none;
+}
+.tabs ul {
+  font-size: 20px;
+  height: 57px;
+  list-style-type: none;
+  background-color: #a0e2e0;
+  padding: 0px;
+}
+.tabs ul li {
+  height: 20px;
+  padding-top: 10px;
+  padding-right: 1px;
+  float: left;
+}
+.tabs ul li .tab {
+  background-color: #aaa;
+  padding: 12px 18px 11px 18px;
+  float: left;
+  -webkit-border-top-left-radius: 8px;
+  -khtml-border-radius-topleft: 8px;
+  -moz-border-radius-topleft: 8px;
+  border-top-left-radius: 8px;
+  -webkit-border-top-right-radius: 8px;
+  -khtml-border-radius-topright: 8px;
+  -moz-border-radius-topright: 8px;
+  border-top-right-radius: 8px;
+}
+.tabs ul li.active .tab {
+  background-color: #1cbbb4;
+  padding-bottom: 18px;
+  color: white;
+}
+.tabs ul li a:hover {
+  background-color: #ddd;
+}
+
+.tabs ul {
+  /* float clearing */
+  overflow: hidden;
+  display: inline-block; /* Necessary to trigger "hasLayout" in IE */
+  display: block; /* Sets element back to block */
+}
+.subtabs {
+  background-color: #1cbbb4;
+  margin-left: 280px;
+  height: 40px;
+}
+.subtabs ul {
+  margin-left: 8px;
+  list-style-type: none;
+}
+.subtabs ul li {
+  padding: 10px;
+  float: left;
+}
+.subtabs ul li a {
+  font-size: 18px;
+  text-decoration: none;
+  color: white;
+  background: transparent; 
+}
+.subtabs ul li a:hover {
+  color: #ffe327;
+  text-decoration: underline;
+  background: transparent; 
+}
+.subtabs li.active a {
+  color: #ffe327;
+  text-decoration: underline;
+}
+#login-info {
+  width: 280px;
+  float: left;
+  margin-left: 0px;
+  margin-top: 26px;
+  font-size: 16px;
+}
+#login-info ul {
+  list-style-type: none;
+  margin: 20px 0px 0px 40px;
+  padding: 0px;
+}
+#login-info ul li {
+  padding: 2px 30px 2px 2px;
+  float: left;
+  overflow: hidden;
+  height: 25px;
+}
+#login-info ul li.nome {
+  width: 200px;
+}
+#login-info ul li a {
+  text-decoration: none;
+  color: #444;
+  background: transparent;
+}
+#login-info ul li a:hover {
+  text-decoration: underline;
+  color: #444;
+  background: transparent;
+}
+#login-info .bar {
+  margin-top: 105px;
+  width: 280px;
+  border-bottom-style: solid;
+  border-bottom-color: #1cbbb4;
+  border-bottom-width: 10px;
+}
+#login-info .bar-nologin {
+  margin-top: 75px;
+  width: 280px;
+  border-bottom-style: solid;
+  border-bottom-color: #1cbbb4;
+  border-bottom-width: 40px;
+}
+
+/* ------------------------------- */
+/*       Views Cidadao             */
+/* ------------------------------- */
+#nao-bloqueado h3 {
+  background: url("ico_calendario_verde.png") no-repeat left bottom transparent;
+  padding: 10px 10px 15px 60px;
+  color: #39b54a; 
+}
+#bloqueado h3 {
+  background: url("ico_calendario_vermelho.png") no-repeat left bottom transparent;
+  padding: 10px 10px 15px 60px;
+  color: #ec1d27; 
+}
+/* ------------------------------- */
+/*       Scaffolds                 */
+/* ------------------------------- */
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+a { color: rgb(37, 24, 181); }
+a:visited { color: rgb(37, 24, 181); }
+a:hover { 
+  color: rgb(37, 24, 181);
+  background-color: transparent;
+}
+div .field, .actions, .field-required {
+  margin-bottom: 10px;
+}
+#notice {
+  width: 50%;
+  padding: 10px 15px 10px 60px;
+  color: white;
+  margin-bottom: 0px;
+  background: url("ok.png") no-repeat left bottom #39b54a;
+  -webkit-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px; 
+}
+#alert {
+  width: 50%;
+  padding: 10px 15px 10px 60px;
+  color: white;
+  margin-bottom: 0px;
+  background: url("ok.png") no-repeat left bottom #ec1d27;
+  -webkit-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px; 
+}
+#span-aviso {
+  color: #39b54a;
+}
+#span-alerta {
+  color: #ec1d27;
+}
+.field_with_errors input{
+  border-color: #ec1d27;
+}
+.field_with_errors select {
+  border-color: #ec1d27;
+}
+#error_explanation {
+  width: 450px;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #EEE;
+  border: 1px solid #ec1d27;
+  -webkit-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px; 
+}
+#error_explanation  h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 16px;
+  margin: -7px;
+  margin-bottom: 0px;
+}
+
+/* ------------------------------- */
+/*    Calendário Agendamento       */
+/* ------------------------------- */
+#calendario_agendamento table {
+  margin-top: 25px;
+  border: 1px solid #1cbbb4;
+  border-collapse: separate;
+  border-spacing: 0px;
+  background-color: white;
+  -webkit-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+#calendario_agendamento td {
+  border: 1px solid #1cbbb4;
+  text-align: center;
+  font-weight: bold;
+  padding: 15px;
+  background-color: transparent;
+}
+#calendario_agendamento td.notmonth {
+  color: #AAA;
+  font-weight: normal;
+}
+#calendario_agendamento td.weekend {
+  color: #666;
+  font-weight: normal;
+}
+#calendario_agendamento a { color: white; }
+#calendario_agendamento a:visited { color: white; }
+#calendario_agendamento a:hover { 
+  color: white;
+  background-color: transparent;
+}
+#calendario_agendamento thead th {
+  background-color: #1cbbb4;
+  color: white;
+  height: 40px;
+  overflow: hidden;
+  padding: 5px;
+}
+#calendario_agendamento thead tr.navmes th {
+  border-bottom: 1px solid #a0e2e0;
+}
+#calendario_agendamento thead tr.navmes input {
+  margin-top: 5px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  width: 0px;
+  height: 0px;
+  border: 0px;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 12px solid white;
+}
+#calendario_agendamento thead tr.navmes input.mes_anterior {
+  border: 0px;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-right: 12px solid white;
+}
+#calendario_agendamento tbody input {
+  background: transparent; 
+  color: white;
+  border: 0px;
+  padding: 0px;
+  cursor: pointer;
+}
+#calendario_agendamento tbody td.event {
+  background-color: #39b54a;
+}
+#legenda p {
+  padding-top: 4px;
+  margin-left: 40px;
+  color: #39b54a;
+}
+#legenda .caixa-verde {
+  float: left;
+  width: 0px;
+  height: 0px;
+  border: 15px solid #39b54a;
+  background-color: #39b54a;
+  -webkit-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+#termo_compromisso {
+  width: 95%;
+  background: #EEE;
+  padding: 5px;
+  border: 1px solid #999;
+  -webkit-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}

@@ -1,0 +1,23 @@
+<div id="texto-maior">
+<h2>Agendamento</h2>
+
+<h4>Passo 1 de 6 - Termo de Compromisso</h4>
+
+<div id="termo_compromisso">
+ <p><%= render "agreement_term" %></p>
+</div>
+
+<div id="formulario-horizontal">
+<%= form_tag(cidadaos_agendamentos_termo_compromisso_path, method: :get) do %>
+  <div class="field">
+    <b><%= check_box_tag("termo_aceito") %>
+    Li e aceito o que foi disposto no Termo de Compromisso.</b>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "Continuar" %>
+  </div>
+<% end %>
+</div>
+
+</div>

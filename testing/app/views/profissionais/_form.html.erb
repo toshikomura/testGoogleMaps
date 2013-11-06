@@ -1,0 +1,139 @@
+<div class="form">
+  <%= form_for(@profissional) do |f| %>
+    <% if @profissional.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@profissional.errors.count, "erro") %>,
+Profissional não pode ser salvo :</h2>
+        <ul>
+          <% @profissional.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field-required">
+      <%= f.label :ativo, "Situação*:" %><br />
+      <% if @profissional.new_record? %>
+        <%= f.text_field :ativo, :value => "Ativo", :disabled => true %>
+      <% else %> 
+        <%= f.select :ativo, [["Ativo",true],["Inativo",false]] %>
+      <% end %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :nome, "Nome*:" %><br />
+      <%= f.text_field :nome %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :cpf, "CPF*:" %><i>(CPF será usado como identificação)</i><br />
+      <%= f.text_field :cpf, :class => "cpf" %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :rg, "RG*:" %><br />
+      <%= f.text_field :rg %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :emissao_rg, "Órgão emissor do RG*:" %><br />
+      <%= f.text_field :emissao_rg %>
+    </div>
+
+    <div class="field">
+      <%= f.label :matricula, "Matrícula:" %><br />
+      <%= f.text_field :matricula %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :data_nascimento, "Data de nascimento*:" %><br />
+      <%= date_select(:profissional, :data_nascimento, { :order => [ :day, :month, :year ], :start_year => (Time.now.year-110), :end_year => Time.now.year }) %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :orgao_id, "Local de Atendimento*:" %><br />
+      <%= collection_select(:profissional, :orgao_id, Orgao.where("ativo =
+?",true), :id, :nome, { :prompt => "Selecione um Local de Atendimento" }) %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :role, "Permissão*:" %><br />
+      <%= f.select :role, Profissional::ROLES %>
+    </div>
+
+    <div class="field-required">
+      <%= f.label :tcbo_id, "Ocupação*:"  %><br />
+      <%= collection_select(:profissional, :tcbo_id, Tcbo.all, :id, :descricao, { :prompt => "Selecione uma ocupação" }) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :tconselho, "Conselho:" %><br />
+      <%= collection_select(:profissional, :tconselho_id, Tconselho.all, :id, :descricao, { :prompt => "Selecione um conselho"}) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :cep, "CEP:" %><br />
+      <%= f.text_field :cep, :class => "cep" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :tufibge_id, "Estado do endereço:" %><br />
+      <%= collection_select(:profissional, :tufibge_id,
+Tufibge.all, :id, :nome_uf, { :include_blank => "Selecione um Estado" }) %>
+    </div>
+
+    <div class="field">
+      <%= hidden_field_tag :lista_municipios, root_url %>
+      <%= f.label :tmibge_id, "Município:" %><br />
+      <p id="profissional_tmibge_id_loading" style="display: none;"><i>Carregando lista de municípios...</i></p>
+      <% if @profissional.tufibge.nil? %>
+        <%= select(:profissional, :tmibge_id, %w[], { :include_blank => "Selecione um Município" }, { :disabled => "disabled" }) %>
+      <% else %>
+        <%= collection_select(:profissional, :tmibge_id,
+Tmibge.where("tufibge_id = ?", @profissional.tufibge_id), :id,
+:nome_municipio, { :include_blank => "Selecione um Município" }) %>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <%= f.label :bairro, "Bairro:" %><br />
+      <%= f.text_field :bairro %>
+    </div>
+
+    <div class="field">
+      <%= f.label :endereco, "Endereço:" %><br />
+      <%= f.text_field :endereco %>
+    </div>
+
+    <div class="field">
+      <%= f.label :numero_endereco, "Número:" %><br />
+      <%= f.number_field :numero_endereco %>
+    </div>
+
+    <div class="field">
+      <%= f.label :complemento_endereco, "Complemento:" %><br />
+      <%= f.text_field :complemento_endereco %>
+    </div>
+
+    <div class="field">
+      <%= f.label :telefone1, "Telefone 1:" %><br />
+      <%= f.text_field :telefone1, :class => "phone" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :telefone2, "Telefone 2:" %><br />
+      <%= f.text_field :telefone2, :class => "phone" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :email, "E-mail:" %><br />
+      <%= f.text_field :email %>
+    </div>
+
+    <p><font color="red"> Campos com (*) são de preenchimento obrigatório.</font></p>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

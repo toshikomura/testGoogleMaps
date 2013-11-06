@@ -1,0 +1,66 @@
+<div id="texto-maior">
+<h2>Profissionais</h2>
+
+<div id="search-form">
+<h4>Buscar Profissionais:</h4>
+  <%= search_form_for(@search, :remote => true) do |f| %>
+    <div class="field">
+      <%= f.label :nome, "Nome: " %><br />
+      <%= f.text_field :nome_cont, :class => "search-field"  %>
+    </div>
+
+    <div class="field">
+      <%= f.label :matricula, "Matrícula: " %><br />
+      <%= f.text_field :matricula_cont, :class => "search-field"  %>
+    </div>
+
+    <div class="field">
+      <%= f.label :orgao_id, "Local de Atendimento:" %><br />
+      <%= f.select :orgao_id_eq,
+options_from_collection_for_select(Orgao.all,"id","nome",@search.orgao_id_eq),
+{:include_blank => "Todos"}, {:class => "search-field"} %>
+    </div>
+
+    <div class="field">
+      <%= f.label :role, "Permissão: " %><br />
+      <%= f.select :role_eq,
+options_for_select(Profissional::ROLES,@search.role_eq),
+{:include_blank => "Todos"},{:class => "search-field"} %>
+    </div>
+
+    <div class="field">
+      <%= f.label :tcbo_id, "Ocupação" %><br />
+      <%= f.select :tcbo_id_eq,
+options_from_collection_for_select(Tcbo.all,"id","descricao",@search.tcbo_id_eq),
+{:include_blank => "Todos"}, {:class => "search-field"} %>
+    </div>
+
+    <div class="field">
+      <%= f.label :cpf, "CPF:" %><br />
+      <%= f.text_field :cpf_eq, :class => "cpf" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :ativo, "Situação:" %><br />
+      <%= f.select :ativo_eq,
+options_for_select([["Ativo",true],["Inativo",false]],@search.ativo_eq),
+{:include_blank => "Todos"},{:class => "search-field"} %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Buscar" %>
+      <%= f.submit "Limpar campos",  :id => :reset_btn  %>
+    </div>
+  <% end %>
+<hr>
+</div>
+
+<div id="tabela_profissionais">
+  <%= render "tabela_profissionais" %>
+</div>
+
+<br />
+
+<%= link_to "Novo Profissional", new_profissional_path %>
+
+</div>
