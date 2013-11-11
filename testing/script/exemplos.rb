@@ -19,7 +19,7 @@ require 'csv'
     puts "Prefeitura #{prefeitura.nome} existente"
     res = Prefeitura.update(prefeitura.id,
                             :nome => "Prefeitura Municipal de Newcastle",
-                            :cep => "80.530-908",
+                            :cep => "80530-908",
                             :bairro => "Centro Cívico",
                             :endereco => "Av. Cândido de Abreu",
                             :numero_endereco => 23,
@@ -38,7 +38,7 @@ require 'csv'
     end
   else
     prefeitura = Prefeitura.new(:nome => "Prefeitura Municipal de Newcastle",
-                            :cep => "80.530-908",
+                            :cep => "80530-908",
                             :bairro => "Centro Cívico",
                             :endereco => "Av. Cândido de Abreu",
                             :numero_endereco => 23,
@@ -64,7 +64,7 @@ require 'csv'
     puts "Órgão #{orgao.nome} duplicado"
     res = Orgao.update(orgao.id,
                       :nome => "Administração geral da prefeitura de Newcastle",
-                      :cep => "80.035-010",
+                      :cep => "80035-010",
                       :bairro => "Cabral",
                       :endereco => "R. Bom Jesus",
                       :numero_endereco => 23,
@@ -79,7 +79,7 @@ require 'csv'
     end
   else
     orgao = Orgao.new(:nome => "Administração geral da prefeitura de Newcastle",
-                      :cep => "80.035-010",
+                      :cep => "80035-010",
                       :bairro => "Cabral",
                       :endereco => "R. Bom Jesus",
                       :numero_endereco => 23,
@@ -100,7 +100,7 @@ require 'csv'
     puts "Órgão #{sms.nome} duplicado"
     res = Orgao.update(sms.id,
                     :nome => "SMS - Secretaria Municipal da Saúde",
-                    :cep => "80.035-010",
+                    :cep => "80035-010",
                     :bairro => "Cabral",
                     :endereco => "R. Bom Jesus",
                     :numero_endereco => 23,
@@ -115,7 +115,7 @@ require 'csv'
     end
   else
     sms = Orgao.new(:nome => "SMS - Secretaria Municipal da Saúde",
-                    :cep => "80.035-010",
+                    :cep => "80035-010",
                     :bairro => "Cabral",
                     :endereco => "R. Bom Jesus",
                     :numero_endereco => 23,
@@ -131,12 +131,12 @@ require 'csv'
   end
 
   # Registro do root
-  root = Profissional.find_by_cpf("999.999.999-99")
+  root = Profissional.find_by_cpf("306.889.437-99")
   if (root)
     puts "Profissional #{root.nome} #{root.role} #{root.cpf} duplicado"
     res = Profissional.update(root.id,
                             :nome => "Osvaldo Cruz",
-                            :cpf => "999.999.999-99",
+                            :cpf => "306.889.437-99",
                             :rg => "22.222.222-22",
                             :emissao_rg => "IIPR",
                             :data_nascimento => "2013-01-01",
@@ -153,7 +153,7 @@ require 'csv'
     end
   else
     root = Profissional.new(:nome => "Osvaldo Cruz",
-                            :cpf => "999.999.999-99",
+                            :cpf => "306.889.437-99",
                             :rg => "22.222.222-22",
                             :emissao_rg => "IIPR",
                             :data_nascimento => "2013-01-01",
@@ -203,6 +203,50 @@ require 'csv'
                                     :tcbo_id => 12,
                                     :password => "123456",
                                     :password_confirmation => "123456")
+    if profissional.save
+      puts "Salvo registro #{profissional.nome} #{profissional.role} #{profissional.cpf}"
+    else
+      puts "Erro ao salvar registro #{profissional.nome} #{profissional.role} #{profissional.cpf}"
+    end
+  end
+
+  # Registro de um profissional do órgão sms
+  profissional = Profissional.find_by_cpf("759.246.769-00")
+  if (profissional)
+    puts "Profissional #{profissional.nome} #{profissional.role} #{profissional.cpf} duplicado"
+    res = Profissional.update(profissional.id,
+                                    :nome => "João Curvo",
+                                    :cpf => "759.246.769-00 ",
+                                    :matricula => "2013-02",
+                                    :rg => "11.111.111-11",
+                                    :emissao_rg => "IIPR",
+                                    :data_nascimento => "2013-02-01",
+                                    :orgao_id => sms.id,
+                                    :role => "atendente",
+                                    :ativo => true,
+                                    :tcbo_id => 12,
+                                    :password => "123456",
+                                    :password_confirmation => "123456")
+
+    if (res)
+      puts "Atualizado registro #{profissional.nome} #{profissional.role} #{profissional.cpf}"
+    else
+      puts "Erro ao atualizar registro #{profissional.nome} #{profissional.role} #{profissional.cpf}"
+    end
+  else
+    profissional = Profissional.new(:nome => "João Curvo",
+                                    :cpf => "759.246.769-00 ",
+                                    :matricula => "2013-02",
+                                    :rg => "11.111.111-11",
+                                    :emissao_rg => "IIPR",
+                                    :data_nascimento => "2013-02-01",
+                                    :orgao_id => sms.id,
+                                    :role => "tecnico",
+                                    :ativo => true,
+                                    :tcbo_id => 12,
+                                    :password => "123456",
+                                    :password_confirmation => "123456")
+
     if profissional.save
       puts "Salvo registro #{profissional.nome} #{profissional.role} #{profissional.cpf}"
     else

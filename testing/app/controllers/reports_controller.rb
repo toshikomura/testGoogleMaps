@@ -10,7 +10,20 @@ class ReportsController < ApplicationController
 
   end
 
-  def show
+  # GET /reports/tipo_relatorio
+  def schedule_select_type_report
+
+    unless params[:tipo_relatorio].nil?
+      redirect_to reports_path
+    else
+      respond_to do |format|
+        format.html
+      end
+    end
+
+  end
+
+  def select_type_report
 
     unless params[:report][:id].nil? or params[:report][:id].empty?
 
@@ -27,26 +40,8 @@ class ReportsController < ApplicationController
 
         if @type_report.description == "Profissionais"
           redirect_to reports_relatorio_profissionais_relatorio_path
-#          respond_to do |format|
-#            format.pdf {
-#              @profissionais = Profissional.all
-
-#              report = ProfissionaisReport.new(:page_size => [595.28, 841.89]).to_pdf( @prefeitura, @orgao, @profissionais)
-#              send_data report, filename: "profissionais.pdf",
-#                                type: "application/pdf"
-#            }
-#          end
-
         elsif @type_report.description == "Cidadaos"
-          respond_to do |format|
-            format.pdf {
-              @cidadaos = Cidadao.all
-              report = CidadaosReport.new(:page_size => [595.28, 841.89]).to_pdf( @prefeitura, @orgao, @cidadaos)
-              send_data report, filename: "cidadaos.pdf",
-                                type: "application/pdf"
-            }
-          end
-
+          redirect_to reports_relatorio_cidadaos_relatorio_path
         elsif @type_report.description == "Escalas"
           redirect_to reports_relatorio_escalas_relatorio_path
         elsif @type_report.description == "Agendamentos"
@@ -71,18 +66,6 @@ class ReportsController < ApplicationController
 
   end
 
-  # GET /reports/tipo_relatorio
-  def schedule_select_type_report
-
-    unless params[:tipo_relatorio].nil?
-      redirect_to reports_path
-    else
-      respond_to do |format|
-        format.html
-      end
-    end
-
-  end
 
   def schedule_select_profissionais_report
 
@@ -118,6 +101,40 @@ class ReportsController < ApplicationController
     end
   end
 
+  def schedule_select_cidadaos_report
+
+    @search = Cidadao.search(params[:q])
+
+    respond_to do |format|
+      format.html
+    end
+
+  end
+
+  def generate_cidadaos_report
+
+    respond_to do |format|
+      format.pdf {
+
+        @prefeitura = Prefeitura.first
+
+        if current_profissional.orgao.nil?
+          @orgao = ""
+        else
+          @orgao = current_profissional.orgao
+        end
+
+        @search = Cidadao.search(params[:q])
+
+        @cidadaos = @search.result
+
+        report = CidadaosReport.new(:page_size => [595.28, 841.89]).to_pdf( @prefeitura, @orgao, @cidadaos)
+        send_data report, filename: "cidadaos.pdf",
+                          type: "application/pdf"
+      }
+    end
+  end
+
   def schedule_select_escalas_report
 
     @search = Escala.search(params[:q])
@@ -144,7 +161,19 @@ class ReportsController < ApplicationController
           current_profissional.orgao.id).order("data_execucao ASC")
           @orgao = current_profissional.orgao
         end
-        report = EscalasReport.new(:page_size => [595.28, 841.89]).to_pdf( @prefeitura, @orgao, @escalas)
+
+        @data_inicio = Date.new(
+                                params["q"]["data_execucao_gteq(1i)"].to_i,
+                                params["q"]["data_execucao_gteq(2i)"].to_i,
+                                params["q"]["data_execucao_gteq(3i)"].to_i
+                                )
+        @data_fim = Date.new(
+                                params["q"]["data_execucao_lteq(1i)"].to_i,
+                                params["q"]["data_execucao_lteq(2i)"].to_i,
+                                params["q"]["data_execucao_lteq(3i)"].to_i
+                                )
+
+        report = EscalasReport.new(:page_size => [595.28, 841.89]).to_pdf( @prefeitura, @orgao, @escalas, @data_inicio, @data_fim)
         send_data report, filename: "escalas.pdf",
                           type: "application/pdf"
       }
@@ -176,10 +205,16 @@ class ReportsController < ApplicationController
 
         @agendamentos = @search.result.order("horario_inicio_consulta ASC")
 
-        @data_inicio = params[:q][:escala_data_execucao_gteq]
-        @data_fim = params[:q][:escala_data_execucao_lteq]
-
-        Rails.logger.info "#{@data_inicio.inspect}"
+        @data_inicio = Date.new(
+                                params["q"]["escala_data_execucao_gteq(1i)"].to_i,
+                                params["q"]["escala_data_execucao_gteq(2i)"].to_i,
+                                params["q"]["escala_data_execucao_gteq(3i)"].to_i
+                                )
+        @data_fim = Date.new(
+                                params["q"]["escala_data_execucao_lteq(1i)"].to_i,
+                                params["q"]["escala_data_execucao_lteq(2i)"].to_i,
+                                params["q"]["escala_data_execucao_lteq(3i)"].to_i
+                                )
 
         report = AgendamentosReport.new(:page_size => [595.28, 841.89]).to_pdf( @prefeitura, @orgao, @agendamentos, @data_inicio, @data_fim)
         send_data report, filename: "agendamentos.pdf",

@@ -1,12 +1,13 @@
 Agendador::Application.routes.draw do
 
-  resources :reports, :except => [ :new, :edit, :update, :destroy ]
+  resources :reports, :except => [ :new, :edit, :show, :update, :destroy ]
 
   post "reports/profissionais"
   post "reports/cidadaos"
   post "reports/agendamentos"
-  post "reports/show"
+  post "reports/select_type_report"
   post "/reports/relatorio/gerar_relatorio_profissionais" => "reports#generate_profissionais_report"
+  post "/reports/relatorio/gerar_relatorio_cidadaos" => "reports#generate_cidadaos_report"
   post "/reports/relatorio/gerar_relatorio_escalas" => "reports#generate_escalas_report"
   post "/reports/relatorio/gerar_relatorio_agendamentos" => "reports#generate_agendamentos_report"
 
@@ -15,6 +16,7 @@ Agendador::Application.routes.draw do
   get "/reports/relatorio/mes_relatorio" => "reports#schedule_select_month_report"
   get "/reports/relatorio/dia_relatorio" => "reports#schedule_select_day_report"
   get "/reports/relatorio/profissionais_relatorio" => "reports#schedule_select_profissionais_report"
+  get "/reports/relatorio/cidadaos_relatorio" => "reports#schedule_select_cidadaos_report"
   get "/reports/relatorio/escalas_relatorio" => "reports#schedule_select_escalas_report"
   get "/reports/relatorio/agendamentos_relatorio" => "reports#schedule_select_agendamentos_report"
 

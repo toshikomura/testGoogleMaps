@@ -1,0 +1,155 @@
+/* Contraste */
+/* Cores:
+  Amarelo: #ffe327
+*/
+body.alto-contraste {
+  background-color: black;
+  color: #ffe327;
+
+  #acessibilidade a {
+    color: #ffe327;
+  }
+  #content {
+    background-color: black;
+    color: white;
+  }
+  hr {
+    background-color: #ffe327;
+  }
+  #error_explanation {
+    color: black;
+  }
+  a { color: white; }
+  a:visited { color: white; }
+  a:hover { 
+    color: #BBB;
+    background-color: transparent;
+  }
+  /* ------------------------------- */
+  /*    Calendário Agendamento       */
+  /* ------------------------------- */
+  #termo_compromisso {
+    color: black;
+  }
+  #calendario_agendamento {
+    color: black;
+  }
+  #calendario_agendamento table {
+    border-color: #ffe327;
+    background-color: white;
+  }
+  #calendario_agendamento td {
+    border-color: #ffe327;
+  }
+  #calendario_agendamento thead th {
+    background-color: #ffe327;
+    color: black;
+  }
+  #calendario_agendamento thead tr.navmes th {
+    border-bottom-color: black;
+  }
+  /* Seta da navegação, próximo mês */
+  #calendario_agendamento thead tr.navmes input {
+    color: black;
+    border-left-color: black;
+  }
+  /* Seta da navegação, mês anterior */
+  #calendario_agendamento thead tr.navmes input.mes_anterior {
+    border-right-color: black;
+  }
+  /* ------------------------------- */
+  /*       Header                    */
+  /* ------------------------------- */
+  #login-info .bar {
+    border-color: #ffe327;
+  }
+  #login-info ul li a {
+    color: white;
+  }
+  /* ------------------------------- */
+  /*       Footer                    */
+  /* ------------------------------- */
+  #footer {
+    background-color: #ffe327;
+  }
+  #footer-images {
+    background-color: black;
+  }
+  #login-info .bar-nologin {
+    border-color: #ffe327;
+  }
+  #footer a {
+    color: black;
+  }
+  #footer a:hover {
+    color: black;
+  }
+  
+  /* ------------------------------- */
+  /*       Tabs e Subtabs            */
+  /* ------------------------------- */
+  .tabs ul li.active .tab {
+    background-color: #ffe327;
+    color: black; 
+  }
+  .tabs ul li .tab {
+    background-color: white;
+  }
+  .tabs ul li a:hover {
+    background-color: #ddd;
+  }
+  .subtabs {
+    background-color: #ffe327;
+  }
+  .subtabs ul li a {
+    color: black;
+  }
+  .subtabs ul li.active a {
+    color: #888;
+  }
+  .tabs, .tabs a, .tabs a:visited, .tabs a:hover {
+    color: #444;
+  }
+  .tabs li.disabled, .tabs li.disabled a, .tabs li.disabled a:visited,
+  .tabs li.disabled a:hover, .subtabs li.disabled, .subtabs li.disabled a,
+  .subtabs li.disabled a:visited, .subtabs li.disabled a:hover {
+    color: #888;
+  }
+
+  /* ------------------------------- */
+  /*      Formulários e Tabelas      */
+  /* ------------------------------- */
+  .field select {
+    background-color: white;
+    border-color: #888; 
+  }
+  .field-required select {
+    background-color: white;
+    border-color: #888;   
+  }
+  .list {
+    border-color: #ffe327;
+  }
+  .list td {
+    border-left-color: #fff327;
+    border-top-color: #ffe327;
+    border-bottom-color: #ffe327;  
+  }
+  .list thead a { color: black; }
+  .list thead a:visited { color: black; }
+  .list thead a:hover { 
+    color: black;
+  }
+  .list thead th {
+    background-color: #ffe327;
+    color: black;
+    border-left-color: #fff327;
+  }
+  .list tbody {
+    color: black;
+  }
+  .list tbody a { color: rgb(37,24,181); }
+  .list tbody a:hover { color: rgb(37,24,181); }
+  .list tbody a:visited { color: rgb(37,24,181); }
+}
+/*------------------------------*/

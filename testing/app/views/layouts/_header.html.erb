@@ -11,10 +11,20 @@
 </div>
 -->
 <div id="acessibilidade">
-  <p>Tamanho da fonte:
-    <%= link_to "A-", "javascript:void(0);", :id => "diminuir-fonte" %>
-    <%= link_to "A", "javascript:void(0);", :id => "fonte-padrao" %>
-    <%= link_to "A+", "javascript:void(0);", :id => "aumentar-fonte" %>
+  <p>
+    <%= link_to "Alto contraste",
+        params.merge(:alto_contraste => @contraste.nil?),
+        :id => "alto-contraste" %>
+
+    Tamanho da fonte:
+    <%= link_to "A-", params.merge(:tamanho_fonte => (@tamanho_fonte > 12 ?
+                                   (@tamanho_fonte - 1) : @tamanho_fonte)),
+        :id => "diminuir-fonte" %>
+    <%= link_to "A", params.merge(:tamanho_fonte => 16),
+        :id => "fonte-padrao" %>
+    <%= link_to "A+", params.merge(:tamanho_fonte => (@tamanho_fonte < 20 ?
+                                   (@tamanho_fonte + 1) : @tamanho_fonte)),
+        :id => "aumentar-fonte" %>
   </p>
 </div>
 

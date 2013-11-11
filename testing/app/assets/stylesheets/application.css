@@ -9,6 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require alto_contraste.css.scss
+ *= require tamanho_fonte.css.scss
  */
 
 /*
@@ -182,6 +184,7 @@ body {
   padding: 5px;
   color: black;
   text-decoration: none;
+  font-weight: bold;
 }
 #acessibilidade a:hover { 
   text-decoration: underline;
@@ -337,7 +340,6 @@ hr {
   font-size: 20px;
   height: 57px;
   list-style-type: none;
-  background-color: #a0e2e0;
   padding: 0px;
 }
 .tabs ul li {
@@ -578,6 +580,7 @@ div .field, .actions, .field-required {
 #calendario_agendamento thead tr.navmes th {
   border-bottom: 1px solid #a0e2e0;
 }
+/* Seta da navegação, próximo mês */
 #calendario_agendamento thead tr.navmes input {
   margin-top: 5px;
   background: transparent;
@@ -590,6 +593,7 @@ div .field, .actions, .field-required {
   border-bottom: 12px solid transparent;
   border-left: 12px solid white;
 }
+/* Seta da navegação, mês anterior */
 #calendario_agendamento thead tr.navmes input.mes_anterior {
   border: 0px;
   border-top: 12px solid transparent;

@@ -1,13 +1,16 @@
 # coding: utf-8
 class EscalasReport < Prawn::Document
-  def to_pdf( table_prefeitura, table_local_atendimento, table_escalas)
+  def to_pdf( table_prefeitura, table_local_atendimento, table_escalas, data_inicio, data_fim)
 
     @prefeitura = table_prefeitura
     @orgao = table_local_atendimento
+    @data_inicio = data_inicio
+    @data_fim = data_fim
 
     header_report
 
     @escalas = table_escalas
+    @atributos = [ "Profissional", "Tipo de Atendimento", "Data", "Horário Inicio", "Horário Fim", "Ação"]
 
     line_table
 
@@ -18,13 +21,12 @@ class EscalasReport < Prawn::Document
 
   def header_report
     data = [
-      [ "Relatório de escalas"],
+      [ "Escalas de #{@data_inicio.strftime("%d/%m/%y")} a #{@data_fim.strftime("%d/%m/%y")}"],
       ["#{@prefeitura.nome}"],
-      ["#{@orgao.nome}"],
-      [ "Gerado em: #{DateTime.now.strftime("%H:%M %d-%m-%Y")}"]
+      ["#{@orgao.nome}"]
     ]
 
-    table( data) do
+    table( data, :width => 523) do
       cells_padding = 12
       cells.width = 523
       cells_height = 50
@@ -36,6 +38,7 @@ class EscalasReport < Prawn::Document
   def line_table
     move_down 20
     table line_table_rows do
+      self.width = 523
       row(0).font_style = :bold
       columns(0..5).align = :left
       self.row_colors = [ "DDDDDD", "FFFFFF"]
@@ -44,14 +47,8 @@ class EscalasReport < Prawn::Document
   end
 
   def line_table_rows
-    [[
-      "Profissional",
-      "Tipo de Atendimento",
-      "Data",
-      "Horário Inicio",
-      "Horário Fim",
-      "Ação"
-    ]] +
+
+    [ @atributos] +
     @escalas.map do |escala|
       [
         if escala.profissional_2.nil?
@@ -77,11 +74,17 @@ class EscalasReport < Prawn::Document
   end
 
   def footer
+
+    number_pages "Gerado em: #{DateTime.now.strftime("%H:%M %d/%m/%y")}",
+                                    :at => [bounds.left, 0],
+                                    :align => :left,
+                                    :size => 10
+
     number_pages "<page>/<total>", {
                                     :start_count_at => 0,
                                     :at => [bounds.right - 50, 0],
                                     :align => :right,
-                                    :size => 14
+                                    :size => 10
                                    }
   end
 

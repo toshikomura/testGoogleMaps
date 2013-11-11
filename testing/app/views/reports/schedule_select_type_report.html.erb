@@ -2,7 +2,7 @@
 <h2>Relatórios</h2>
 
 <%= form_for(@reports, :as => :report, :method => :post,
-    :url => { :action => :show, :format => :pdf, :report => @report }) do |f| %>
+    :url => { :action => :select_type_report, :format => :pdf, :report => @report }) do |f| %>
 
   <div class="field">
     <%= collection_select(:report, :id, @reports, :id, :description,

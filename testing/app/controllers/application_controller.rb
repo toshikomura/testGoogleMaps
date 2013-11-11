@@ -17,6 +17,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :set_cache_buster
+  before_filter :definir_contraste
+  before_filter :definir_tamanho_fonte
 
   # Trata a execção gerada pela falha na autorização do CanCan
   # ver referência {https://github.com/ryanb/cancan/wiki/exception-handling}
@@ -45,5 +47,48 @@ class ApplicationController < ActionController::Base
   #     Devise#current_user}
   def current_ability
     @current_ability ||= ProfissionalAbility.new(current_profissional)
+  end
+
+  # Define o stylesheet das páginas, alto contraste ou não.
+  # @note Seta a variável @contraste com a classe "alto-contraste" se o
+  #   parâmetro :alto_contraste é "true", caso contrário nil, a variável é
+  #   visível em todas as views do aplicativo.
+  def definir_contraste
+    cookie_name = "_agendador_alto_contraste".to_sym
+    if(params[:alto_contraste] == "true")
+      cookies[cookie_name] = "true"
+    elsif(params[:alto_contraste] == "false")
+      cookies[cookie_name] = "false"
+    end
+
+    if(cookies[cookie_name] == "true")
+      @contraste = 'alto-contraste'
+    elsif(cookies[cookie_name] == "false")
+      @contraste = nil
+    end
+  end
+
+  # Define o tamanho da fonte.
+  # @note Seta a variável @tamanho_fonte_class com a classe "fonteX", onde X
+  #   é o tamanho da fonte se o parâmetro :tamanho_fonte possui um valor
+  #   válido, entre 12 e 20, caso contrário nil, também seta a variável
+  #   @tamanho_fonte com o tamanho da fonte do parâmetro :tamanho_fonte,
+  #    a variável são visíveis em todas as views do aplicativo.
+  def definir_tamanho_fonte
+    cookie_name = "_agendador_tamanho_fonte".to_sym
+    min = 12
+    max = 20
+    if(params[:tamanho_fonte].to_i >= min &&
+       params[:tamanho_fonte].to_i <= max)
+      cookies[cookie_name] = params[:tamanho_fonte].to_i
+    end
+    if(cookies[cookie_name].to_i >= min &&
+       cookies[cookie_name].to_i <= max)
+      @tamanho_fonte = cookies[cookie_name].to_i
+      @tamanho_fonte_class = 'fonte' + @tamanho_fonte.to_s
+    else
+      @tamanho_fonte = 16
+      @tamanho_fonte_class = nil
+    end
   end
 end

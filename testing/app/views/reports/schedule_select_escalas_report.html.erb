@@ -25,7 +25,7 @@ current_profissional.orgao_id,true), "id","nome",@search.profissional_executor_i
   </div>
 
   <div class="field">
-    <%= f.label :data_execucao, "Data: " %><br />
+    <%= f.label :data_execucao, "Data de inicio: " %><br />
     <%= f.date_select(:data_execucao_gteq,
         { :order => [ :day, :month, :year ],
           :start_year => Time.now.year },
@@ -33,11 +33,10 @@ current_profissional.orgao_id,true), "id","nome",@search.profissional_executor_i
   </div>
 
   <div class="field">
-    <%= f.label :horario_inicio_execucao, "Horário Início: " %><br />
-    <%= f.datetime_select(:horario_inicio_execucao_gteq,
-        { :discard_year => true, :discard_month => true,
-          :discard_day => true, :include_seconds => false,
-          :minute_step => 5 },
+    <%= f.label :data_execucao, "Data de fim: " %><br />
+    <%= f.date_select(:data_execucao_lteq,
+        { :order => [ :day, :month, :year ],
+          :start_year => Time.now.year },
         {:class => "search-field"}) %>
   </div>
 

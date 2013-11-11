@@ -10,6 +10,8 @@ class AgendamentosReport < Prawn::Document
     header_report
 
     @agendamentos = table_agendamentos
+    @localizadores = ["Cidadão", "", "Agendamento", "", "", ""]
+    @atributos = ["CPF", "Nome", "Tipo Atendimento", "Horário de Inicio", "Horário de Fim", "Situação"]
 
     line_table
 
@@ -20,12 +22,12 @@ class AgendamentosReport < Prawn::Document
 
   def header_report
     data = [
-      [ "Agendamentos de #{@data_inicio.strftime("%H:%M %d/%m/%y"} a #{@data_fim.strftime("%H:%M %d/%m/%y"}"],
+      [ "Agendamentos de #{@data_inicio.strftime("%d/%m/%y")} a #{@data_fim.strftime("%d/%m/%y")}"],
       ["#{@prefeitura.nome}"],
       ["#{@orgao.nome}"],
     ]
 
-    table( data) do
+    table( data, :width => 523) do
       cells_padding = 12
       cells.width = 523
       cells_height = 50
@@ -37,6 +39,7 @@ class AgendamentosReport < Prawn::Document
   def line_table
     move_down 20
     table line_table_rows do
+      self.width = 523
       row(0..1).font_style = :bold
       columns(0..5).align = :left
       self.cell_style = { size: 9}
@@ -46,22 +49,9 @@ class AgendamentosReport < Prawn::Document
   end
 
   def line_table_rows
-    [[
-      "Cidadão",
-      "",
-      "Agendamento",
-      "",
-      "",
-      ""
-    ]] +
-    [[
-      "CPF",
-      "Nome",
-      "Tipo Atendimento",
-      "Horário de inicio",
-      "Horário de fim",
-      "Situação"
-    ]] +
+
+    [ @localizadores] +
+    [ @atributos] +
     @agendamentos.map do |agendamento|
       [
         if agendamento.cidadao.nil?
@@ -84,13 +74,16 @@ class AgendamentosReport < Prawn::Document
 
   def footer
 
-    text "Gerado em: #{DateTime.now.strftime("%H:%M %d/%m/%y")}", :align => :left
+    number_pages "Gerado em: #{DateTime.now.strftime("%H:%M %d/%m/%y")}",
+                                    :at => [bounds.left, 0],
+                                    :align => :left,
+                                    :size => 10
 
     number_pages "<page>/<total>", {
                                     :start_count_at => 0,
                                     :at => [bounds.right - 50, 0],
                                     :align => :right,
-                                    :size => 14
+                                    :size => 10
                                    }
   end
 

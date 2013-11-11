@@ -26,25 +26,32 @@ jQuery(function($){
   // Constantes para tamanho da fonte
   var MIN = 12;
   var PADRAO = 16;
-  var MAX = 19;
+  var MAX = 20;
   var tamanho_fonte = PADRAO;
-  var COOKIE_NAME = "_agendador_tamanho_fonte";
-
+  var COOKIE_FONTE = "_agendador_tamanho_fonte";
+  var re = /fonte\S+/g; 
+  
   // Tamanho da fonte pelo cookie
-  if($.cookie(COOKIE_NAME)){
-    tamanho_fonte = parseInt($.cookie(COOKIE_NAME));
+  if($.cookie(COOKIE_FONTE)){
+    tamanho_fonte = parseInt($.cookie(COOKIE_FONTE));
     if(tamanho_fonte >= MIN || tamanho_fonte <= MAX){
-      $("body").css("font-size", tamanho_fonte + "px");
+      $("body").removeClass(function(index, css) {
+        return (css.match(re) || []).join(' ');
+      });
+      $("body").addClass("fonte" + tamanho_fonte);
     }
   }
 
   // Diminuir fonte
   $("#diminuir-fonte").click(function (event) {
     event.preventDefault();
-    if(tamanho_fonte >= MIN){
+    if(tamanho_fonte > MIN){
       tamanho_fonte--;
-      $("body").css("font-size", tamanho_fonte + "px");
-      $.cookie(COOKIE_NAME, tamanho_fonte, {path:'/'});
+      $("body").removeClass(function(index, css) {
+        return (css.match(re) || []).join(' ');
+      });
+      $("body").addClass("fonte" + tamanho_fonte);
+      $.cookie(COOKIE_FONTE, tamanho_fonte, {path:'/'});
     }
   });
 
@@ -52,17 +59,59 @@ jQuery(function($){
   $("#fonte-padrao").click(function (event) {
     event.preventDefault();
     tamanho_fonte = PADRAO;
-    $("body").css("font-size", tamanho_fonte + "px");
-    $.cookie(COOKIE_NAME, tamanho_fonte, {path:'/'});
+    $("body").removeClass(function(index, css) {
+      return (css.match(re) || []).join(' ');
+    });
+    $("body").addClass("fonte" + tamanho_fonte);
+    $.cookie(COOKIE_FONTE, tamanho_fonte, {path:'/'});
   });
 
   // Aumentar fonte
   $("#aumentar-fonte").click(function (event) {
     event.preventDefault();
-    if(tamanho_fonte <= MAX){
+    if(tamanho_fonte < MAX){
       tamanho_fonte++;
-      $("body").css("font-size", tamanho_fonte + "px");
-      $.cookie(COOKIE_NAME, tamanho_fonte, {path:'/'});
+      $("body").removeClass(function(index, css) {
+        return (css.match(re) || []).join(' ');
+      });
+      $("body").addClass("fonte" + tamanho_fonte);
+      $.cookie(COOKIE_FONTE, tamanho_fonte, {path:'/'});
+    }
+  });
+
+  // Alto contraste pelo cookie
+  var COOKIE_CONTRASTE = "_agendador_alto_contraste";
+  var contraste = "false";
+
+  if($.cookie(COOKIE_CONTRASTE)){
+    contraste = $.cookie(COOKIE_CONTRASTE);
+    if(contraste == "true"){
+      $("body").addClass("alto-contraste");
+      $("#footer-images .img-padrao").hide();
+      $("#footer-images .img-alto-contraste").show();
+    } else if(contraste == "false") {
+      $("body").removeClass("alto-contraste");
+      $("#footer-images .img-alto-contraste").hide();
+      $("#footer-images .img-padrao").show();
+    }
+  }
+
+  $("#alto-contraste").click(function (event) {
+    event.preventDefault();
+    if(contraste == "true"){
+      // Estava em alto contraste, vai para o padrão
+      $("body").removeClass("alto-contraste");
+      $("#footer-images .img-alto-contraste").hide();
+      $("#footer-images .img-padrao").show();
+      contraste = "false";
+      $.cookie(COOKIE_CONTRASTE, contraste, {path:'/'});
+    } else if(contraste == "false"){
+      // Estava no padrão, vai para o alto contraste
+      $("body").addClass("alto-contraste");
+      $("#footer-images .img-padrao").hide();
+      $("#footer-images .img-alto-contraste").show();
+      contraste = "true";
+      $.cookie(COOKIE_CONTRASTE, contraste, {path:'/'});
     }
   });
 });

@@ -8,6 +8,7 @@ class ProfissionaisReport < Prawn::Document
     header_report
 
     @profissionais = table_profissionais
+    @atributos = [ "Nome", "CPF", "RG", "Data Nascimento", "Matricula", "CEP"]
 
     line_table
 
@@ -21,11 +22,10 @@ class ProfissionaisReport < Prawn::Document
     data = [
       [ "Relatório dos profissionais"],
       ["#{@prefeitura.nome}"],
-      ["#{@orgao.nome}"],
-      [ "Gerado em: #{DateTime.now.strftime("%H:%M %d-%m-%Y")}"]
+      ["#{@orgao.nome}"]
     ]
 
-    table( data) do
+    table( data, :width => 523) do
       cells_padding = 12
       cells.width = 523
       cells_height = 50
@@ -37,6 +37,7 @@ class ProfissionaisReport < Prawn::Document
   def line_table
     move_down 20
     table line_table_rows do
+      self.width = 523
       row(0).font_style = :bold
       columns(0..5).align = :left
       columns(1).width = 95
@@ -49,18 +50,8 @@ class ProfissionaisReport < Prawn::Document
   end
 
   def line_table_rows
-    [[
-      "Nome",
-      "CPF",
-      "RG",
-      "Data Nascimento",
-      "Matricula",
-      "CEP"
-      #"Endereço",
-      #"Número",
-      #"Telefone",
-      #"email"
-    ]] +
+
+    [ @atributos] +
     @profissionais.map do |profissional|
       [
         profissional.nome,
@@ -78,11 +69,17 @@ class ProfissionaisReport < Prawn::Document
   end
 
   def footer
+
+    number_pages "Gerado em: #{DateTime.now.strftime("%H:%M %d/%m/%y")}",
+                                    :at => [bounds.left, 0],
+                                    :align => :left,
+                                    :size => 10
+
     number_pages "<page>/<total>", {
                                     :start_count_at => 0,
                                     :at => [bounds.right - 50, 0],
                                     :align => :right,
-                                    :size => 14
+                                    :size => 10
                                    }
   end
 

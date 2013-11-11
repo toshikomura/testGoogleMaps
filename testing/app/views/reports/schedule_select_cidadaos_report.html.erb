@@ -1,0 +1,43 @@
+<div id="texto-maior">
+<h2>Relatórios</h2>
+
+<div id="search-form">
+<h4>Cidadãos:</h4>
+<%= form_for(@search, :as => :q, :method => :post,
+    :url => { :action => :generate_cidadaos_report, :format => :pdf, :search => @search }) do |f| %>
+    <div class="field">
+      <%= f.label :nome, "Nome: " %><br />
+      <%= f.text_field :nome_cont, :class => "search-field"  %>
+    </div>
+
+    <div class="field">
+      <%= f.label :cpf, "CPF:" %><br />
+      <%= f.text_field :cpf_eq, :class => "cpf" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :rg, "RG:" %><br />
+      <%= f.text_field :rg_eq, :class => "search-field" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :cartao_sus, "Cartão SUS:" %><br />
+      <%= f.text_field :cartao_sus_eq, :class => "search-field" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :telefone1, "Telefone:" %><br />
+      <%= f.text_field :telefone1_cont, :class => "search-field" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Gerar relatório" %>
+      <%= f.submit "Limpar campos",  :id => :reset_btn  %>
+    </div>
+  <% end %>
+<hr>
+</div>
+
+<%= link_to 'Voltar', reports_relatorio_tipo_relatorio_path %>
+
+</div>
