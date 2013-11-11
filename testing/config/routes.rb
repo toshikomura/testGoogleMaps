@@ -1,5 +1,8 @@
 Agendador::Application.routes.draw do
 
+  resources :maps
+
+
   resources :reports, :except => [ :new, :edit, :show, :update, :destroy ]
 
   post "reports/profissionais"
