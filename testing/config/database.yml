@@ -28,7 +28,7 @@
 development:
   adapter: postgresql
   encoding: utf-8
-  database: dbagendador_dev
+  database: dbagendadorgtk10
   pool: 5
   host: localhost
   username: paje
@@ -46,7 +46,7 @@ test:
 production:
   adapter: postgresql
   encoding: utf-8
-  database: dbagendador
+  database: dbagendadorgtk10
   pool: 5
   host: localhost
   username: paje
