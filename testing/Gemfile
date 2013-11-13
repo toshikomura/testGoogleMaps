@@ -68,3 +68,6 @@ end
 
 # Provides the calendar_for helper method
 gem 'watu_table_builder', :require => 'table_builder'
+
+# Provides the google maps
+gem 'geocoder'
