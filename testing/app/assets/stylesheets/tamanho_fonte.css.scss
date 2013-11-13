@@ -1,27 +1,425 @@
 body.fonte12 {
-  font-size: 12px
+  font-size: 12px;
+  input {
+    font-size: 12px;
+  }
+  select {
+    font-size: 12px;
+  }
+  #calendario {
+    top: 220px; /* -10px  */
+  }
+  #header {
+    margin-left: 182px; /* -7px */
+    height: 68px; /* -8px */
+  }
+  .tabs {
+    margin-left: 252px; /* -7px */
+  } 
+  .tabs ul {
+    font-size: 16px; /* -1px */
+  }
+  .subtabs {
+    margin-left: 252px; /* -7px */
+    height: 36px; /* -1px */
+  }
+  .subtabs ul li a {
+    font-size: 14px; /* -1px */
+  }
+  #login-info {
+    width: 252px; /* -7px */
+    font-size: 12px; 
+    margin-top: 22px; /* -1px */
+  }
+  #login-info ul {
+    margin-top: 28px; /* +2px */
+  }
+  #login-info ul li {
+    height: 21px; /* -1px */
+  }
+  #login-info .bar {
+    margin-top: 101px; /* -1px */
+    width: 252px; /* -7px */
+  }
+  #login-info .nome {
+    width: 172px; /* -7px */
+  }
+  #login-info .bar-nologin {
+    width: 252px; /* -7px */
+    border-bottom-width: 36px; /* -1px */
+  }  
 }
+
 body.fonte13 {
   font-size: 13px;
+  input {
+    font-size: 13px;
+  }
+  select {
+    font-size: 13px;
+  }
+  #calendario {
+    top: 230px; /* -10px  */
+  }
+  #header {
+    margin-left: 189px; /* -7px */
+    height: 76px; /* -8px */
+  }
+  .tabs {
+    margin-left: 259px; /* -7px */
+  } 
+  .tabs ul {
+    font-size: 17px; /* -1px */
+  }
+  .subtabs {
+    margin-left: 259px; /* -7px */
+    height: 37px; /* -1px */
+  }
+  .subtabs ul li a {
+    font-size: 15px; /* -1px */
+  }
+  #login-info {
+    width: 259px; /* -7px */
+    font-size: 13px; 
+    margin-top: 23px; /* -1px */
+  }
+  #login-info ul {
+    margin-top: 26px; /* +2px */
+  }
+  #login-info ul li {
+    height: 22px; /* -1px */
+  }
+  #login-info .bar {
+    margin-top: 102px; /* -1px */
+    width: 259px; /* -7px */
+  }
+  #login-info .nome {
+    width: 179px; /* -7px */
+  }
+  #login-info .bar-nologin {
+    width: 259px; /* -7px */
+    border-bottom-width: 37px; /* -1px */
+  }
 }
+
 body.fonte14 {
   font-size: 14px;
+  input {
+    font-size: 14px;
+  }
+  select {
+    font-size: 14px;
+  }
+  #calendario {
+    top: 240px; /* -10px  */
+  }
+  #header {
+    margin-left: 196px; /* -7px */
+    height: 84px; /* -8px */
+  }
+  .tabs {
+    margin-left: 266px; /* -7px */
+  } 
+  .tabs ul {
+    font-size: 18px; /* -1px */
+  }
+  .subtabs {
+    margin-left: 266px; /* -7px */
+    height: 38px; /* -1px */
+  }
+  .subtabs ul li a {
+    font-size: 16px; /* -1px */
+  }
+  #login-info {
+    width: 266px; /* -7px */
+    font-size: 14px; 
+    margin-top: 24px; /* -1px */
+  }
+  #login-info ul {
+    margin-top: 24px; /* +2px */
+  }
+  #login-info ul li {
+    height: 23px; /* -1px */
+  }
+  #login-info .bar {
+    margin-top: 103px; /* -1px */
+    width: 266px; /* -7px */
+  }
+  #login-info .nome {
+    width: 186px; /* -7px */
+  }
+  #login-info .bar-nologin {
+    width: 266px; /* -7px */
+    border-bottom-width: 38px; /* -1px */
+  }
 }
+
 body.fonte15 {
   font-size: 15px;
+  input {
+    font-size: 15px;
+  }
+  select {
+    font-size: 15px;
+  }
+  #calendario {
+    top: 250px; /* -10px */
+  }
+  #header {
+    margin-left: 203px; /* -7px */
+    height: 92px; /* -8px */
+  }
+  .tabs {
+    margin-left: 273px; /* -7px */
+  } 
+  .tabs ul {
+    font-size: 19px; /* -1px */
+  }
+  .subtabs {
+    margin-left: 273px; /* -7px */
+    height: 39px; /* -1px */
+  }
+  .subtabs ul li a {
+    font-size: 17px; /* -1px */
+  }
+  #login-info {
+    width: 273px; /* -7px */
+    font-size: 15px; 
+    margin-top: 25px; /* -1px */
+  }
+  #login-info ul {
+    margin-top: 22px; /* +2px */
+  }
+  #login-info ul li {
+    height: 24px; /* -1px */
+  }
+  #login-info .bar {
+    margin-top: 104px; /* -1px */
+    width: 273px; /* -7px */
+  }
+  #login-info .nome {
+    width: 193px; /* -7px */
+  }
+  #login-info .bar-nologin {
+    width: 273px; /* -7px */
+    border-bottom-width: 39px; /* -1px */
+  }
 }
+
 body.fonte16 {
   font-size: 16px;
+  input {
+    font-size: 16px;
+  }
+  select {
+    font-size: 16px;
+  }
 }
+
 body.fonte17 {
   font-size: 17px;
+  input {
+    font-size: 17px;
+  }
+  select {
+    font-size: 17px;
+  }
+  #calendario {
+    top: 270px; /* +10px */
+  }
+  #header {
+    margin-left: 217px; /* +7px */
+    height: 108px; /* +8px */
+  }
+  .tabs {
+    margin-left: 287px; /* +7px */
+  } 
+  .tabs ul {
+    font-size: 21px; /* +1px */
+  }
+  .subtabs {
+    margin-left: 287px; /* +7px */
+    height: 41px; /* +1px */
+  }
+  .subtabs ul li a {
+    font-size: 19px; /* +1px */
+  }
+  #login-info {
+    width: 287px; /* +7px */
+    font-size: 17px; 
+    margin-top: 27px; /* +1px */
+  }
+  #login-info ul {
+    margin-top: 18px; /* -2px */
+  }
+  #login-info ul li {
+    height: 26px; /* +1px */
+  }
+  #login-info .bar {
+    margin-top: 106px; /* +1px */
+    width: 287px; /* +7px */
+  }
+  #login-info .nome {
+    width: 207px; /* +7px */
+  }
+  #login-info .bar-nologin {
+    width: 287px; /* +7px */
+    border-bottom-width: 41px; /* +1px */
+  }
 }
+
 body.fonte18 {
   font-size: 18px;
+  input {
+    font-size: 18px;
+  }
+  select {
+    font-size: 18px;
+  }
+  #calendario {
+    top: 280px; /* +10px */
+  }
+  #header {
+    margin-left: 224px; /* +7px */
+    height: 116px; /* +8px */
+  }
+  .tabs {
+    margin-left: 294px; /* +7px */
+  } 
+  .tabs ul {
+    font-size: 22px; /* +1px */
+  }
+  .subtabs {
+    margin-left: 294px; /* +7px */
+    height: 42px; /* +1px */
+  }
+  .subtabs ul li a {
+    font-size: 20px; /* +1px */
+  }
+  #login-info {
+    width: 294px; /* +7px */
+    font-size: 18px; 
+    margin-top: 28px; /* +1px */
+  }
+  #login-info ul {
+    margin-top: 16px; /* -2px */
+  }
+  #login-info ul li {
+    height: 27px; /* +1px */
+  }
+  #login-info .bar {
+    margin-top: 107px; /* +1px */
+    width: 294px; /* +7px */
+  }
+  #login-info .nome {
+    width: 214px; /* +7px */
+  }
+  #login-info .bar-nologin {
+    width: 294px; /* +7px */
+    border-bottom-width: 42px; /* +1px */
+  }
 }
+
 body.fonte19 {
   font-size: 19px;
+  input {
+    font-size: 19px;
+  }
+  select {
+    font-size: 19px;
+  }
+  #calendario {
+    top: 290px; /* +10px */
+  }
+  #header {
+    margin-left: 231px; /* +7px */
+    height: 124px; /* +8px */
+  }
+  .tabs {
+    margin-left: 301px; /* +7px */
+  } 
+  .tabs ul {
+    font-size: 23px; /* +1px */
+  }
+  .subtabs {
+    margin-left: 301px; /* +7px */
+    height: 43px; /* +1px */
+  }
+  .subtabs ul li a {
+    font-size: 21px; /* +1px */
+  }
+  #login-info {
+    width: 301px; /* +7px */
+    font-size: 19px; 
+    margin-top: 29px; /* +1px */
+  }
+  #login-info ul {
+    margin-top: 14px; /* -2px */
+  }
+  #login-info ul li {
+    height: 28px; /* +1px */
+  }
+  #login-info .bar {
+    margin-top: 108px; /* +1px */
+    width: 301px; /* +7px */
+  }
+  #login-info .nome {
+    width: 221px; /* +7px */
+  }
+  #login-info .bar-nologin {
+    width: 301px; /* +7px */
+    border-bottom-width: 43px; /* +1px */
+  }
 }
+
 body.fonte20 {
   font-size: 20px;
+  input {
+    font-size: 20px;
+  }
+  select {
+    font-size: 20px;
+  }
+  #calendario {
+    top: 300px; /* +10px */
+  }
+  #header {
+    margin-left: 238px; /* +7px */
+    height: 132px; /* +8px */
+  }
+  .tabs {
+    margin-left: 308px; /* +7px */
+  } 
+  .tabs ul {
+    font-size: 24px; /* +1px */
+  }
+  .subtabs {
+    margin-left: 308px; /* +7px */
+    height: 44px; /* +1px */
+  }
+  .subtabs ul li a {
+    font-size: 22px; /* +1px */
+  }
+  #login-info {
+    width: 308px; /* +7px */
+    font-size: 20px; 
+    margin-top: 30px; /* +1px */
+  }
+  #login-info ul {
+    margin-top: 12px; /* -2px */
+  }
+  #login-info ul li {
+    height: 29px; /* +1px */
+  }
+  #login-info .bar {
+    margin-top: 109px; /* +1px */
+    width: 308px; /* +7px */
+  }
+  #login-info .nome {
+    width: 228px; /* +7px */
+  }
+  #login-info .bar-nologin {
+    width: 308px; /* +7px */
+    border-bottom-width: 44px; /* +1px */
+  }
 }

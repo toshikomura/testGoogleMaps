@@ -20,7 +20,11 @@
             
           <th colspan="5"><%= l(@data_agendamento, :format => '%B de %Y') %></th>
 
-          <th><%= submit_tag "", :name => "mes_proximo" %></th>
+          <th>
+            <% unless @data_agendamento > (Time.now + 3.months) %>
+              <%= submit_tag "", :name => "mes_proximo" %>
+            <% end %>
+          </th>
         <% end %>
 
         <%= calendar.r do %>

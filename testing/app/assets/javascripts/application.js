@@ -22,7 +22,6 @@ jQuery(function($){
   $(".cpf").mask("999.999.999-99");
   $(".rg").mask("99.999.999-9");
 
-
   // Constantes para tamanho da fonte
   var MIN = 12;
   var PADRAO = 16;
@@ -35,6 +34,7 @@ jQuery(function($){
   if($.cookie(COOKIE_FONTE)){
     tamanho_fonte = parseInt($.cookie(COOKIE_FONTE));
     if(tamanho_fonte >= MIN || tamanho_fonte <= MAX){
+      // Remove classes fonte* que já existirem
       $("body").removeClass(function(index, css) {
         return (css.match(re) || []).join(' ');
       });
@@ -47,11 +47,21 @@ jQuery(function($){
     event.preventDefault();
     if(tamanho_fonte > MIN){
       tamanho_fonte--;
+      // Remove classes fonte* que já existirem
       $("body").removeClass(function(index, css) {
+        // Retorna uma lista de classes para serem
+        // removidas pela função removeClass()
         return (css.match(re) || []).join(' ');
       });
       $("body").addClass("fonte" + tamanho_fonte);
       $.cookie(COOKIE_FONTE, tamanho_fonte, {path:'/'});
+      // Caso o tamanho da fonte seja o mínimo, desabilita o link
+      if(tamanho_fonte <= MIN){
+        $("#diminuir-fonte").addClass("disabled-link");
+      }
+      // Sempre habilita o link para aumentar a fonte, quando o link para
+      // diminuir a fonte for clicado
+      $("#aumentar-fonte").removeClass("disabled-link");
     }
   });
 
@@ -64,6 +74,10 @@ jQuery(function($){
     });
     $("body").addClass("fonte" + tamanho_fonte);
     $.cookie(COOKIE_FONTE, tamanho_fonte, {path:'/'});
+    // Sempre habilita os links para aumentar e diminuir a fonte, quando o
+    // link para fonte padrão for clicado 
+    $("#diminuir-fonte").removeClass("disabled-link");
+    $("#aumentar-fonte").removeClass("disabled-link");
   });
 
   // Aumentar fonte
@@ -76,9 +90,16 @@ jQuery(function($){
       });
       $("body").addClass("fonte" + tamanho_fonte);
       $.cookie(COOKIE_FONTE, tamanho_fonte, {path:'/'});
+      // Caso o tamanho da fonte seja o máximo desabilita o link
+      if(tamanho_fonte >= MAX){
+        $("#aumentar-fonte").addClass("disabled-link");
+      }
+      // Sempre habilita o link para diminuir a fonte, quando o link para
+      // aumentar a fonte for clicado
+      $("#diminuir-fonte").removeClass("disabled-link");
     }
   });
-
+ 
   // Alto contraste pelo cookie
   var COOKIE_CONTRASTE = "_agendador_alto_contraste";
   var contraste = "false";

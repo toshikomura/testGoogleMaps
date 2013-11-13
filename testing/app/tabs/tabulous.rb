@@ -17,7 +17,7 @@ Tabulous.setup do
     end
 
     inicio_tab do
-      text          { 'Inicio' }
+      text          { 'Início' }
       link_path     { root_path }
       visible_when  { true }
       enabled_when  { true }

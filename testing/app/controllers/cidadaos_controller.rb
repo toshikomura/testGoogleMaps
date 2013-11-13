@@ -115,7 +115,7 @@ class CidadaosController < ApplicationController
     @bloqueio = Bloqueio.situacao(current_cidadao).first
     @cidadao_agendamentos = Agendamento.cidadao_agendados(current_cidadao).count
     @max_agendamentos = Prefeitura.first.max_agendamentos
-    @tipo_atendimentos = TipoAtendimento.where("ativo = ?",true)
+    @tipo_atendimentos = TipoAtendimento.where(:ativo => true)
 
     unless params[:tipo_atendimento].nil?
       unless params[:tipo_atendimento][:id].nil? or params[:tipo_atendimento][:id].empty?
@@ -189,12 +189,10 @@ class CidadaosController < ApplicationController
         @data_agendamento = Time.now
       end
 
-      if params[:anterior]
-        return redirect_to cidadaos_agendamentos_selecionar_orgao_path
-      elsif params[:mes_anterior]
-        @data_agendamento -= 1.month unless @data_agendamento.month.eql?(Time.now.month)
+      if params[:mes_anterior]
+        @data_agendamento -= 1.month unless @data_agendamento.eql?(Time.now)
       elsif params[:mes_proximo]
-        @data_agendamento += 1.month unless @data_agendamento.month.eql?((Time.now + 3.months).month)
+        @data_agendamento += 1.month unless @data_agendamento > (Time.now + 3.months)
       elsif params[:dia_agendamento]
         session[:agendamento_data] = @data_agendamento.to_date.change(:day => params[:dia_agendamento].to_i)
         return redirect_to cidadaos_agendamentos_selecionar_horario_path
@@ -207,6 +205,7 @@ class CidadaosController < ApplicationController
       @agendamentos = Agendamento.joins(escala: { orgao: :tipo_atendimentos })
         .where(:tipo_atendimentos => {:ativo => true, :id => session[:tipo_atendimento_id].to_i})
         .where(:orgaos => {:ativo => true, :id => session[:orgao_id].to_i})
+        .where(:escalas => {:tipo_atendimento_id => session[:tipo_atendimento_id].to_i})
         .where(:agendamentos => {:tipo_situacao_id => TipoSituacao.find_by_descricao('Vago').id})
         .intervalo(@data_agendamento, @data_agendamento.end_of_month)
 
@@ -241,27 +240,10 @@ class CidadaosController < ApplicationController
       @horario_termino = @horario_inicio.change(:hour => @data_agendamento.end_of_day.hour, :min => @data_agendamento.end_of_day.min)
 
       if Date.valid_date?(@data_agendamento.year, @data_agendamento.month, @data_agendamento.day) and @data_agendamento >= Date.today and (not @orgao.nil?) and (not @tipo_atendimento.nil?)
-        #@agendamentos = Agendamento.select("DISTINCT agendamentos.id, agendamentos.horario_inicio_consulta")
-        #                           .joins("INNER JOIN escalas
-        #                                     ON escalas.id = agendamentos.escala_id
-        #                                   INNER JOIN orgaos_tipo_atendimentos
-        #                                     ON (escalas.orgao_id = orgaos_tipo_atendimentos.orgao_id
-        #                                         AND escalas.tipo_atendimento_id = orgaos_tipo_atendimentos.tipo_atendimento_id)
-        #                                   INNER JOIN orgaos
-        #                                     ON escalas.orgao_id = orgaos.id
-        #                                   INNER JOIN tipo_atendimentos
-        #                                     ON escalas.tipo_atendimento_id = tipo_atendimentos.id")
-        #                           .where("orgaos_tipo_atendimentos.orgao_id = ?", session[:orgao_id].to_i)
-        #                           .where("orgaos_tipo_atendimentos.tipo_atendimento_id = ?", session[:tipo_atendimento_id].to_i)
-        #                           .where("orgaos.ativo = ?", true)
-        #                           .where("tipo_atendimentos.ativo = ?", true)
-        #                           .intervalo(@horario_inicio, @horario_termino)
-        #                           .vagos
-        #                           .order("horario_inicio_consulta ASC")#
-
         @agendamentos = Agendamento.joins(escala: {orgao: :tipo_atendimentos})
-          .where(:tipo_atendimentos => {:ativo => true, :id => session[:tipo_atendimento_id]})
-          .where(:orgaos => {:ativo => true, :id => session[:orgao_id]})
+          .where(:tipo_atendimentos => {:ativo => true, :id => session[:tipo_atendimento_id].to_i})
+          .where(:orgaos => {:ativo => true, :id => session[:orgao_id].to_i})
+          .where(:escalas => {:tipo_atendimento_id => session[:tipo_atendimento_id].to_i})
           .where(:agendamentos => {:tipo_situacao_id => TipoSituacao.find_by_descricao('Vago').id})
           .intervalo(@horario_inicio, @horario_termino)
           .order("horario_inicio_consulta ASC")

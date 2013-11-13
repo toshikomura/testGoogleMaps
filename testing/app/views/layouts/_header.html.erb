@@ -1,5 +1,5 @@
-<!--
-<div id="barra-brasil">
+<%-#
+'<div id="barra-brasil">
   <div class="barra-brasil-left"></div>
   <div class="barra-brasil-container">
     <div class="barra-brasil-container-ai">
@@ -8,8 +8,9 @@
     </div>
   </div>
   <div class="barra-brasil-right"></div>
-</div>
--->
+</div>'
+%>
+
 <div id="acessibilidade">
   <p>
     <%= link_to "Alto contraste",
@@ -17,14 +18,24 @@
         :id => "alto-contraste" %>
 
     Tamanho da fonte:
-    <%= link_to "A-", params.merge(:tamanho_fonte => (@tamanho_fonte > 12 ?
-                                   (@tamanho_fonte - 1) : @tamanho_fonte)),
-        :id => "diminuir-fonte" %>
+    <% if(@tamanho_fonte > 12) %>
+      <%= link_to "A-", params.merge(:tamanho_fonte => (@tamanho_fonte - 1)),
+          :id => "diminuir-fonte" %>
+    <% else %>
+      <%= link_to "A-", params.merge(:tamanho_fonte => 12),
+          :id => "diminuir-fonte", :class => "disabled-link" %>
+    <% end %>
+
     <%= link_to "A", params.merge(:tamanho_fonte => 16),
         :id => "fonte-padrao" %>
-    <%= link_to "A+", params.merge(:tamanho_fonte => (@tamanho_fonte < 20 ?
-                                   (@tamanho_fonte + 1) : @tamanho_fonte)),
-        :id => "aumentar-fonte" %>
+
+    <% if(@tamanho_fonte < 20) %>
+      <%= link_to "A+", params.merge(:tamanho_fonte => (@tamanho_fonte + 1)),
+          :id => "aumentar-fonte" %>
+    <% else %>
+      <%= link_to "A+", params.merge(:tamanho_fonte => 20),
+          :id => "aumentar-fonte", :class => "disabled-link" %>
+    <% end %>
   </p>
 </div>
 
