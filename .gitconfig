@@ -1,0 +1,9 @@
+[user]
+        name = Gustavo Toshi Komura
+        email = gtk10@c3sl.ufpr.br
+[web]
+        browser = firefox
+[core]
+        editor = vi
+[sendemail]
+        chainreplyto = true
