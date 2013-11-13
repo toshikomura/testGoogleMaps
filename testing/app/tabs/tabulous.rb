@@ -259,6 +259,14 @@ Tabulous.setup do
       enabled_when  { true }
       active_when   { in_action('any').of_controller('reports') }
     end
+
+    maps_subtab do
+      text          { 'Localização' }
+      link_path     { maps_path }
+      visible_when  { administradorsistema_signed_in? }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('maps') }
+    end
   end
 
   customize do
