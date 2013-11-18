@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_cache_buster
   before_filter :definir_contraste
   before_filter :definir_tamanho_fonte
+  before_filter :definir_logos_prefeitura
 
   # Trata a execção gerada pela falha na autorização do CanCan
   # ver referência {https://github.com/ryanb/cancan/wiki/exception-handling}
@@ -89,6 +90,26 @@ class ApplicationController < ActionController::Base
     else
       @tamanho_fonte = 16
       @tamanho_fonte_class = nil
+    end
+  end
+
+  # Define os logos da prefeitura.
+  # @note Se a prefeitura não estiver cadastrada, ou o logo for nulo, a
+  #     imagem padrão void.png é indicada.
+  def definir_logos_prefeitura
+    logo_void = "void.png"
+    prefeitura = Prefeitura.first
+    if prefeitura.nil?
+      @logo_prefeitura = logo_void
+      @logo_contraste_prefeitura = logo_void
+    else
+      if prefeitura.logo.nil?
+        @logo_prefeitura = logo_void
+        @logo_contraste_prefeitura = logo_void
+      else
+        @logo_prefeitura = prefeitura.logo.to_s
+        @logo_contraste_prefeitura = prefeitura.logo.to_s
+      end
     end
   end
 end

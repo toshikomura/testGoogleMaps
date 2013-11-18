@@ -4,7 +4,7 @@
 <div id="search-form">
 <h4>Agendamentos:</h4>
 
-<%= form_for(@search, :as => :q, :method => :post,
+<%= search_form_for(@search, :as => :q, :method => :post,
     :url => { :action => :generate_agendamentos_report, :format => :pdf, :search => @search }) do |f| %>
   <div class="field">
     <%= f.label :cidadao_nome, "Cidadão: " %><br />
@@ -49,6 +49,13 @@ options_from_collection_for_select(TipoSituacao.all,"id","descricao",@search.tip
   <div class="field">
     <%= f.label :escala_data_execucao, "Fim" %><br />
     <%= f.date_select :escala_data_execucao_lteq %>
+  </div>
+
+  <div class="field">
+    Ordenar por:
+    <%= f.sort_fields do |s| %>
+      <%= s.sort_select %>
+    <% end %>
   </div>
 
   <div class="actions">

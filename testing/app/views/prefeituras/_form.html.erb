@@ -108,10 +108,11 @@ avisando de um agendamento(horas)*: " %><br />
       <%= f.label :email, "Email: " %><br />
       <%= f.text_field :email %>
     </div>
- 
+
     <div class="field">
       <%= f.label :logo, "Logotipo: " %><br />
-      <%= f.text_field :logo %>
+      <%= f.file_field(:logo,
+          :accept => 'image/png image/jpeg image/jpg image/gif') %>
     </div>
 
     <p><font color="red"> Campos com (*) são de preenchimento obrigatório.</font></p>

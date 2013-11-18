@@ -15,6 +15,14 @@
   <%= @map.local %>
 </p>
 
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@maps.latitude}%2C#{@maps.longitude}" %>
+
+<h3>Nearby locations</h3>
+<ul>
+<% for map in @maps.nearbys(10) %>
+  <li><%= link_to map.address, map %> (<%= map.distance.round(2) %> miles)</li>
+<% end %>
+</ul>
 
 <%= link_to 'Edit', edit_map_path(@map) %> |
 <%= link_to 'Back', maps_path %>

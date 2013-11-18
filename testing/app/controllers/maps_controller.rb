@@ -2,7 +2,12 @@ class MapsController < ApplicationController
   # GET /maps
   # GET /maps.json
   def index
-    @maps = Map.all
+
+    if params[:search].present?
+      @maps = Map.near(params[:search], 50, :order => :distance)
+    else
+      @maps = Map.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

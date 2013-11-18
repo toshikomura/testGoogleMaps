@@ -30,14 +30,6 @@ class ReportsController < ApplicationController
       @type_report = Report.find(params[:report][:id])
       unless @type_report.nil?
 
-        @prefeitura = Prefeitura.first
-
-        if current_profissional.orgao.nil?
-          @orgao = ""
-        else
-          @orgao = current_profissional.orgao
-        end
-
         if @type_report.description == "Profissionais"
           redirect_to reports_relatorio_profissionais_relatorio_path
         elsif @type_report.description == "Cidadaos"
@@ -70,6 +62,10 @@ class ReportsController < ApplicationController
   def schedule_select_profissionais_report
 
     @search = Profissional.search(params[:q])
+
+    @profissionais = @search.result
+
+    @search.build_sort
 
     respond_to do |format|
       format.html
@@ -105,6 +101,10 @@ class ReportsController < ApplicationController
 
     @search = Cidadao.search(params[:q])
 
+    @cidadaos = @search.result
+
+    @search.build_sort
+
     respond_to do |format|
       format.html
     end
@@ -138,6 +138,10 @@ class ReportsController < ApplicationController
   def schedule_select_escalas_report
 
     @search = Escala.search(params[:q])
+    @escalas = @search.result.where("orgao_id = ?",
+    current_profissional.orgao.id)
+
+    @search.build_sort
 
     respond_to do |format|
       format.html
@@ -158,7 +162,8 @@ class ReportsController < ApplicationController
           @orgao = ""
         else
           @escalas = @search.result.where("orgao_id = ?",
-          current_profissional.orgao.id).order("data_execucao ASC")
+          current_profissional.orgao.id)
+
           @orgao = current_profissional.orgao
         end
 
@@ -183,6 +188,9 @@ class ReportsController < ApplicationController
   def schedule_select_agendamentos_report
 
     @search = Agendamento.search(params[:q])
+    @agendamentos = @search.result
+
+    @search.build_sort
 
     respond_to do |format|
       format.html
@@ -203,7 +211,7 @@ class ReportsController < ApplicationController
 
         @search = Agendamento.search(params[:q])
 
-        @agendamentos = @search.result.order("horario_inicio_consulta ASC")
+        @agendamentos = @search.result
 
         @data_inicio = Date.new(
                                 params["q"]["escala_data_execucao_gteq(1i)"].to_i,
@@ -216,7 +224,22 @@ class ReportsController < ApplicationController
                                 params["q"]["escala_data_execucao_lteq(3i)"].to_i
                                 )
 
-        report = AgendamentosReport.new(:page_size => [595.28, 841.89]).to_pdf( @prefeitura, @orgao, @agendamentos, @data_inicio, @data_fim)
+        # Se foi escolhido um cpf cidadão
+        unless params["q"]["cidadao_cpf_eq"].nil? or params["q"]["cidadao_cpf_eq"].empty?
+          @cidadao = Cidadao.where("cpf = ?", params["q"]["cidadao_cpf_eq"]).first
+        end
+
+        # Se foi escolhido um tipo de atendimento
+        unless params["q"]["escala_tipo_atendimento_id_eq"].nil? or params["q"]["escala_tipo_atendimento_id_eq"].empty?
+          @tipo_atendimento = TipoAtendimento.find(params["q"]["escala_tipo_atendimento_id_eq"])
+        end
+
+        # Se foi escolhido um tipo de situação
+        unless params["q"]["tipo_situacao_id_eq"].nil? or params["q"]["tipo_situacao_id_eq"].empty?
+          @tipo_situacao = TipoSituacao.find(params["q"]["tipo_situacao_id_eq"])
+        end
+
+        report = AgendamentosReport.new(:page_size => [595.28, 841.89]).to_pdf( @prefeitura, @orgao, @agendamentos, @data_inicio, @data_fim, @cidadao, @tipo_atendimento, @tipo_situacao)
         send_data report, filename: "agendamentos.pdf",
                           type: "application/pdf"
         }

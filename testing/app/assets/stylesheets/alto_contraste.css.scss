@@ -123,6 +123,11 @@ body.alto-contraste {
     background-color: white;
     border-color: #888; 
   }
+  .field input[type="file"] {
+    background-color: white;
+    border-color: #888;
+    color: black;
+  }
   .field-required select {
     background-color: white;
     border-color: #888;   

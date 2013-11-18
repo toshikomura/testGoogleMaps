@@ -7,4 +7,10 @@ class AgendadorController < ApplicationController
       format.json { render json: @municipios }
     end
   end
+  def contato
+    @prefeitura = Prefeitura.first
+  end
+  def reportar
+    @prefeitura = Prefeitura.first
+  end
 end
