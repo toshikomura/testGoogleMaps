@@ -43,4 +43,7 @@ gem "geocoder"
 # Provides nifty geneartors
 gem "nifty-generators"
 
+# Provides postgres adapter
+gem 'pg'
+
 gem "mocha", :group => :test
