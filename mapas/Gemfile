@@ -39,3 +39,6 @@ gem 'jquery-rails'
 
 # Provides mapas
 gem "geocoder"
+
+# Provides nifty geneartors
+gem "nifty-generators"
