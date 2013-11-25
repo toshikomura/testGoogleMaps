@@ -4,6 +4,15 @@
     <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=false" %>
+    <%= javascript_include_tag "http://maps.google.com/maps/api/js?sensor=false&language=pt-BR" %>
+    <%= javascript_include_tag "http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclusterer/1.0.2/src/markerclusterer_compiled.js" %>
+    <%= javascript_include_tag "http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclusterer/1.0/src/markerclusterer_packed.js" %>
+    <%= javascript_include_tag "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markermanager/src/markermanager.js" %>
+    <%= javascript_include_tag "http://www.google.com/jsapi" %>
+    <%= javascript_include_tag "gears_init.js" %>
+    <%= javascript_include_tag "geo.js" %>
+    <%= javascript_include_tag "map.js" %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
   </head>
