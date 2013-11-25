@@ -1,4 +1,7 @@
 Mapas::Application.routes.draw do
+
+  get "locations/mapas"
+
   resources :locations
 
   # The priority is based upon order of creation:
