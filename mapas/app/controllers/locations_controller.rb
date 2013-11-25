@@ -8,6 +8,12 @@ class LocationsController < ApplicationController
     end
   end
 
+  def mapas
+    respond_to do |format|
+      format.html # index.html.erb
+    end
+  end
+
   def show
     @location = Location.find(params[:id])
   end
@@ -43,4 +49,5 @@ class LocationsController < ApplicationController
     @location.destroy
     redirect_to locations_url, :notice => "Successfully destroyed location."
   end
+
 end
