@@ -47,3 +47,6 @@ gem "nifty-generators"
 gem 'pg'
 
 gem "mocha", :group => :test
+
+# Provides better erros
+gem 'better_errors'
