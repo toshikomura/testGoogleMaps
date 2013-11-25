@@ -42,3 +42,5 @@ gem "geocoder"
 
 # Provides nifty geneartors
 gem "nifty-generators"
+
+gem "mocha", :group => :test
