@@ -32,7 +32,7 @@ CSV.foreach("script/csv/tipo_acoes.csv") do |acao|
     if (res)
       puts "Atualizado registro #{acao[0]}"
     else
-      puts "Erro ao atualizar registro #{acao[0]}"
+      puts "Erro ao atualizar registro #{acao[0]} #{res.errors.full_messages}"
     end
   else
     nova = TipoAcao.new
@@ -41,7 +41,7 @@ CSV.foreach("script/csv/tipo_acoes.csv") do |acao|
     if (res)
       puts "Salvo registro #{acao[0]}"
     else
-      puts "Erro ao salvar registro #{acao[0]}"
+      puts "Erro ao salvar registro #{acao[0]} #{res.errors.full_messages}"
     end
   end
 end

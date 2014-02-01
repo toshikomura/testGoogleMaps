@@ -36,7 +36,7 @@ CSV.foreach("script/csv/tmibges.csv") do |tmibge|
     if (res)
       puts "Atualizado registro #{tmibge[2]}"
     else
-      puts "Erro ao atualizar registro #{tmibge[2]}"
+      puts "Erro ao atualizar registro #{tmibge[2]} #{res.errors.full_messages}"
     end
   else
     nova = Tmibge.new
@@ -47,7 +47,7 @@ CSV.foreach("script/csv/tmibges.csv") do |tmibge|
     if (res)
       puts "Salvo registro #{tmibge[2]}"
     else
-      puts "Erro ao salvar registro #{tmibge[2]}"
+      puts "Erro ao salvar registro #{tmibge[2]} #{res.errors.full_messages}"
     end
   end
 end

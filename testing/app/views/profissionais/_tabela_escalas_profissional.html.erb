@@ -1,10 +1,11 @@
+<%= page_entries_info @escalas %>
 <table class="list">
   <thead>
   <tr>
     <th><%= sort_link(@search, :data_execucao, "Data") %></th>
     <th>Horário Início</th>
     <th>Horário Fim</th>
-    <th>Local de atendimento</th>
+    <th><%=t('orgao')%></th>
     <th>Tipo de atendimento</th>
     <th>Ação</th>
   </tr>
@@ -18,7 +19,7 @@
       <td><%= escala.horario_fim_execucao.strftime("%H:%M") %></td>
       <td>
       <% if escala.orgao.nil? %>
-        ERRO: Escala não possui local de atendimento, por favor contate o suporte!
+          ERRO: Escala não possui <%=t('orgao')%>, por favor contate o suporte!
       <% else %>
         <%= escala.orgao.nome %>
       <% end %>
@@ -41,3 +42,4 @@
   <% end %>
   </tbody>
 </table>
+<%= will_paginate_remote @escalas %>

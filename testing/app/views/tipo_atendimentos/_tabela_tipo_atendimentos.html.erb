@@ -1,3 +1,4 @@
+<%= page_entries_info @tipo_atendimentos %>
 <table class="list">
   <thead>
   <tr>
@@ -6,6 +7,7 @@
     <th></th>
   </tr>
   </thead>
+
 
   <tbody>
   <% @tipo_atendimentos.each do |tipo_atendimento| %>
@@ -19,3 +21,5 @@
   <% end %>
   </tbody>
 </table>
+
+<%= will_paginate_remote @tipo_atendimentos %>

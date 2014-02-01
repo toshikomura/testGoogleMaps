@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Bem vindo ao agendador, <%= @user.nome %></h1>
+    <p> O seu registro foi concluído com sucesso. Confira os seus dados de login:</p>
+    </p>
+      Seu nome: <%= @user.nome %>.<br/>
+      Seu usuário(cpf): <%= @user.cpf %>.<br/>
+      Sua senha: <%= @user.password %>
+    </p>
+  </body>
+</html>

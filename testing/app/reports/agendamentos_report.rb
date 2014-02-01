@@ -1,14 +1,14 @@
 # coding: utf-8
 class AgendamentosReport < Prawn::Document
-  def to_pdf( table_prefeitura, table_local_atendimento, table_agendamentos, data_inicio, data_fim, cidadao, tipo_atendimento, tipo_situacao)
+  def to_pdf( table_prefeitura, table_local_atendimento, table_agendamentos, data_inicio, data_fim, p_cidadao, p_tipo_atendimento, p_tipo_situacao)
 
     @prefeitura = table_prefeitura
     @orgao = table_local_atendimento
     @data_inicio = data_inicio
     @data_fim = data_fim
-    @cidadao = cidadao
-    @tipo_atendimento = tipo_atendimento
-    @tipo_situacao = tipo_situacao
+    @p_cidadao = p_cidadao
+    @p_tipo_atendimento = p_tipo_atendimento
+    @p_tipo_situacao = p_tipo_situacao
 
     header_report
 
@@ -16,19 +16,19 @@ class AgendamentosReport < Prawn::Document
     @localizadores = ["Cidadão", "", "Agendamento", "", "", ""]
     @atributos = ["CPF", "Nome", "Tipo Atendimento", "Horário de Inicio", "Horário de Fim", "Situação"]
 
-    if @cidadao.present?
+    if @p_cidadao.present?
       @localizadores.delete_if { |item| item.eql?("Cidadão") }
       @localizadores.delete_at(0)
       @atributos.delete_if { |item| item.eql?("CPF") }
       @atributos.delete_if { |item| item.eql?("Nome") }
     end
 
-    if @tipo_atendimento.present?
+    if @p_tipo_atendimento.present?
       @localizadores.pop
       @atributos.delete_if { |item| item.eql?("Tipo Atendimento") }
     end
 
-    if @tipo_situacao.present?
+    if @p_tipo_situacao.present?
       @localizadores.pop
       @atributos.delete_if { |item| item.eql?("Situação") }
     end
@@ -48,16 +48,16 @@ class AgendamentosReport < Prawn::Document
       ["#{@orgao.nome}"],
     ]
 
-    if @cidadao.present?
-      @data.push(["CPF: #{@cidadao.cpf} Nome: #{@cidadao.nome}"])
+    if @p_cidadao.present?
+      @data.push(["CPF: #{@p_cidadao.cpf} Nome: #{@p_cidadao.nome}"])
     end
 
-    if @tipo_atendimento.present?
-      @data.push(["Tipo: #{@tipo_atendimento.descricao}"])
+    if @p_tipo_atendimento.present?
+      @data.push(["Tipo: #{@p_tipo_atendimento.descricao}"])
     end
 
-    if @tipo_situacao.present?
-      @data.push(["Situação: #{@tipo_situacao.descricao}"])
+    if @p_tipo_situacao.present?
+      @data.push(["Situação: #{@p_tipo_situacao.descricao}"])
     end
 
     table( @data, :width => 523) do
@@ -70,12 +70,42 @@ class AgendamentosReport < Prawn::Document
   end
 
   def line_table
+    # necessidade de variável local, pois se perde o valor de @p_cidadao
+    # por causa da grande quantidade de dados geradas abaixo no data_table
+    atendimento = @p_tipo_atendimento
+    cidadao = @p_cidadao
+    tipo_situacao = @p_tipo_situacao
+
     move_down 20
     table line_table_rows do
+
       self.width = 523
       row(0..1).font_style = :bold
       columns(0..5).align = :left
-      self.cell_style = { size: 9}
+
+      unless cidadao.present?
+        columns(0).width = 73
+      end
+
+      # Definindo tamanho dos campos
+      # A menos que todos os atributos possiveis sejam escolhidos
+      unless cidadao.present? and atendimento.present? and tipo_situacao.present?
+        if cidadao.present? and atendimento.present?
+          columns(0).width = 70
+          columns(1).width = 70
+        elsif cidadao.present?
+          columns(1).width = 70
+          columns(2).width = 70
+        elsif atendimento.present?
+          columns(2).width = 70
+          columns(3).width = 70
+        else
+          columns(3).width = 70
+          columns(4).width = 70
+        end
+      end
+
+      self.cell_style = { size: 9} # Atenção o tamanho dos textos deste relatório é menor
       self.row_colors = [ "DDDDDD", "FFFFFF"]
       self.header = true
     end
@@ -85,169 +115,38 @@ class AgendamentosReport < Prawn::Document
 
     [ @localizadores] +
     [ @atributos] +
+    data_table
+  end
 
-    # Se cidadão foi passado como parâmetro
-    if @cidadao.present?
-      # Se o tipo de atendimento foi passado como parâmetro
-      if @tipo_atendimento.present?
-        # Se o tipo de situação foi passado como parâmetro
-        if @tipo_situacao.present?
-          agendamentos_sem_cpf_cidadao_sem_tipo_de_atendimento_e_sem_tipo_de_situacao
-        # Senão foi passado o tipo de situação como parâmetro
+  def data_table
+
+    @agendamentos.map do |agendamento|
+      @data_cell_table = [] # apaga array temporaria para a próxima iteração
+
+      unless @p_cidadao.present?
+        if agendamento.cidadao.nil?
+          @data_cell_table.push("")
         else
-          agendamentos_sem_cpf_cidadao_e_sem_tipo_de_atendimento
+          @data_cell_table.push(agendamento.cidadao.cpf)
         end
-      # Senão foi passado o tipo de atendimento como parâmetro
-      else
-        # Se o tipo de situação foi passado como parâmetro
-        if @tipo_situacao.present?
-          agendamentos_sem_cpf_cidadao_e_sem_tipo_de_situacao
-        # Senão foi passado o tipo de situação como parâmetro
+        if agendamento.cidadao.nil?
+          @data_cell_table.push("")
         else
-          agendamentos_sem_cpf_cidadao
+          @data_cell_table.push(agendamento.cidadao.nome)
         end
       end
-    # Senão foi passado o cidadão como parâmetro
-    else
-      # Se o tipo de atendimento foi passado como parâmetro
-      if @tipo_atendimento.present?
-        # Se o tipo de situação foi passado como parâmetro
-        if @tipo_situacao.present?
-          agendamentos_sem_tipo_de_atendimento_e_sem_tipo_de_situacao
-        # Senão foi passado o tipo de situação como parâmetro
-        else
-          agendamentos_sem_tipo_de_atendimento
-        end
-      # Senão foi passado o tipo de atendimento como parâmetro
-      else
-        # Se o tipo de situação foi passado como parâmetro
-        if @tipo_situacao.present?
-          agendamentos_sem_tipo_de_situacao
-        # Senão foi passado o tipo de situação como parâmetro
-        else
-          agendamentos_completo
-        end
+
+      unless @p_tipo_atendimento.present?
+        @data_cell_table.push(agendamento.escala.tipo_atendimento.descricao)
       end
-    end
-  end
+      @data_cell_table.push(agendamento.horario_inicio_consulta.strftime("%H:%M %d/%m/%y"))
+      @data_cell_table.push(agendamento.horario_fim_consulta.strftime("%H:%M %d/%m/%y"))
 
-  def agendamentos_completo
-    @agendamentos.map do |agendamento|
-      [
-        if agendamento.cidadao.nil?
-          ""
-        else
-          agendamento.cidadao.cpf
-        end,
-        if agendamento.cidadao.nil?
-          ""
-        else
-          agendamento.cidadao.nome
-        end,
-        agendamento.escala.tipo_atendimento.descricao,
-        agendamento.horario_inicio_consulta.strftime("%H:%M %d/%m/%y"),
-        agendamento.horario_fim_consulta.strftime("%H:%M %d/%m/%y"),
-        agendamento.tipo_situacao.descricao
-      ]
-    end
-  end
+      unless @p_tipo_situacao.present?
+        @data_cell_table.push(agendamento.tipo_situacao.descricao)
+      end
 
-  def agendamentos_sem_cpf_cidadao
-    @agendamentos.map do |agendamento|
-      [
-        agendamento.escala.tipo_atendimento.descricao,
-        agendamento.horario_inicio_consulta.strftime("%H:%M %d/%m/%y"),
-        agendamento.horario_fim_consulta.strftime("%H:%M %d/%m/%y"),
-        agendamento.tipo_situacao.descricao
-      ]
-    end
-  end
-
-  def agendamentos_sem_tipo_de_atendimento
-    @agendamentos.map do |agendamento|
-      [
-        if agendamento.cidadao.nil?
-          ""
-        else
-          agendamento.cidadao.cpf
-        end,
-        if agendamento.cidadao.nil?
-          ""
-        else
-          agendamento.cidadao.nome
-        end,
-        agendamento.horario_inicio_consulta.strftime("%H:%M %d/%m/%y"),
-        agendamento.horario_fim_consulta.strftime("%H:%M %d/%m/%y"),
-        agendamento.tipo_situacao.descricao
-      ]
-    end
-  end
-
-  def agendamentos_sem_tipo_de_situacao
-    @agendamentos.map do |agendamento|
-      [
-        if agendamento.cidadao.nil?
-          ""
-        else
-          agendamento.cidadao.cpf
-        end,
-        if agendamento.cidadao.nil?
-          ""
-        else
-          agendamento.cidadao.nome
-        end,
-        agendamento.escala.tipo_atendimento.descricao,
-        agendamento.horario_inicio_consulta.strftime("%H:%M %d/%m/%y"),
-        agendamento.horario_fim_consulta.strftime("%H:%M %d/%m/%y")
-      ]
-    end
-  end
-
-  def agendamentos_sem_cpf_cidadao_e_sem_tipo_de_atendimento
-    @agendamentos.map do |agendamento|
-      [
-        agendamento.horario_inicio_consulta.strftime("%H:%M %d/%m/%y"),
-        agendamento.horario_fim_consulta.strftime("%H:%M %d/%m/%y"),
-        agendamento.tipo_situacao.descricao
-      ]
-    end
-  end
-
-  def agendamentos_sem_cpf_cidadao_e_sem_tipo_de_situacao
-    @agendamentos.map do |agendamento|
-      [
-        agendamento.escala.tipo_atendimento.descricao,
-        agendamento.horario_inicio_consulta.strftime("%H:%M %d/%m/%y"),
-        agendamento.horario_fim_consulta.strftime("%H:%M %d/%m/%y"),
-      ]
-    end
-  end
-
-  def agendamentos_sem_tipo_de_atendimento_e_sem_tipo_de_situacao
-    @agendamentos.map do |agendamento|
-      [
-        if agendamento.cidadao.nil?
-          ""
-        else
-          agendamento.cidadao.cpf
-        end,
-        if agendamento.cidadao.nil?
-          ""
-        else
-          agendamento.cidadao.nome
-        end,
-        agendamento.horario_inicio_consulta.strftime("%H:%M %d/%m/%y"),
-        agendamento.horario_fim_consulta.strftime("%H:%M %d/%m/%y"),
-      ]
-    end
-  end
-
-  def agendamentos_sem_cpf_cidadao_sem_tipo_de_atendimento_e_sem_tipo_de_situacao
-    @agendamentos.map do |agendamento|
-      [
-        agendamento.horario_inicio_consulta.strftime("%H:%M %d/%m/%y"),
-        agendamento.horario_fim_consulta.strftime("%H:%M %d/%m/%y"),
-      ]
+      @data_cell_table # coloca array temporaria na tabela do relatório
     end
   end
 

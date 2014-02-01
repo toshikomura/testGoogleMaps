@@ -77,7 +77,6 @@ select {
   pointer-events: none;
   cursor: default;
 }
-
 /* ------------------------------- */
 /*            Footer               */
 /* ------------------------------- */
@@ -459,7 +458,6 @@ hr {
   border-bottom-color: #1cbbb4;
   border-bottom-width: 40px;
 }
-
 /* ------------------------------- */
 /*       Views Cidadao             */
 /* ------------------------------- */
@@ -649,4 +647,69 @@ div .field, .actions, .field-required {
   -khtml-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
+}
+
+/* ------------------------------- */
+/*    Will paginate                */
+/* ------------------------------- */
+.pagination {
+  width: 95%;
+  padding: 2px 0px 2px 0px;
+  background: transparent;
+  cursor: default;
+  /* self-clearing method: */
+}
+.pagination a, .pagination span, .pagination em {
+  padding: 0.2em 0.5em;
+  display: block;
+  float: left;
+  margin-right: 1px;
+  margin-left: 5px;
+}
+.pagination .disabled {
+  color: #888;
+  border: 1px solid #888;
+}
+.pagination .current {
+  font-style: normal;
+  font-weight: bold;
+  background: #1cbbb4;
+  color: white;
+  border: 1px solid #1cbbb4;
+}
+.pagination a {
+  text-decoration: none;
+  color: black;
+  border: 1px solid #1cbbb4;
+}
+.pagination a:hover, .pagination a:focus {
+  color: white;
+  background-color: #a0e2e0;
+  border-color: #a0e2e0;
+}
+.pagination .page_info {
+  background: #2e6ab1;
+  color: white;
+  padding: 0.4em 0.6em;
+  width: 22em;
+  margin-bottom: 0.3em;
+  text-align: center;
+}
+.pagination .page_info b {
+  color: #000033;
+  background: #6aa6ed;
+  padding: 0.1em 0.25em;
+}
+.pagination:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+* html .pagination {
+  height: 1%; 
+}
+*:first-child + html .pagination {
+  overflow: hidden;
 }

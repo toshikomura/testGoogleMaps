@@ -1,6 +1,7 @@
 /* Contraste */
 /* Cores:
   Amarelo: #ffe327
+  Amarelo claro: #fff327
 */
 body.alto-contraste {
   background-color: black;
@@ -156,5 +157,27 @@ body.alto-contraste {
   .list tbody a { color: rgb(37,24,181); }
   .list tbody a:hover { color: rgb(37,24,181); }
   .list tbody a:visited { color: rgb(37,24,181); }
+
+  /* ------------------------------- */
+  /*    Will paginate                */
+  /* ------------------------------- */
+  .pagination .disabled {
+    color: #888;
+    border: 1px solid #888;
+  }
+  .pagination .current {
+    background: #ffe327;
+    color: white;
+    border: 1px solid #ffe327;
+  }
+  .pagination a {
+    color: white;
+    border: 1px solid #ffe327; 
+  }
+  .pagination a:hover, .pagination a:focus {
+    color: black;
+    background-color: #fff327;
+    border-color: #fff327;
+  }
 }
 /*------------------------------*/

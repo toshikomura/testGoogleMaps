@@ -2,7 +2,7 @@
   <%= form_for(@orgao) do |f| %>
     <% if @orgao.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(@orgao.errors.count, "erro") %>, Local de atendimento não pode ser salvo:</h2>
+          <h2><%= pluralize(@orgao.errors.count, "erro") %>, <%=t('orgao')%> não pode ser salvo:</h2>
 
         <ul>
         <% @orgao.errors.full_messages.each do |msg| %>
@@ -22,7 +22,7 @@
     </div>
 
     <div class="field-required">
-      <%= f.label :nome, "Nome do Local de atendimento*: " %><br />
+      <%= f.label :nome, "Nome do " + t('orgao')+ "*: " %><br />
       <%= f.text_field :nome %>
     </div>
 

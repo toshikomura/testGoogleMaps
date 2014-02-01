@@ -1,20 +1,20 @@
 <div id="texto-maior">
 <h2>Agendamento</h2>
-<h4>Passo 3 de 6 - Local de atendimento:</h4>
+<h4>Passo 3 de 6 - <%=t('orgao')%>:</h4>
 
 <% unless params[:orgao].nil? %>
   <% if params[:orgao][:id].empty? %>
     <div id="error_explanation">
       <h2>1 erro, o agendamento não pode prosseguir:</h2>
       <ul>
-        <li>Nenhum local de atendimento foi selecionado!</li>
+          <li>Nenhum <%=t('orgao')%> foi selecionado!</li>
       </ul>
     </div>
   <% elsif @orgao.nil? %>
     <div id="error_explanation">
       <h2>1 erro, o agendamento não pode prosseguir:</h2>
       <ul>
-        <li>O Local de atendimento selecionado não é um local de atendimento válido!</li>
+          <li>O <%=t('orgao')%> selecionado não é um <%=t('orgao')%> válido!</li>
       </ul>
     </div>
   <% end %>
@@ -27,7 +27,7 @@
 
   <div class="field">
     <%= collection_select(:orgao, :id, @orgaos, :id, :nome,
-        { :include_blank => "Selecione um local de atendimento" }) %>
+        { :include_blank => "Selecione um "+t('orgao') }) %>
   </div>
 
   <div class="actions">

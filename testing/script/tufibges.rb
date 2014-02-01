@@ -36,7 +36,7 @@ CSV.foreach("script/csv/tufibges.csv") do |tufibge|
     if (res)
       puts "Atualizado registro #{tufibge[1]}"
     else
-      puts "Erro ao atualizar registro #{tufibge[1]}"
+      puts "Erro ao atualizar registro #{tufibge[1]} #{res.errors.full_messages}"
     end
   else
     nova = Tufibge.new
@@ -47,7 +47,7 @@ CSV.foreach("script/csv/tufibges.csv") do |tufibge|
     if (res)
       puts "Salvo registro #{tufibge[1]}"
     else
-      puts "Erro ao salvar registro #{tufibge[1]}"
+      puts "Erro ao salvar registro #{tufibge[1]} #{res.errors.full_messages}"
     end
   end
 end

@@ -103,7 +103,7 @@ class ApplicationController < ActionController::Base
       @logo_prefeitura = logo_void
       @logo_contraste_prefeitura = logo_void
     else
-      if prefeitura.logo.nil?
+      if (prefeitura.logo.nil? || prefeitura.logo.empty?)
         @logo_prefeitura = logo_void
         @logo_contraste_prefeitura = logo_void
       else

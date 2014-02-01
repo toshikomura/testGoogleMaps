@@ -22,9 +22,9 @@
     </div>
 
     <div class="field">
-      <p><b>Local de Atendimento:</b>
+        <p><b><%=('orgao')%>:</b>
       <% if @profissional.orgao.nil? %>
-        ERRO: não possui local de atendimento, por favor contate o suporte!
+          ERRO: não possui <%=t('orgao')%>, por favor contate o suporte!
       <% else %>
         <%= "#{@profissional.orgao.nome} (#{situacao(@profissional.orgao)})"
 %>

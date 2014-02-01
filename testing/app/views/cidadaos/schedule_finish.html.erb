@@ -37,7 +37,7 @@
 
   <% unless @agendamento.escala.orgao.nil? %>
     <p>
-      <b>Local de atendimento:</b>
+    <b><%=t('orgao')%>:</b>
       <%= @agendamento.escala.orgao.nome %>
     </p>
 
@@ -50,7 +50,7 @@
 
   <p>
     <b>Data do agendamento:</b> 
-    <%= @agendamento.horario_inicio_consulta.strftime("%d/%m/%Y") %>
+    <%= @agendamento.escala.data_execucao.strftime("%d/%m/%Y") %>
   </p>
 
   <p>

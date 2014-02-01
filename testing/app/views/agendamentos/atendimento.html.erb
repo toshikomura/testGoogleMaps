@@ -1,7 +1,7 @@
 <div id="texto-maior">
 <h2>Atendimentos <span>
 <% if @profissional.orgao.nil? %>
-  ERRO: Profissional não possui local de atendimento, por favor contate o suporte!
+    ERRO: Profissional não possui <%=t('orgao')%>, por favor contate o suporte!
 <% else %>
   <%=@profissional.orgao.nome%>
 <% end %></span>
@@ -37,6 +37,13 @@ options_from_collection_for_select(TipoAtendimento.joins(:orgaos).where("orgao_i
 = ? AND tipo_atendimentos.ativo = ?", current_profissional.orgao_id,true),"id","descricao",
 @search.escala_tipo_atendimento_id_eq),
 {:include_blank => "Todos"}, {:class => "search-field"} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :escala_data_execucao, "Data: " %><br />
+    <%= f.date_select(:escala_data_execucao_gteq,
+        { :order => [ :day, :month, :year ],
+          :start_year => Time.now.year }, {:class => "search-field"}) %>
   </div>
 
   <div class="field">

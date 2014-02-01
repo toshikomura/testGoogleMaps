@@ -30,6 +30,7 @@ $(document).ready(->
   # Chama o método da classe "Tempo"
   Tempo.atualiza()
 
+  data_exec_ano = document.getElementById("escala_data_execucao_1i")
   data_exec_mes = document.getElementById("escala_data_execucao_2i")
   data_exec_dia = document.getElementById("escala_data_execucao_3i")
   init_hora = document.getElementById("escala_horario_inicio_execucao_4i")
@@ -495,4 +496,62 @@ $(document).ready(->
     n_atendimentos.readOnly = true
     document.getElementById("select_atend").disabled = false
     return;
+
+  # Seleciona lista de profissionais dependendo do local de atendimento
+  $("select#escala_orgao_id").change ->
+    local_de_atendimento_id = $("select#escala_orgao_id option:selected").val()
+    $("#escala_profissional_executor_id").attr("disabled", "disabled");
+    $("#escala_tipo_atendimento_id").attr("disabled", "disabled");
+    $("#escala_profissional_executor_id").html "<option value=\"\">Selecione um Profissional </option>"
+    $("#escala_tipo_atendimento_id").html "<option value=\"\">Selecione um Tipo de Atendimento </option>"
+    data_exec_ano.disabled = true
+    data_exec_ano.value = ""
+    atualiza_mes()
+    # Se local de atendimento exisitir e não estiver vazio
+    if local_de_atendimento_id? and (local_de_atendimento_id != "")
+      $("#escala_data_execucao_1i").removeAttr("disabled")
+      $("p#escala_profissional_executor_id_loading").fadeIn(1000)
+      $("p#escala_tipo_atendimento_id_loading").fadeIn(1000)
+
+      jsonURL = $("input#lista_profissionais").val()
+      jsonURL += "profissionais_executores.json?id=" + parseInt(local_de_atendimento_id)
+      jsonReq = $.getJSON(jsonURL)
+
+      jsonReq.success((data) ->
+        $(data).each ->
+          $("#escala_profissional_executor_id").append "<option value=\"" + @id + "\">" + @nome + "</option>"
+          return
+
+        $("#escala_profissional_executor_id").removeAttr("disabled")
+        return
+      )
+
+      jsonReq.fail( ->
+        console.log "Falha no carregamento dos profissionais!"
+        return
+      )
+
+      jsonURL = $("input#lista_tipo_atendimentos").val()
+      jsonURL += "tipo_atendimentos_local_de_atendimento.json?id=" + parseInt(local_de_atendimento_id)
+      jsonReq = $.getJSON(jsonURL)
+
+      jsonReq.success((data) ->
+        $(data).each ->
+          $("#escala_tipo_atendimento_id").append "<option value=\"" + @id + "\">" + @descricao + "</option>"
+          return
+
+        $("#escala_tipo_atendimento_id").removeAttr("disabled")
+        return
+      )
+
+      jsonReq.fail( ->
+        console.log "Falha no carregamento dos profissionais!"
+        return
+      )
+
+      $("p#escala_profissional_executor_id_loading").fadeOut(1000)
+      $("p#escala_tipo_atendimento_id_loading").fadeOut(1000)
+      return
+    return
+  return
 )

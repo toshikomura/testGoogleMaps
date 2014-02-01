@@ -2,9 +2,9 @@
 <h2>Informações Escala:</h2>
 
 <p>
-	<b> Local de atendimento: </b>
+<b><%=t('orgao')%>: </b>
     <% if @escala.orgao.nil? %>
-      ERRO: Escala não possui local de atendimento, por favor atualize!
+        ERRO: Escala não possui <%=t('orgao')%>, por favor atualize!
     <% else %>
       <%= @escala.orgao.nome %>
     <% end %>
@@ -58,7 +58,7 @@
 </p>
 
 <p>
-  <b>Número de Atendimentos:</b>
+  <b>Número de Agendamentos:</b>
   <%= @escala.numero_atendimentos %>
 </p>
 
@@ -68,11 +68,10 @@
     <font color="red">ERRO: Escala possui número incorreto de agendamentos, por favor contate o suporte!</font>
   <% end %>
   <ul>
-    <% @escala.agendamentos.each do |agenda| %>
+    <% @escala.agendamentos.sort_by{|x| [x.horario_inicio_consulta]}.each do |agenda| %>
       <li>
-        <%= link_to "#{agenda.horario_inicio_consulta.strftime("%d/%m/%Y
-- %H:%M")} - #{agenda.horario_fim_consulta.strftime("%H:%M")}",agenda
-  %>
+        <%= link_to "#{agenda.horario_inicio_consulta.strftime("%H:%M")} -
+                     #{agenda.horario_fim_consulta.strftime("%H:%M")}", agenda  %>
         <% if agenda.tipo_situacao.nil? %>
           <font color="red">ERRO: Agendamento não possui situação, por favor contate o suporte!</font>
         <% else %>

@@ -108,9 +108,9 @@
 </p>
 
 <p>
-  <b>Local de Atendimento:</b>
+<b><%=t('orgao')%>:</b>
   <% if @profissional.orgao.nil? %>
-    ERRO: não possui local de atendimento, por favor atualize!
+      ERRO: não possui <%=t('orgao')%>, por favor atualize!
   <% else %>
     <%= link_to "#{@profissional.orgao.nome}
 (#{situacao(@profissional.orgao)})", @profissional.orgao %>

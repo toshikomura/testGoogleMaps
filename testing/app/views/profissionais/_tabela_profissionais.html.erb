@@ -1,9 +1,10 @@
+<%= page_entries_info @profissionais %>
 <table class="list">
   <thead>
   <tr>
     <th><%= sort_link(@search, :nome, "Nome") %></th>
     <th><%= sort_link(@search, :matricula, "Matrícula") %></th>
-    <th><%= sort_link(@search, :orgao_nome, "Local de Atendimento") %></th>
+    <th><%= sort_link(@search, :orgao_nome, t('orgao')) %></th>
     <th><%= sort_link(@search, :role, "Permissão") %></th>
     <th><%= sort_link(@search, :tcbo_descricao,"Ocupação") %></th>
     <th><%= sort_link(@search, :cpf, "CPF") %></th>
@@ -21,7 +22,7 @@
       <td><%= profissional.matricula %></td>
       <td>
         <% if profissional.orgao.nil? %>
-          ERRO: não possui local de atendimento, por favor atualize!
+            ERRO: não possui <%=t('orgao')%>, por favor atualize!
         <% else %>
           <%= profissional.orgao.nome %>
         <% end %>
@@ -45,3 +46,5 @@
   <% end %>
   </tbody>
 </table>
+
+<%= will_paginate_remote @profissionais %>

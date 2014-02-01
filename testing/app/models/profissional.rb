@@ -28,7 +28,7 @@
 #
 # = Associações
 # == has_many
-# - {Escala} -> foreign_key +profissional_executor_id+ 
+# - {Escala} -> foreign_key +profissional_executor_id+
 #
 # == belongs_to
 # - {Tmibge}
@@ -58,7 +58,7 @@
 #
 # == length_of
 # - +password+ -> within 6..128, allow_blank true
-# 
+#
 # == validates_with
 # - {EmailValidator}
 # - {CpfValidator}
@@ -115,7 +115,7 @@
 # @!attribute [rw] emissao_rg
 #   Órgão emissor do RG.
 #   @return [String]
-# 
+#
 # @!attribute [rw] bairro
 #   Bairro do endereço do profissional.
 #   @return [String]
@@ -199,7 +199,7 @@ class Profissional < ActiveRecord::Base
   # Modulos padrões removidos:
   # :validatable # Apenas se a identificação do usuário for pelo email
   # :rememberable
-  devise :database_authenticatable, :registerable, 
+  devise :database_authenticatable, :registerable,
          :recoverable, :trackable, :authentication_keys => [:cpf]
 
   ##############################
@@ -230,13 +230,13 @@ class Profissional < ActiveRecord::Base
   validates_inclusion_of :ativo, :in => [true,false]
   validates_inclusion_of :role, :in => ROLES
   validates_presence_of :nome, :data_nascimento, :rg, :emissao_rg, :tcbo_id,
-  :orgao_id, :role
+  :orgao_id, :role, :email
   validates_with PhonesValidator, fields: [:telefone1, :telefone2]
   validates_with EmailValidator
 
   ##############################
   # Callbacks                  #
-  ############################## 
+  ##############################
   before_create :default_values
 
   ##############################
@@ -285,16 +285,16 @@ class Profissional < ActiveRecord::Base
     #   ActiveRecord#persisted?}
     #
     # @example Verificar a confirmação da senha apenas se necessário.
-    #   validates_confirmation_of :password, :if => :password_required? 
+    #   validates_confirmation_of :password, :if => :password_required?
     def password_required?
       !persisted? || !password.nil? || !password_confirmation.nil?
     end
 
     # Atribui valores padrões na criação do profissional.
-    # @note A senha padrão do profissional é sua data de nascimento no
-    #   formato DDMMAAAA.
+    # @note A senha padrão é uma string aleatória, composta por 8 caracteres nos
+    # ranges: a-z, A-Z, e 0-9.
     def default_values
-      self.password = self.password_confirmation ||= self.data_nascimento.strftime("%d%m%Y")
-      self.ativo = true 
+      self.password = self.password_confirmation ||= ([*('a'..'z'),*('A'..'Z'),*('0'..'9')]-%w(0 1 I O)).sample(8).join
+      self.ativo = true
     end
 end

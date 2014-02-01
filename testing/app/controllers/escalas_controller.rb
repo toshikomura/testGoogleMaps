@@ -14,8 +14,11 @@ class EscalasController < ApplicationController
     if current_profissional.orgao.nil?
       @escalas = []
     else
-      @escalas = @search.result.where("orgao_id = ?",
-current_profissional.orgao.id).order("data_execucao ASC")
+      @escalas = @search
+        .result
+        .where("orgao_id = ?", current_profissional.orgao.id)
+        .order("data_execucao ASC")
+        .paginate(:page => params[:page], :per_page => 25)
     end
 
     respond_to do |format|

@@ -6,14 +6,15 @@
 
 <%= search_form_for(@search, :as => :q, :method => :post,
     :url => { :action => :generate_agendamentos_report, :format => :pdf, :search => @search }) do |f| %>
-  <div class="field">
-    <%= f.label :cidadao_nome, "Cidadão: " %><br />
-    <%= f.text_field :cidadao_nome_cont, :class => "search-field"%>
-  </div>
 
   <div class="field">
     <%= f.label :cidadao_cpf, "CPF: " %><br />
     <%= f.text_field :cidadao_cpf_eq, :class => "cpf"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :cidadao_nome, "Cidadão: " %><br />
+    <%= f.text_field :cidadao_nome_cont, :class => "search-field"%>
   </div>
 
   <div class="field">
@@ -64,6 +65,8 @@ options_from_collection_for_select(TipoSituacao.all,"id","descricao",@search.tip
   </div>
 
 <% end %>
+<hr>
+</div>
 
 <%= link_to 'Voltar', reports_relatorio_tipo_relatorio_path %>
 

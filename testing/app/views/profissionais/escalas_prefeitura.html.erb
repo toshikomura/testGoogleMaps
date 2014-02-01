@@ -1,0 +1,62 @@
+<div id="texto-maior">
+<h2>Escalas Prefeitura</h2>
+
+<div id="search-form">
+<h4>Buscar Escalas:</h4>
+<%= search_form_for(@search, :remote => true,
+                    url: profissionais_escalas_prefeitura_path) do |f| %>
+  <div class="field">
+    <%= f.label :tipo_atendimento_id, "Tipo Atendimento: " %><br />
+    <%= f.select :tipo_atendimento_id_eq,
+options_from_collection_for_select(TipoAtendimento.where("ativo = ?", true),
+"id","descricao",@search.tipo_atendimento_id_eq),
+{:include_blank => "Todos"}, {:class => "search-field"} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :orgao_id, "Local de Atendimento: " %><br />
+    <%= f.select :orgao_id_eq,
+options_from_collection_for_select(Orgao.where("ativo = ?", true),
+"id","nome",@search.orgao_id_eq),
+{:include_blank => "Todos"}, {:class => "search-field"} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :profissional_executor_id, "Profissional: " %><br />
+    <%= f.select :profissional_executor_id_eq,
+options_from_collection_for_select(Profissional.where("ativo = ?", true),
+"id","nome",@search.profissional_executor_id_eq),
+{:include_blank => "Todos"}, {:class => "search-field"} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :data_execucao, "A partir de: " %><br />
+    <%= f.date_select(:data_execucao_gteq,
+        { :order => [ :day, :month, :year ],
+          :start_year => Time.now.year }, {:class => "search-field"}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tipo_acao_id, "Tipo Ação: " %><br />
+    <%= f.select :tipo_acao_id_eq,
+options_from_collection_for_select(TipoAcao.all,"id","descricao",@search.tipo_acao_id_eq),
+ {:include_blank => "Todos"}, {:class => "search-field"} %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Buscar" %>
+    <%= f.submit "Limpar campos", :id => "reset_btn" %>
+  </div>
+<% end %>
+<hr>
+</div>
+
+<div id="tabela_escalas_prefeitura">
+  <%= render "tabela_escalas_prefeitura" %>
+</div>
+
+<br />
+
+<%= link_to 'Nova Escala', profissionais_escalas_prefeitura_new_path %>
+
+</div>

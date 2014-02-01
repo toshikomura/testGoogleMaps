@@ -34,7 +34,7 @@ require 'csv'
     if (res)
       puts "Atualizado registro #{prefeitura.nome}"
     else
-      puts "Erro ao atualizar registro #{prefeitura.nome}"
+      puts "Erro ao atualizar registro #{prefeitura.nome} #{res.errors.full_messages}"
     end
   else
     prefeitura = Prefeitura.new(:nome => "Prefeitura Municipal de Newcastle",
@@ -54,7 +54,7 @@ require 'csv'
     if prefeitura.save
       puts "Salvo registro #{prefeitura.nome}"
     else
-      puts "Erro ao salvar registro #{prefeitura.nome}"
+      puts "Erro ao salvar registro #{prefeitura.nome} #{prefeitura.errors.full_messages}"
     end
   end
 
@@ -75,7 +75,7 @@ require 'csv'
     if (res)
       puts "Atualizado registro #{orgao.nome}"
     else
-      puts "Erro ao atualizar registro #{orgao.nome}"
+      puts "Erro ao atualizar registro #{orgao.nome} #{res.errors.full_messages}"
     end
   else
     orgao = Orgao.new(:nome => "Administração geral da prefeitura de Newcastle",
@@ -90,7 +90,7 @@ require 'csv'
     if orgao.save
       puts "Salvo registro #{orgao.nome}"
     else
-      puts "Erro ao salvar registro #{orgao.nome}"
+      puts "Erro ao salvar registro #{orgao.nome} #{orgao.errors.full_messages}"
     end
   end
 
@@ -111,7 +111,7 @@ require 'csv'
     if (res)
       puts "Atualizado registro #{sms.nome}"
     else
-      puts "Erro ao atualizar registro #{sms.nome}"
+      puts "Erro ao atualizar registro #{sms.nome} #{res.errors.full_messages}"
     end
   else
     sms = Orgao.new(:nome => "SMS - Secretaria Municipal da Saúde",
@@ -126,7 +126,7 @@ require 'csv'
     if sms.save
       puts "Salvo registro #{sms.nome}"
     else
-      puts "Erro ao salvar registro #{sms.nome}"
+      puts "Erro ao salvar registro #{sms.nome} #{sms.errors.full_messages}"
     end
   end
 
@@ -145,11 +145,12 @@ require 'csv'
                             :ativo => true,
                             :tcbo_id => 1,
                             :password => "123456",
-                            :password_confirmation => "123456")
+                            :password_confirmation => "123456",
+                            :email => "admagendador@newcastle.c3sl.ufpr.br")
     if (res)
       puts "Atualizado registro #{root.nome} #{root.role} #{root.cpf}"
     else
-      puts "Erro ao atualizar registro #{root.nome} #{root.role} #{root.cpf}"
+      puts "Erro ao atualizar registro #{root.nome} #{root.role} #{root.cpf} #{res.errors.full_messages}"
     end
   else
     root = Profissional.new(:nome => "Osvaldo Cruz",
@@ -162,11 +163,12 @@ require 'csv'
                             :ativo => true,
                             :tcbo_id => 1,
                             :password => "123456",
-                            :password_confirmation => "123456")
+                            :password_confirmation => "123456",
+                            :email => "admagendador@newcastle.c3sl.ufpr.br")
     if root.save
       puts "Salvo registro #{root.nome} #{root.role} #{root.cpf}"
     else
-      puts "Erro ao salvar registro #{root.nome} #{root.role} #{root.cpf}"
+      puts "Erro ao salvar registro #{root.nome} #{root.role} #{root.cpf} #{root.errors.full_messages}"
     end
   end
 
@@ -185,11 +187,12 @@ require 'csv'
                              :ativo => true,
                              :tcbo_id => 12,
                              :password => "123456",
-                             :password_confirmation => "123456")
+                             :password_confirmation => "123456",
+                             :email => "profagendador@newcastle.c3sl.ufpr.br")
     if (res)
       puts "Atualizado registro #{profissional.nome} #{profissional.role} #{profissional.cpf}"
     else
-      puts "Erro ao atualizar registro #{profissional.nome} #{profissional.role} #{profissional.cpf}"
+      puts "Erro ao atualizar registro #{profissional.nome} #{profissional.role} #{profissional.cpf} #{res.errors.full_messages}"
     end
   else
     profissional = Profissional.new(:nome => "Zilda Arns",
@@ -202,11 +205,12 @@ require 'csv'
                                     :ativo => true,
                                     :tcbo_id => 12,
                                     :password => "123456",
-                                    :password_confirmation => "123456")
+                                    :password_confirmation => "123456",
+                                    :email => "profagendador@newcastle.c3sl.ufpr.br")
     if profissional.save
       puts "Salvo registro #{profissional.nome} #{profissional.role} #{profissional.cpf}"
     else
-      puts "Erro ao salvar registro #{profissional.nome} #{profissional.role} #{profissional.cpf}"
+      puts "Erro ao salvar registro #{profissional.nome} #{profissional.role} #{profissional.cpf} #{profissional.errors.full_messages}"
     end
   end
 
@@ -226,12 +230,12 @@ require 'csv'
                                     :ativo => true,
                                     :tcbo_id => 12,
                                     :password => "123456",
-                                    :password_confirmation => "123456")
-
+                                    :password_confirmation => "123456",
+                                    :email => "profagendador@newcastle.c3sl.ufpr.br")
     if (res)
       puts "Atualizado registro #{profissional.nome} #{profissional.role} #{profissional.cpf}"
     else
-      puts "Erro ao atualizar registro #{profissional.nome} #{profissional.role} #{profissional.cpf}"
+      puts "Erro ao atualizar registro #{profissional.nome} #{profissional.role} #{profissional.cpf} #{res.errors.full_messages}"
     end
   else
     profissional = Profissional.new(:nome => "João Curvo",
@@ -245,12 +249,12 @@ require 'csv'
                                     :ativo => true,
                                     :tcbo_id => 12,
                                     :password => "123456",
-                                    :password_confirmation => "123456")
-
+                                    :password_confirmation => "123456",
+                                    :email => "profagendador@newcastle.c3sl.ufpr.br")
     if profissional.save
       puts "Salvo registro #{profissional.nome} #{profissional.role} #{profissional.cpf}"
     else
-      puts "Erro ao salvar registro #{profissional.nome} #{profissional.role} #{profissional.cpf}"
+      puts "Erro ao salvar registro #{profissional.nome} #{profissional.role} #{profissional.cpf} #{profissional.errors.full_messages}"
     end
   end
 
@@ -270,12 +274,12 @@ require 'csv'
                                     :ativo => true,
                                     :tcbo_id => 12,
                                     :password => "123456",
-                                    :password_confirmation => "123456")
-
+                                    :password_confirmation => "123456",
+                                    :email => "profagendador@newcastle.c3sl.ufpr.br")
     if (res)
       puts "Atualizado registro #{profissional.nome} #{profissional.role} #{profissional.cpf}"
     else
-      puts "Erro ao atualizar registro #{profissional.nome} #{profissional.role} #{profissional.cpf}"
+      puts "Erro ao atualizar registro #{profissional.nome} #{profissional.role} #{profissional.cpf} #{res.errors.full_messages}"
     end
   else
     profissional = Profissional.new(:nome => "Rinaldo Victor De Lamare",
@@ -289,12 +293,12 @@ require 'csv'
                                     :ativo => true,
                                     :tcbo_id => 12,
                                     :password => "123456",
-                                    :password_confirmation => "123456")
-
+                                    :password_confirmation => "123456",
+                                    :email => "profagendador@newcastle.c3sl.ufpr.br")
     if profissional.save
       puts "Salvo registro #{profissional.nome} #{profissional.role} #{profissional.cpf}"
     else
-      puts "Erro ao salvar registro #{profissional.nome} #{profissional.role} #{profissional.cpf}"
+      puts "Erro ao salvar registro #{profissional.nome} #{profissional.role} #{profissional.cpf} #{profissional.errors.full_messages}"
     end
   end
 
@@ -308,7 +312,7 @@ require 'csv'
     if (res)
       puts "Atualizado registro #{tipo_atendimento.descricao}"
     else
-      puts "Erro ao atualizar registro #{tipo_atendimento.descricao}"
+      puts "Erro ao atualizar registro #{tipo_atendimento.descricao} #{res.errors.full_messages}"
     end
   else
     tipo_atendimento = TipoAtendimento.new(:descricao => "Consulta ambulatorial",
@@ -317,7 +321,7 @@ require 'csv'
       sms.tipo_atendimentos << tipo_atendimento
       puts "Salvo registro #{tipo_atendimento.descricao}"
     else
-      puts "Erro ao salvar registro #{tipo_atendimento.descricao}"
+      puts "Erro ao salvar registro #{tipo_atendimento.descricao} #{tipo_atendimento.errors.full_messages}"
     end
   end
 
@@ -331,7 +335,7 @@ require 'csv'
     if (res)
       puts "Atualizado registro #{tipo_atendimento.descricao}"
     else
-      puts "Erro ao atualizar registro #{tipo_atendimento.descricao}"
+      puts "Erro ao atualizar registro #{tipo_atendimento.descricao} #{res.errors.full_messages}"
     end
   else
     tipo_atendimento = TipoAtendimento.new(:descricao => "Consulta pediátrica",
@@ -340,7 +344,7 @@ require 'csv'
       sms.tipo_atendimentos << tipo_atendimento
       puts "Salvo registro #{tipo_atendimento.descricao}"
     else
-      puts "Erro ao salvar registro #{tipo_atendimento.descricao}"
+      puts "Erro ao salvar registro #{tipo_atendimento.descricao} #{tipo_atendimento.errors.full_messages}"
     end
   end
 
@@ -357,7 +361,7 @@ require 'csv'
     if (res)
       puts "Atualizado registro #{cidadao.nome} #{cidadao.cpf}"
     else
-      puts "Erro ao atualizar registro #{cidadao.nome} #{cidadao.cpf}"
+      puts "Erro ao atualizar registro #{cidadao.nome} #{cidadao.cpf} #{res.errors.full_messages}"
     end
   else
     cidadao = Cidadao.new(:nome => "João da Silva",
@@ -368,7 +372,7 @@ require 'csv'
     if cidadao.save
       puts "Salvo registro #{cidadao.nome} #{cidadao.cpf}"
     else
-      puts "Erro ao salvar registro #{cidadao.nome} #{cidadao.cpf}"
+      puts "Erro ao salvar registro #{cidadao.nome} #{cidadao.cpf} #{cidadao.errors.full_messages}"
     end
   end
 
@@ -385,7 +389,7 @@ require 'csv'
     if (res)
       puts "Atualizado registro #{cidadao.nome} #{cidadao.cpf}"
     else
-      puts "Erro ao atualizar registro #{cidadao.nome} #{cidadao.cpf}"
+      puts "Erro ao atualizar registro #{cidadao.nome} #{cidadao.cpf} #{res.errors.full_messages}"
     end
   else
     cidadao = Cidadao.new(:nome => "Maria da Silva",
@@ -396,6 +400,6 @@ require 'csv'
     if cidadao.save
       puts "Salvo registro #{cidadao.nome} #{cidadao.cpf}"
     else
-      puts "Erro ao salvar registro #{cidadao.nome} #{cidadao.cpf}"
+      puts "Erro ao salvar registro #{cidadao.nome} #{cidadao.cpf} #{cidadao.errors.full_messages}"
     end
   end

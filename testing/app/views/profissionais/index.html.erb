@@ -15,7 +15,7 @@
     </div>
 
     <div class="field">
-      <%= f.label :orgao_id, "Local de Atendimento:" %><br />
+      <%= f.label :orgao_id, t('orgao') + ":" %><br />
       <%= f.select :orgao_id_eq,
 options_from_collection_for_select(Orgao.all,"id","nome",@search.orgao_id_eq),
 {:include_blank => "Todos"}, {:class => "search-field"} %>

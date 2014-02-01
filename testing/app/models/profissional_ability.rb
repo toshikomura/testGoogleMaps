@@ -26,7 +26,6 @@ class ProfissionalAbility
     if profissional.role? :tecnico
      can [:escalas,:atendimento,:atendimento_update], [Profissional]
      can [:manage], [Report]
-     can [:manage], [Map]
     end
     if profissional.role? :atendente
       can :manage, [Agendamento]

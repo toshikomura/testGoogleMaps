@@ -3,8 +3,14 @@
 
 <div id="search-form">
 <h4>Profissionais:</h4>
-<%= form_for(@search, :as => :q, :method => :post,
+<%= search_form_for(@search, :as => :q, :method => :post,
     :url => { :action => :generate_profissionais_report, :format => :pdf, :search => @search }) do |f| %>
+
+    <div class="field">
+      <%= f.label :cpf, "CPF:" %><br />
+      <%= f.text_field :cpf_eq, :class => "cpf" %>
+    </div>
+
     <div class="field">
       <%= f.label :nome, "Nome: " %><br />
       <%= f.text_field :nome_cont, :class => "search-field"  %>
@@ -16,7 +22,7 @@
     </div>
 
     <div class="field">
-      <%= f.label :orgao_id, "Local de Atendimento:" %><br />
+      <%= f.label :orgao_id, t('orgao') + ":" %><br />
       <%= f.select :orgao_id_eq,
 options_from_collection_for_select(Orgao.all,"id","nome",@search.orgao_id_eq),
 {:include_blank => "Todos"}, {:class => "search-field"} %>
@@ -37,15 +43,17 @@ options_from_collection_for_select(Tcbo.all,"id","descricao",@search.tcbo_id_eq)
     </div>
 
     <div class="field">
-      <%= f.label :cpf, "CPF:" %><br />
-      <%= f.text_field :cpf_eq, :class => "cpf" %>
-    </div>
-
-    <div class="field">
       <%= f.label :ativo, "Situação:" %><br />
       <%= f.select :ativo_eq,
 options_for_select([["Ativo",true],["Inativo",false]],@search.ativo_eq),
 {:include_blank => "Todos"},{:class => "search-field"} %>
+    </div>
+
+    <div class="field">
+      Ordenar por:
+      <%= f.sort_fields do |s| %>
+        <%= s.sort_select %>
+      <% end %>
     </div>
 
     <div class="actions">

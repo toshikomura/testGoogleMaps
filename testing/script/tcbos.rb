@@ -33,7 +33,7 @@ CSV.foreach("script/csv/tcbos.csv") do |tcbo|
     if (res)
       puts "Atualizado registro #{tcbo[1]}"
     else
-      puts "Erro ao atualizar registro #{tcbo[1]}"
+      puts "Erro ao atualizar registro #{tcbo[1]} #{res.errors.full_messages}"
     end
   else
     nova = Tcbo.new
@@ -43,7 +43,7 @@ CSV.foreach("script/csv/tcbos.csv") do |tcbo|
     if (res)
       puts "Salvo registro #{tcbo[1]}"
     else
-      puts "Erro ao salvar registro #{tcbo[1]}"
+      puts "Erro ao salvar registro #{tcbo[1]} #{res.errors.full_messages}"
     end
   end
 end

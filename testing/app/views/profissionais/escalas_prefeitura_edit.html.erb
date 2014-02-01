@@ -1,0 +1,61 @@
+<div id="texto-maior">
+<h2>Alterar escala:</h2>
+
+<%= render 'escalas_prefeitura_form' %>
+
+<br />
+
+<%= link_to 'Voltar', profissionais_escalas_prefeitura_path %>
+
+<%= link_to 'Visualizar', profissionais_escalas_prefeitura_show_path(@escala) %>
+
+</div>
+
+<script>
+
+  var i=1;
+  var j=1;
+  var hoje = new Date()
+  var hoje_dia = hoje.getDate();
+  var hoje_mes = hoje.getMonth()+1;
+  var data_exec_mes = document.getElementById('escala_data_execucao_2i').value;
+  var data_exec_dia = document.getElementById('escala_data_execucao_3i').value;
+  var data_exec_hora = document.getElementById('escala_horario_inicio_execucao_4i').value;
+  var data_exec_min = document.getElementById('escala_horario_inicio_execucao_5i').value;
+  var data_hora_fim = document.getElementById('escala_horario_fim_execucao_4i').value;
+  var hoje_hora = hoje.getHours();
+  var hoje_minuto = hoje.getMinutes();
+  if (data_exec_mes == hoje_mes){
+    while (j < hoje_dia){
+      document.getElementById("escala_data_execucao_3i").remove(i);
+      j++;
+    }
+  }
+  if(data_exec_dia == hoje_dia){
+    j=1;
+    while(j < (hoje_hora+1)){
+      document.getElementById("escala_horario_inicio_execucao_4i").remove(i);
+      j++;
+    }
+  }
+  if ((parseInt(data_exec_hora, 10)) == (hoje_hora)){
+    j=1;
+    while(j < parseInt(hoje_minuto)){
+      document.getElementById("escala_horario_inicio_execucao_5i").remove(i);
+      j=j+5;
+    }
+  }
+  j=1;
+  while (j < (hoje_hora+1)){
+    document.getElementById("escala_horario_fim_execucao_4i").remove(i);
+    j++;
+  }
+  j=1;
+  if (data_exec_hora == data_hora_fim){
+    while(j < (parseInt(data_exec_min, 10)+5)){
+      document.getElementById("escala_horario_fim_execucao_5i").remove(i);
+      j=j+5;
+    }
+  }
+
+</script>

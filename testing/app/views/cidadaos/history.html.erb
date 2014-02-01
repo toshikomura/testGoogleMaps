@@ -23,7 +23,7 @@ hora(s) antes do horário de início do atendimento.</p>
 <%= search_form_for(@search, :remote => true,
                     url: cidadaos_agendamentos_historico_path) do |f| %>
   <div class="field">
-    <%= f.label :escala_orgao_id, "Local de Atendimento: " %><br />
+    <%= f.label :escala_orgao_id, t('orgao')+":" %><br />
     <%= f.select :escala_orgao_id_eq,
     options_from_collection_for_select(Orgao.where("ativo = ?",
     true),"id","nome", @search.escala_orgao_id_eq),

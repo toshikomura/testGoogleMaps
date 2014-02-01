@@ -1,13 +1,9 @@
 Agendador::Application.routes.draw do
 
-  resources :maps
-
+  resources :locations
 
   resources :reports, :except => [ :new, :edit, :show, :update, :destroy ]
 
-  post "reports/profissionais"
-  post "reports/cidadaos"
-  post "reports/agendamentos"
   post "reports/select_type_report"
   post "/reports/relatorio/gerar_relatorio_profissionais" => "reports#generate_profissionais_report"
   post "/reports/relatorio/gerar_relatorio_cidadaos" => "reports#generate_cidadaos_report"
@@ -24,6 +20,14 @@ Agendador::Application.routes.draw do
   get "/reports/relatorio/agendamentos_relatorio" => "reports#schedule_select_agendamentos_report"
 
   get "profissionais/escalas"
+  get "profissionais/escalas_prefeitura"
+  get "profissionais/escalas_prefeitura_show/:id_escala", to: "profissionais#escalas_prefeitura_show", as: "profissionais/escalas_prefeitura_show"
+  get "profissionais/escalas_prefeitura_new", to: "profissionais#escalas_prefeitura_new", as: "profissionais/escalas_prefeitura_new"
+  get "profissionais/escalas_prefeitura/:id_escala/edit", to: "profissionais#escalas_prefeitura_edit", as:"profissionais/escalas_prefeitura_edit"
+  post "profissionais/escalas_prefeitura", to: "profissionais#escalas_prefeitura_create", as: "profissionais/escalas_prefeitura_create"
+  put "profissionais/escalas_prefeitura/:id_escala", to: "profissionais#escalas_prefeitura_update", as: "profissionais/escalas_prefeitura_update"
+  delete "profissionais/escalas_prefeitura/:id_escala", to: "profissionais#escalas_prefeitura_destroy", as: "profissionais/escalas_prefeitura_destroy"
+  post "profissionais/escalas_prefeitura_remove_escala", to: "profissionais#escalas_prefeitura_remove_escala", as: "profissionais/escalas_prefeitura_remove_escala"
 
   get "profissionais/atendimento"
 	put "profissionais/atendimento_update"
@@ -79,6 +83,7 @@ Agendador::Application.routes.draw do
   resources :tipo_atendimentos, :except => :destroy
 
 
+
   resources :escalas
 	post "escalas/remove_escala"
 
@@ -94,6 +99,8 @@ Agendador::Application.routes.draw do
   get "agendador/contato"
   get "agendador/reportar"
   get "municipios" => "agendador#municipios", :module => "agendador", :format => :json
+  get "profissionais_executores" => "agendador#profissionais_executores", :module => "agendador", :format => :json
+  get "tipo_atendimentos_local_de_atendimento" => "agendador#tipo_atendimentos_local_de_atendimento", :module => "agendador", :format => :json
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

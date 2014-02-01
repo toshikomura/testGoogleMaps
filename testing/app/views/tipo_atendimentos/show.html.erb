@@ -14,7 +14,7 @@
 </p>
 
 <p>
-  <b>Locais de Atendimento:</b>
+<b><%=t('orgaos')%>:</b>
   <ul>
     <% @tipo_atendimento.orgaos.each do |orgao| %>
 	  <li><%= link_to "#{orgao.nome} (#{situacao(orgao)})", orgao %></li>	

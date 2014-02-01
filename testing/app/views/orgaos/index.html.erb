@@ -1,8 +1,8 @@
 <div id="texto-maior">
-<h2>Locais de Atendimento</h2>
+    <h2><%=t('orgaos')%></h2>
 
 <div id="search-form">
-<h4>Buscar Locais de Atendimento:</h4>
+    <h4>Buscar <%=t('orgaos')%>:</h4>
   <%= search_form_for(@search, :remote => true) do |f| %>
     <div class="field">
 	  <%= f.label :nome, "Nome: " %><br />
@@ -50,6 +50,6 @@ options_for_select([["Ativo",true],["Inativo",false]],@search.ativo_eq),
 
 <br />
 
-<%= link_to 'Novo Local de Atendimento', new_orgao_path %>
+<%= link_to 'Novo '+t('orgao'), new_orgao_path %>
 
 </div>

@@ -1,7 +1,8 @@
+<%= page_entries_info @agendamentos %>
 <table class="list">
   <thead>
     <tr>
-      <th>Local de atendimento</th>
+        <th><%=t('orgao')%></th>
       <th>Tipo de Atendimento</th>
       <th>Data</th>
       <th>Horário de início</th>
@@ -19,7 +20,7 @@
     <tr>
       <td>
         <% if agendamento.orgao.nil? %>
-          ERRO: Agendamento não possui local de atendimento, por favor
+            ERRO: Agendamento não possui <%=t('orgao')%>, por favor
 contate o suporte!
         <% else %>
           <%= agendamento.orgao.nome %>
@@ -35,7 +36,7 @@ contate o suporte!
           <%= agendamento.escala.tipo_atendimento.descricao %>
         <% end %>
       </td>
-      <td><%= agendamento.horario_inicio_consulta.strftime("%d/%m/%Y") %></td>
+      <td><%= agendamento.escala.data_execucao.strftime("%d/%m/%Y") %></td>
       <td><%= agendamento.horario_inicio_consulta.strftime("%H:%M") %></td>
       <td><%= agendamento.horario_fim_consulta.strftime("%H:%M") %></td>
       <td><%= agendamento.observacao %></td>
@@ -61,3 +62,4 @@ o suporte!
   <% end %>
   </body>
 </table>
+<%= will_paginate_remote @agendamentos %>

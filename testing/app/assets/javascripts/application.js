@@ -15,6 +15,8 @@
 //= require jquery_ujs
 //= require_tree .
 //= require maskedinput
+//= require underscore
+//= require gmaps/google
 
 jQuery(function($){
   $(".phone").mask("(99)9999-9999");

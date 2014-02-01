@@ -66,7 +66,7 @@ class CidadaosController < ApplicationController
   # GET /cidadaos/agendamentos/historico
   def history
     @search = Agendamento.historico(current_cidadao).search(params[:q])
-    @agendamentos = @search.result
+    @agendamentos = @search.result.paginate(:page => params[:page], :per_page => 25)
     @num_agendamentos = Agendamento.cidadao_agendados(current_cidadao).count
     @bloqueio = Bloqueio.situacao(current_cidadao).first
     @limite_cancelamento = Prefeitura.first.limite_cancelamento

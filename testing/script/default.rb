@@ -35,7 +35,7 @@ require 'csv'
     if (res)
       puts "Atualizado registro #{prefeitura.nome}"
     else
-      puts "Erro ao atualizar registro #{prefeitura.nome}"
+      puts "Erro ao atualizar registro #{prefeitura.nome} #{res.errors.full_messages}"
     end
   else
     prefeitura = Prefeitura.new(:nome => "Nome da prefeitura",
@@ -55,7 +55,7 @@ require 'csv'
     if prefeitura.save
       puts "Salvo registro #{prefeitura.nome}"
     else
-      puts "Erro ao salvar registro #{prefeitura.nome}"
+      puts "Erro ao salvar registro #{prefeitura.nome} #{prefeitura.errors.full_messages}"
     end
   end
 
@@ -74,11 +74,12 @@ require 'csv'
                             :ativo => true,
                             :tcbo_id => 1,
                             :password => "123456",
-                            :password_confirmation => "123456")
+                            :password_confirmation => "123456",
+                            :email => "admagendador@newcastle.c3sl.ufpr.br")
     if (res)
       puts "Atualizado registro #{root.nome} #{root.role} #{root.cpf}"
     else
-      puts "Erro ao atualizar registro #{root.nome} #{root.role} #{root.cpf}"
+      puts "Erro ao atualizar registro #{root.nome} #{root.role} #{root.cpf} #{res.errors.full_messages}"
     end
   else
     root = Profissional.new(:nome => "Administrador",
@@ -91,10 +92,11 @@ require 'csv'
                             :ativo => true,
                             :tcbo_id => 1,
                             :password => "123456",
-                            :password_confirmation => "123456")
+                            :password_confirmation => "123456",
+                            :email => "admagendador@newcastle.c3sl.ufpr.br")
     if root.save
       puts "Salvo registro #{root.nome} #{root.role} #{root.cpf}"
     else
-      puts "Erro ao salvar registro #{root.nome} #{root.role} #{root.cpf}"
+      puts "Erro ao salvar registro #{root.nome} #{root.role} #{root.cpf} #{root.errors.full_messages}"
     end
   end

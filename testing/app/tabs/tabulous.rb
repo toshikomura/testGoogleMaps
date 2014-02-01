@@ -157,6 +157,21 @@ Tabulous.setup do
       enabled_when  { true }
       active_when   { in_action('any').of_controller('escalas') }
     end
+    
+    escalas_prefeitura_subtab do
+      text          { 'Escalas Prefeitura' }
+      link_path     { profissionais_escalas_prefeitura_path }
+      visible_when  { administradorsistema_signed_in? }
+      enabled_when  { true }
+      active_when do
+        in_action('escalas_prefeitura').of_controller('profissionais')
+        in_action('escalas_prefeitura_show').of_controller('profissionais')
+        in_action('escalas_prefeitura_new').of_controller('profissionais')
+        in_action('escalas_prefeitura_create').of_controller('profissionais')
+        in_action('escalas_prefeitura_edit').of_controller('profissionais')
+        in_action('escalas_prefeitura_update').of_controller('profissionais')
+      end
+    end
  
     all_atendimentos_tab do
       text          { 'Atendimentos' }
@@ -262,10 +277,10 @@ Tabulous.setup do
 
     maps_subtab do
       text          { 'Localização' }
-      link_path     { maps_path }
+      link_path     { locations_path }
       visible_when  { administradorsistema_signed_in? }
       enabled_when  { true }
-      active_when   { in_action('any').of_controller('maps') }
+      active_when   { in_action('any').of_controller('locations') }
     end
   end
 

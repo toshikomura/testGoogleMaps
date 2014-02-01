@@ -16,7 +16,7 @@ Profissional não pode ser salvo :</h2>
       <%= f.label :ativo, "Situação*:" %><br />
       <% if @profissional.new_record? %>
         <%= f.text_field :ativo, :value => "Ativo", :disabled => true %>
-      <% else %> 
+      <% else %>
         <%= f.select :ativo, [["Ativo",true],["Inativo",false]] %>
       <% end %>
     </div>
@@ -52,9 +52,9 @@ Profissional não pode ser salvo :</h2>
     </div>
 
     <div class="field-required">
-      <%= f.label :orgao_id, "Local de Atendimento*:" %><br />
+      <%= f.label :orgao_id, t('orgao') + "*:" %><br />
       <%= collection_select(:profissional, :orgao_id, Orgao.where("ativo =
-?",true), :id, :nome, { :prompt => "Selecione um Local de Atendimento" }) %>
+?",true), :id, :nome, { :prompt => "Selecione um " + t('orgao') }) %>
     </div>
 
     <div class="field-required">
@@ -126,8 +126,8 @@ Tmibge.where("tufibge_id = ?", @profissional.tufibge_id), :id,
       <%= f.text_field :telefone2, :class => "phone" %>
     </div>
 
-    <div class="field">
-      <%= f.label :email, "E-mail:" %><br />
+    <div class="field-required">
+      <%= f.label :email, "E-mail:*" %><br />
       <%= f.text_field :email %>
     </div>
 

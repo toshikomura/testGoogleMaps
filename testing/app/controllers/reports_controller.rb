@@ -90,7 +90,32 @@ class ReportsController < ApplicationController
 
         @profissionais = @search.result
 
-        report = ProfissionaisReport.new(:page_size => [595.28, 841.89]).to_pdf( @prefeitura, @orgao, @profissionais)
+        # Se foi escolhido um cpf profissional
+        unless params["q"]["cpf_eq"].nil? or params["q"]["cpf_eq"].empty?
+          @p_profissional = Profissional.where("cpf = ?", params["q"]["cpf_eq"]).first
+        end
+
+        # Se foi escolhido um local de atendimento
+        unless params["q"]["orgao_id_eq"].nil? or params["q"]["orgao_id_eq"].empty?
+          @p_local_atendimento = Orgao.find(params["q"]["orgao_id_eq"])
+        end
+
+        # Se foi escolhido uma permissão
+        unless params["q"]["role_eq"].nil? or params["q"]["role_eq"].empty?
+          @p_permissao = params["q"]["role_eq"]
+        end
+
+        # Se foi escolhido uma ocupação
+        unless params["q"]["tcbo_id_eq"].nil? or params["q"]["tcbo_id_eq"].empty?
+          @p_ocupacao = Tcbo.find(params["q"]["tcbo_id_eq"])
+        end
+
+        # Se foi escolhido uma situação
+        unless params["q"]["ativo_eq"].nil? or params["q"]["ativo_eq"].empty?
+          @p_situacao = params["q"]["ativo_eq"]
+        end
+
+        report = ProfissionaisReport.new(:page_size => [595.28, 841.89]).to_pdf( @prefeitura, @orgao, @profissionais, @p_profissional, @p_local_atendimento, @p_permissao, @p_ocupacao, @p_situacao)
         send_data report, filename: "profissionais.pdf",
                           type: "application/pdf"
       }
@@ -128,7 +153,12 @@ class ReportsController < ApplicationController
 
         @cidadaos = @search.result
 
-        report = CidadaosReport.new(:page_size => [595.28, 841.89]).to_pdf( @prefeitura, @orgao, @cidadaos)
+        # Se foi escolhido um cpf cidadão
+        unless params["q"]["cpf_eq"].nil? or params["q"]["cpf_eq"].empty?
+          @p_cidadao = Cidadao.where("cpf = ?", params["q"]["cpf_eq"]).first
+        end
+
+        report = CidadaosReport.new(:page_size => [595.28, 841.89]).to_pdf( @prefeitura, @orgao, @cidadaos, @p_cidadao)
         send_data report, filename: "cidadaos.pdf",
                           type: "application/pdf"
       }
@@ -178,7 +208,22 @@ class ReportsController < ApplicationController
                                 params["q"]["data_execucao_lteq(3i)"].to_i
                                 )
 
-        report = EscalasReport.new(:page_size => [595.28, 841.89]).to_pdf( @prefeitura, @orgao, @escalas, @data_inicio, @data_fim)
+        # Se foi escolhido um profissional
+        unless params["q"]["profissional_executor_id_eq"].nil? or params["q"]["profissional_executor_id_eq"].empty?
+          @p_profissional = Profissional.find(params["q"]["profissional_executor_id_eq"])
+        end
+
+        # Se foi escolhido um tipo de atendimento
+        unless params["q"]["tipo_atendimento_id_eq"].nil? or params["q"]["tipo_atendimento_id_eq"].empty?
+          @p_tipo_atendimento = TipoAtendimento.find(params["q"]["tipo_atendimento_id_eq"])
+        end
+
+        # Se foi escolhido um tipo de ação
+        unless params["q"]["tipo_acao_id_eq"].nil? or params["q"]["tipo_acao_id_eq"].empty?
+          @p_tipo_acao = TipoAcao.find(params["q"]["tipo_acao_id_eq"])
+        end
+
+        report = EscalasReport.new(:page_size => [595.28, 841.89]).to_pdf( @prefeitura, @orgao, @escalas, @data_inicio, @data_fim, @p_profissional, @p_tipo_atendimento, @p_tipo_acao)
         send_data report, filename: "escalas.pdf",
                           type: "application/pdf"
       }
@@ -226,20 +271,20 @@ class ReportsController < ApplicationController
 
         # Se foi escolhido um cpf cidadão
         unless params["q"]["cidadao_cpf_eq"].nil? or params["q"]["cidadao_cpf_eq"].empty?
-          @cidadao = Cidadao.where("cpf = ?", params["q"]["cidadao_cpf_eq"]).first
+          @p_cidadao = Cidadao.where("cpf = ?", params["q"]["cidadao_cpf_eq"]).first
         end
 
         # Se foi escolhido um tipo de atendimento
         unless params["q"]["escala_tipo_atendimento_id_eq"].nil? or params["q"]["escala_tipo_atendimento_id_eq"].empty?
-          @tipo_atendimento = TipoAtendimento.find(params["q"]["escala_tipo_atendimento_id_eq"])
+          @p_tipo_atendimento = TipoAtendimento.find(params["q"]["escala_tipo_atendimento_id_eq"])
         end
 
         # Se foi escolhido um tipo de situação
         unless params["q"]["tipo_situacao_id_eq"].nil? or params["q"]["tipo_situacao_id_eq"].empty?
-          @tipo_situacao = TipoSituacao.find(params["q"]["tipo_situacao_id_eq"])
+          @p_tipo_situacao = TipoSituacao.find(params["q"]["tipo_situacao_id_eq"])
         end
 
-        report = AgendamentosReport.new(:page_size => [595.28, 841.89]).to_pdf( @prefeitura, @orgao, @agendamentos, @data_inicio, @data_fim, @cidadao, @tipo_atendimento, @tipo_situacao)
+        report = AgendamentosReport.new(:page_size => [595.28, 841.89]).to_pdf( @prefeitura, @orgao, @agendamentos, @data_inicio, @data_fim, @p_cidadao, @p_tipo_atendimento, @p_tipo_situacao)
         send_data report, filename: "agendamentos.pdf",
                           type: "application/pdf"
         }

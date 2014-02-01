@@ -7,7 +7,7 @@ class OrgaosController < ApplicationController
   # GET /orgaos.json
   def index
 	@search = Orgao.search(params[:q])
-    @orgaos = @search.result
+    @orgaos = @search.result.paginate(:page => params[:page], :per_page => 25)
 
     respond_to do |format|
       format.html # index.html.erb

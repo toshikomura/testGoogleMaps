@@ -1,3 +1,12 @@
+<h4>Informações desta sessão</h4>
+<p>
+Você está efetuando agendamentos para <b><%= @cidadao.nome %></b> (CPF: <b><%= @cidadao.cpf %></b>)
+<%= link_to("Cancelar", agendamentos_path(:clear_cpf => true),
+    :confirm => "Deseja finalizar os agendamentos para este cidadão?",
+    :clear_cpf => true) %>
+</p>
+<hr noshade="noshade" />
+
 <div id="search-form">
 <h4>Buscar agendamentos disponíveis</h4>
 <%= search_form_for @search do |f| %>
@@ -11,6 +20,13 @@
         {:class => "search-field"}) %>
   </div>
 
+  <div class="field">
+    <%= f.label :escala_data_execucao, "Data: " %><br />
+    <%= f.date_select(:escala_data_execucao_gteq,
+        { :order => [ :day, :month, :year ],
+          :start_year => Time.now.year }, {:class => "search-field"}) %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Buscar" %>
     <%= f.submit "Limpar campos", :id => "reset_btn" %>
@@ -19,6 +35,8 @@
 
 <hr>
 </div>
+
+<%= page_entries_info @agendamentos %>
 
 <table class="list">
   <thead>
@@ -44,8 +62,9 @@
   </tbody>
 </table>
 
-<br />
+<%= will_paginate @agendamentos %>
 
+<br />
 <%= link_to("Voltar", agendamentos_path(:clear_cpf => true),
     :confirm => "Deseja finalizar os agendamentos para este cidadão?",
     :clear_cpf => true) %>

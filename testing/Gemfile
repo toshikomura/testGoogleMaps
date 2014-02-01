@@ -6,7 +6,7 @@ gem 'rails', '3.2.12'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-
+# gem 'mysql2' # (Ignore this)
 gem 'pg'
 
 # Gems used only for assets and not required
@@ -69,5 +69,16 @@ end
 # Provides the calendar_for helper method
 gem 'watu_table_builder', :require => 'table_builder'
 
+# Pagination library
+gem 'will_paginate', '~> 3.0'
+
+# Handle jobs scheduing
+gem 'rufus-scheduler'
+
 # Provides the google maps
 gem 'geocoder'
+gem 'nifty-generators'
+
+gem "mocha", :group => :test
+
+gem 'gmaps4rails'

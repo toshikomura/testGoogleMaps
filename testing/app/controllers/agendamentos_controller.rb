@@ -11,15 +11,15 @@ class AgendamentosController < ApplicationController
     @search = Agendamento.search(params[:q])
     @tipo_situacao = TipoSituacao.find_by_descricao("Vago")
     @agendamentos = @search.result
-                      .joins(:escala => { :orgao => :profissionais })
-                      .where("profissionais.id = ?", current_profissional.id)
-                      .where(:tipo_situacao_id => @tipo_situacao.id)
-                      .where("escalas.data_execucao >= ?", Date.today)
-                      .order("horario_inicio_consulta ASC")
-                      .limit(30)
+      .joins(:escala => { :orgao => :profissionais })
+      .where(:profissionais => { :id => current_profissional.id })
+      .where(:tipo_situacao_id => @tipo_situacao.id)
+      .where("escalas.data_execucao >= ?", Date.today)
+      .order("horario_inicio_consulta ASC")
+      .paginate(:page => params[:page], :per_page => 25)
 
     if params[:cpf].nil?
-      @cidadao = Cidadao.where(:cpf => session[:cpf]).first unless session[:cpf].nil?    
+      @cidadao = Cidadao.where(:cpf => session[:cpf]).first unless session[:cpf].nil?
     else
       @cidadao = Cidadao.where(:cpf => params[:cpf]).first
       session[:cpf] = params[:cpf] unless @cidadao.nil?
@@ -130,46 +130,48 @@ class AgendamentosController < ApplicationController
 
   # GET /agendamentos/atendimento
   def atendimento
-    @search = Agendamento.search(params[:q])
-	@profissional = current_profissional
+    @profissional = current_profissional
     @data = Date.today
-	@agendamentos = @search.result.where("agendamentos.orgao_id = ?",
-        @profissional.orgao_id).order("horario_inicio_consulta ASC")
+    @search = Agendamento.search(params[:q])
+    @agendamentos = @search.result
+      .where(:orgao_id => @profissional.orgao_id)
+      .order("horario_inicio_consulta ASC")
+      .paginate(page: params[:page], per_page: 25)
 
-	respond_to do |format|
-	  format.html # atendimento.html.erb
-      format.js   # atendimento.js.erb
-	  format.json {render json: @agendamentos}
-	end
+    respond_to do |format|
+      format.html # atendimento.html.erb
+        format.js   # atendimento.js.erb
+      format.json {render json: @agendamentos}
+    end
   end
 
   # PUT /agendamentos/atendimento_update
   # POST /agendamentos/atendimento_update
   def atendimento_update
-	@agendamento = Agendamento.find(params[:id])
+    @agendamento = Agendamento.find(params[:id])
     situacao = TipoSituacao.find(params[:agendamento][:tipo_situacao_id])
     cidadao_id = @agendamento.cidadao.id
-	respond_to do |format|
-      if ((situacao.id != @agendamento.tipo_situacao_id) &&
-(@agendamento.tipo_situacao.descricao == "Agendado"))
+    respond_to do |format|
+      if ((situacao.id != @agendamento.tipo_situacao_id) && (@agendamento.tipo_situacao.descricao == "Agendado"))
         if (situacao.descricao == "Não Compareceu")
           prefeitura = Prefeitura.first
           cidadao_faltas = Agendamento.cidadao_faltas(@agendamento.cidadao).periodo(prefeitura.periodo_agendamentos).count + 1
           if (cidadao_faltas >= prefeitura.max_faltas)
-            bloqueio = Bloqueio.new(:data_entrada => DateTime.now,
-                                 :data_expira => prefeitura.dias_bloqueio.days.from_now,
-                                 :cidadao_id => cidadao_id)
+            bloqueio = Bloqueio.new(:data_entrada => Date.today,
+              :data_expira => prefeitura.dias_bloqueio.days.from_now.to_date,
+              :cidadao_id => cidadao_id)
             bloqueio.save!
           end
         end
-  	    if (@agendamento.update_attributes(:tipo_situacao_id => situacao.id, :cidadao_id => cidadao_id))
-	      format.html {redirect_to agendamentos_atendimento_path,
+
+        if (@agendamento.update_attributes(:tipo_situacao_id => situacao.id, :cidadao_id => cidadao_id))
+          format.html {redirect_to agendamentos_atendimento_path,
           notice: "Situação do agendamento atualizada como: #{@agendamento.tipo_situacao.descricao}."}
         else
           format.html {redirect_to agendamentos_atendimento_path,
           warning: "Erro: Situação do agendamento não pode ser atualizada."}
         end
- 	  else
+      else
         format.html {redirect_to agendamentos_atendimento_path}
       end
     end

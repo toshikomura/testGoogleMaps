@@ -10,9 +10,9 @@
 <% end %>
 
 <p>
-  <b>Local de atendimento:</b>
+<b><%=t('orgao')%>:</b>
   <% if @agendamento.orgao.nil? %>
-    ERRO: Agendamento não possui local de atendimento, por favor contate o suporte!
+      ERRO: Agendamento não possui <%=t('orgao')%>, por favor contate o suporte!
   <% else %>
     <%= @agendamento.orgao.nome %>
   <% end %>
@@ -39,12 +39,12 @@ suporte!
 
 <p>
   <b>Horário de início da consulta</b>
-  <%= @agendamento.horario_inicio_consulta.strftime("%H:%M:%S") %>
+  <%= @agendamento.horario_inicio_consulta.strftime("%H:%M") %>
 </p>
 
 <p>
   <b>Horário de término da consulta:</b>
-  <%= @agendamento.horario_fim_consulta.strftime("%H:%M:%S") %>
+  <%= @agendamento.horario_fim_consulta.strftime("%H:%M") %>
 </p>
 
 <p>

@@ -4,8 +4,16 @@
 <div id="search-form">
 <h4>Escalas:</h4>
 
-<%= form_for(@search, :as => :q, :method => :post,
+<%= search_form_for(@search, :as => :q, :method => :post,
     :url => { :action => :generate_escalas_report, :format => :pdf, :search => @search }) do |f| %>
+
+  <div class="field">
+    <%= f.label :profissional_executor_id, "Profissional: " %><br />
+    <%= f.select :profissional_executor_id_eq,
+options_from_collection_for_select(Profissional.where("orgao_id = ? AND ativo = ?",
+current_profissional.orgao_id,true), "id","nome",@search.profissional_executor_id_eq),
+{:include_blank => "Todos"}, {:class => "search-field"} %>
+  </div>
 
   <div class="field">
     <%= f.label :tipo_atendimento_id, "Tipo Atendimento: " %><br />
@@ -13,14 +21,6 @@
 options_from_collection_for_select(TipoAtendimento.joins(:orgaos).where("orgao_id = ? AND
 tipo_atendimentos.ativo = ?", current_profissional.orgao_id,true),
 "id","descricao",@search.tipo_atendimento_id_eq),
-{:include_blank => "Todos"}, {:class => "search-field"} %>
-  </div>
-
-  <div class="field">
-    <%= f.label :profissional_executor_id, "Profissional: " %><br />
-    <%= f.select :profissional_executor_id_eq,
-options_from_collection_for_select(Profissional.where("orgao_id = ? AND ativo = ?",
-current_profissional.orgao_id,true), "id","nome",@search.profissional_executor_id_eq),
 {:include_blank => "Todos"}, {:class => "search-field"} %>
   </div>
 
@@ -45,6 +45,13 @@ current_profissional.orgao_id,true), "id","nome",@search.profissional_executor_i
     <%= f.select :tipo_acao_id_eq,
 options_from_collection_for_select(TipoAcao.all,"id","descricao",@search.tipo_acao_id_eq),
  {:include_blank => "Todos"}, {:class => "search-field"} %>
+  </div>
+
+  <div class="field">
+    Ordenar por:
+    <%= f.sort_fields do |s| %>
+      <%= s.sort_select %>
+    <% end %>
   </div>
 
   <div class="actions">
