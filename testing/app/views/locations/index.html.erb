@@ -27,25 +27,196 @@
 
 <h4>Exemplo:</h4>
 <div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
+    <div>
+        <button type="button" onclick="showAllMap();">Show All Map</button>
+
+        <strong>Start: </strong>
+        <select id="start" onchange="calcRoute();">
+            <option value="chicago, il">Chicago</option>
+            <option value="st louis, mo">St Louis</option>
+            <option value="joplin, mo">Joplin, MO</option>
+            <option value="oklahoma city, ok">Oklahoma City</option>
+            <option value="amarillo, tx">Amarillo</option>
+            <option value="gallup, nm">Gallup, NM</option>
+            <option value="flagstaff, az">Flagstaff, AZ</option>
+            <option value="winona, az">Winona</option>
+            <option value="kingman, az">Kingman</option>
+            <option value="barstow, ca">Barstow</option>
+            <option value="san bernardino, ca">San Bernardino</option>
+            <option value="los angeles, ca">Los Angeles</option>
+        </select>
+
+        <strong>End: </strong>
+        <select id="end" onchange="calcRoute();">
+            <option value="chicago, il">Chicago</option>
+            <option value="st louis, mo">St Louis</option>
+            <option value="joplin, mo">Joplin, MO</option>
+            <option value="oklahoma city, ok">Oklahoma City</option>
+            <option value="amarillo, tx">Amarillo</option>
+            <option value="gallup, nm">Gallup, NM</option>
+            <option value="flagstaff, az">Flagstaff, AZ</option>
+            <option value="winona, az">Winona</option>
+            <option value="kingman, az">Kingman</option>
+            <option value="barstow, ca">Barstow</option>
+            <option value="san bernardino, ca">San Bernardino</option>
+            <option value="los angeles, ca">Los Angeles</option>
+        </select>
+
+    </div>
+
+    <div id="map" style='width: 800px; height: 400px;'></div>
+
 </div>
 
 <script type="text/javascript">
-  handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers([
-      {
-        "lat": 0,
-        "lng": 0,
-        "picture": {
-          "url": "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
-          "width":  36,
-          "height": 36
+    // need to check why direction don´t work with another code
+
+    // vars to insert directions
+    var directionsDisplay = new google.maps.DirectionsRenderer();
+    var directionsService = new google.maps.DirectionsService();
+
+    // function to show all map
+    function showAllMap() {
+            handler.getMap().setZoom(1);
+            marker.setMap(handler.getMap()); //because clusterer removes map property from marker
+    }
+
+    // function to calculate directions
+    function calcRoute() {
+
+        // this two lacations need to be insert by user or get of database
+//        var origin      = new google.maps.LatLng(40, -80);
+//        var destination = new google.maps.LatLng(50, -85);
+        var origin      = document.getElementById("start").value;
+        var destination = document.getElementById("end").value;
+
+        var request = {
+            origin:      origin,
+            destination: destination,
+            travelMode:  google.maps.TravelMode.DRIVING
+        };
+        directionsService.route(request, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(response);
+            }
+        });
+    }
+
+    // call function to calculate directions
+    calcRoute();
+
+    // functions to create sidebar - start
+    // create line of sidebar
+    function createSidebarLi(json){
+        return ("<li><a>" + json.name + "</a></li>");
+    };
+
+    // bind markers
+    function bindLiToMarker($li, marker){
+        $li.on('click', function(){
+            handler.getMap().setZoom(14);
+            marker.setMap(handler.getMap()); //because clusterer removes map property from marker
+            marker.panTo();
+            google.maps.event.trigger(marker.getServiceObject(), 'click');
+        })
+    };
+
+    // create sidebar
+    function createSidebar(json_array){
+        _.each(json_array, function(json){
+            var $li = $( createSidebarLi(json) );
+            $li.appendTo('#sidebar_container');
+            bindLiToMarker($li, json.marker);
+        });
+    };
+
+    // functions to create sidebar - finish
+
+    var mapOptions = { mapTypeId: google.maps.MapTypeId.SATELLITE };
+    handler = Gmaps.build('Google');
+    handler.buildMap
+    (
+        {
+            provider: mapOptions
+/*
+            {
+                disableDefaultUI: true
+            }
+*/
+            ,
+            internal: {id: 'map'} // name of id map
         },
-        "infowindow": "hello!"
-      }
-    ]);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-  });
+        function()
+        {
+            var json_array = [
+                {
+                    "lat": 0,
+                    "lng": 0,
+                    "picture":
+                    {
+                        //"url": "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
+                        "width":  36,
+                        "height": 36
+                    },
+                    "infowindow": "hello!"
+                },
+                { lat: 43, lng: 3.5},
+                { lat: 45, lng: 4},
+                { lat: 47, lng: 3.5},
+                { lat: 49, lng: 4},
+                { lat: 51, lng: 3.5, infowindow: "here"},
+                { lat: 40, lng: -80, name: 'Foo', infowindow: "I'm Foo" },
+                { lat: 45, lng: -90, name: 'Bar', infowindow: "I'm Bar" },
+                { lat: 50, lng: -85, name: 'Baz', infowindow: "I'm Baz" }
+            ];
+
+            var polygons = handler.addPolygons(
+                [
+                    [
+                        {lat:  48, lng: -3.5}, { lat: 51, lng: -0.5},
+                        {lat:  48, lng:  2.5}, { lat: 51, lng:  5.5},
+                        {lat:  48, lng:  8.5}, { lat: 42, lng:  2.5},
+                    ]
+                ],
+                {strokeColor: '#FF0000'}
+            );
+
+            var circle = handler.addCircles(
+                [
+                    { lat: 51, lng: -6, radius: 500000 }
+                ],
+                { fillColor: '#0000FF', fillOpacity: '1', strokeColor: '#0000FF'}
+            );
+
+            var circleIntern = handler.addCircles(
+                [
+                    { lat: 51, lng: -6, radius: 200000 }
+                ],
+                { fillColor: '#FF0000', fillOpacity: '1', strokeColor: '#FF0000'}
+            );
+
+            // need to get markers of database
+            var markers = handler.addMarkers(json_array);
+
+            // call functon to create sidebar - start
+            _.each(json_array, function(json, index){
+                json.marker = markers[index];
+            });
+
+            createSidebar(json_array);
+            // call functon to create sidebar - finish
+
+            // add map with directions
+            directionsDisplay.setMap(handler.getMap());
+            handler.bounds.extendWith(polygons); // auto adjust
+            handler.bounds.extendWith(circle); // auto adjust
+            handler.bounds.extendWith(circleIntern); // auto adjust
+            handler.bounds.extendWith(markers); // auto adjust
+            handler.fitMapToBounds(); // clustering
+            handler.getMap().setZoom(2); // set zoon
+//            handler.getMap().setType(); // set type of the map
+
+
+        }
+    );
 </script>
