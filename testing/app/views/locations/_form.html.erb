@@ -1,7 +1,7 @@
 <%= form_for @location do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :address %><br />
+    <%= f.label :address, "Endereço: " %><br />
     <%= f.text_field :address %>
   </p>
   <p>
