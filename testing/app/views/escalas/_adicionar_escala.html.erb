@@ -1,0 +1,82 @@
+<%= form_for @escala do |f| %>
+  <% if @escala.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@escala.errors.count, "erro") %>, Escala não pode ser salva:</h2>
+      <ul>
+      <% @escala.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= hidden_field_tag(:escalas_criadas, $escalas.size) if $escalas %>
+  <%= f.hidden_field :orgao_id, :value => current_profissional.orgao.id %>
+
+  <div class="field-required">
+    <%= f.label :profissional_responsavel_id, "Profissional Responsável*: " %><br />
+    <%= f.text_field :profissional_responsavel,
+      :value => current_profissional.nome, :disabled => true %>
+    <%= f.hidden_field :profissional_responsavel_id,
+      :value => current_profissional.id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :profissional_executor_id, "Profissional: " %><br />
+    <%= f.collection_select :profissional_executor_id, @orgao_profissionais,
+      :id, :nome, { include_blank: true } %>
+  </div>
+
+  <div class="field-required">
+    <%= f.label :tipo_atendimento_id, "Tipo de Atendimento*: " %><br />
+    <%= f.collection_select :tipo_atendimento_id, @orgao_tipo_atendimentos,
+      :id, :descricao, { include_blank: true } %>
+    <font id=erro_ta color='red'></font>
+  </div>
+
+  <div class="field-required">
+    <%= f.label :data_execucao, "Data*: " %><br />
+    <%= f.date_select :data_execucao, { start_year: Time.now.year,
+      end_year: Time.now.year+1, order: [:year, :month, :day],
+      prompt: { day: 'Dia', month: 'Mês', year: 'Ano'}} %>
+  </div>
+
+  <div class="field-required">
+    <%= f.label :horario_inicio_execucao, "Horário de Início*: " %><br />
+    <%= f.time_select :horario_inicio_execucao,
+      {minute_step: 5, prompt: {hour: 'Hora', minute: 'Minutos'},
+      selected: {year: Time.now.year, month: Time.now.month, day: Time.now.day}}%>
+  </div>
+
+  <div class="field-required">
+    <%= f.label :horario_fim_execucao, "Horário de Término*: " %><br />
+    <%= f.time_select :horario_fim_execucao, {minute_step: 5,
+      prompt: {hour: 'Hora', minute: 'Minutos'}}%>
+  </div>
+
+  <div class="field">
+    <%= f.label :observacoes, "Observações: " %><br />
+    <%= f.text_area :observacoes, rows: 5, cols: 50 %>
+  </div>
+
+  <h4>Atendimentos:</h4>
+
+  <div class="field-required">
+    <%= radio_button_tag 'rd_btn_atend', 'num', selected: 'selected' %>
+    <%= f.label :numero_atendimentos, "Número de Atendimentos*: " %>
+    <%= f.text_field :numero_atendimentos, :id => "n_atendimentos" %>
+  </div>
+
+  <div class="field-required">
+    <%= radio_button_tag 'rd_btn_atend', 'inter' %>
+    <%= f.label :numero_atendimentos_por_tempo, "Tempo de Atendimento (minutos): "%>
+    <%= select_minute(0, {minute_step: 5, prompt: "Intervalo"},
+      id: "select_atend", disabled: true, name: "tempo_atendimento") %>
+  </div>
+
+  <p><font color="red"> Campos com (*) são de preenchimento obrigatório.</font></p>
+
+  <div class="actions">
+    <%= f.submit "Adicionar Escala", id: "scale_add", name: "scale_add", class: "create_scale_btn" %>
+  </div>
+<% end %>
