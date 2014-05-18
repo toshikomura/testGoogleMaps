@@ -28,39 +28,50 @@
 <h4>Exemplo:</h4>
 <div style='width: 800px;'>
     <div>
+
+        <button type="button" onclick="calcRoute();">Show me direction</button>
+
+        <div>
+            <input id="starttext" type="text" name="Start">
+            <input id="endtext" type="text" name="End">
+        </div>
+
+        <div>
+            <strong>Start: </strong>
+            <select id="start">
+                <option value="chicago, il">Chicago</option>
+                <option value="st louis, mo">St Louis</option>
+                <option value="joplin, mo">Joplin, MO</option>
+                <option value="oklahoma city, ok">Oklahoma City</option>
+                <option value="amarillo, tx">Amarillo</option>
+                <option value="gallup, nm">Gallup, NM</option>
+                <option value="flagstaff, az">Flagstaff, AZ</option>
+                <option value="winona, az">Winona</option>
+                <option value="kingman, az">Kingman</option>
+                <option value="barstow, ca">Barstow</option>
+                <option value="san bernardino, ca">San Bernardino</option>
+                <option value="los angeles, ca">Los Angeles</option>
+            </select>
+
+            <strong>End: </strong>
+            <select id="end">
+                <option value="chicago, il">Chicago</option>
+                <option value="st louis, mo">St Louis</option>
+                <option value="joplin, mo">Joplin, MO</option>
+                <option value="oklahoma city, ok">Oklahoma City</option>
+                <option value="amarillo, tx">Amarillo</option>
+                <option value="gallup, nm">Gallup, NM</option>
+                <option value="flagstaff, az">Flagstaff, AZ</option>
+                <option value="winona, az">Winona</option>
+                <option value="kingman, az">Kingman</option>
+                <option value="barstow, ca">Barstow</option>
+                <option value="san bernardino, ca">San Bernardino</option>
+                <option value="los angeles, ca">Los Angeles</option>
+            </select>
+        </div>
+
+        <br />
         <button type="button" onclick="showAllMap();">Show All Map</button>
-
-        <strong>Start: </strong>
-        <select id="start" onchange="calcRoute();">
-            <option value="chicago, il">Chicago</option>
-            <option value="st louis, mo">St Louis</option>
-            <option value="joplin, mo">Joplin, MO</option>
-            <option value="oklahoma city, ok">Oklahoma City</option>
-            <option value="amarillo, tx">Amarillo</option>
-            <option value="gallup, nm">Gallup, NM</option>
-            <option value="flagstaff, az">Flagstaff, AZ</option>
-            <option value="winona, az">Winona</option>
-            <option value="kingman, az">Kingman</option>
-            <option value="barstow, ca">Barstow</option>
-            <option value="san bernardino, ca">San Bernardino</option>
-            <option value="los angeles, ca">Los Angeles</option>
-        </select>
-
-        <strong>End: </strong>
-        <select id="end" onchange="calcRoute();">
-            <option value="chicago, il">Chicago</option>
-            <option value="st louis, mo">St Louis</option>
-            <option value="joplin, mo">Joplin, MO</option>
-            <option value="oklahoma city, ok">Oklahoma City</option>
-            <option value="amarillo, tx">Amarillo</option>
-            <option value="gallup, nm">Gallup, NM</option>
-            <option value="flagstaff, az">Flagstaff, AZ</option>
-            <option value="winona, az">Winona</option>
-            <option value="kingman, az">Kingman</option>
-            <option value="barstow, ca">Barstow</option>
-            <option value="san bernardino, ca">San Bernardino</option>
-            <option value="los angeles, ca">Los Angeles</option>
-        </select>
 
     </div>
 
@@ -77,8 +88,8 @@
 
     // function to show all map
     function showAllMap() {
-            handler.getMap().setZoom(1);
-            marker.setMap(handler.getMap()); //because clusterer removes map property from marker
+            handler.getMap().setZoom( 1);
+            marker.setMap( handler.getMap()); //because clusterer removes map property from marker
     }
 
     // function to calculate directions
@@ -87,53 +98,59 @@
         // this two lacations need to be insert by user or get of database
 //        var origin      = new google.maps.LatLng(40, -80);
 //        var destination = new google.maps.LatLng(50, -85);
-        var origin      = document.getElementById("start").value;
-        var destination = document.getElementById("end").value;
+        var origin      = document.getElementById( "starttext").value;
+        var destination = document.getElementById( "endtext").value;
+        if ( origin == "" || destination == "") {
+            var origin      = document.getElementById( "start").value;
+            var destination = document.getElementById( "end").value;
+        }
+
+        if ( origin == destination) {
+            alert( "orgin and destination can´t be the same");
+            return ;
+        }
 
         var request = {
             origin:      origin,
             destination: destination,
             travelMode:  google.maps.TravelMode.DRIVING
         };
-        directionsService.route(request, function(response, status) {
-            if (status == google.maps.DirectionsStatus.OK) {
-                directionsDisplay.setDirections(response);
+        directionsService.route( request, function( response, status) {
+            if ( status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections( response);
             }
         });
     }
 
-    // call function to calculate directions
-    calcRoute();
-
     // functions to create sidebar - start
     // create line of sidebar
-    function createSidebarLi(json){
-        return ("<li><a>" + json.name + "</a></li>");
+    function createSidebarLi( json){
+        return ( "<li><a>" + json.name + "</a></li>");
     };
 
     // bind markers
-    function bindLiToMarker($li, marker){
+    function bindLiToMarker( $li, marker){
         $li.on('click', function(){
-            handler.getMap().setZoom(14);
+            handler.getMap().setZoom( 14);
             marker.setMap(handler.getMap()); //because clusterer removes map property from marker
             marker.panTo();
-            google.maps.event.trigger(marker.getServiceObject(), 'click');
+            google.maps.event.trigger( marker.getServiceObject(), 'click');
         })
     };
 
     // create sidebar
-    function createSidebar(json_array){
-        _.each(json_array, function(json){
-            var $li = $( createSidebarLi(json) );
-            $li.appendTo('#sidebar_container');
-            bindLiToMarker($li, json.marker);
+    function createSidebar( json_array){
+        _.each(json_array, function( json){
+            var $li = $( createSidebarLi( json) );
+            $li.appendTo( '#sidebar_container');
+            bindLiToMarker( $li, json.marker);
         });
     };
 
     // functions to create sidebar - finish
 
     var mapOptions = { mapTypeId: google.maps.MapTypeId.SATELLITE };
-    handler = Gmaps.build('Google');
+    handler = Gmaps.build( 'Google');
     handler.buildMap
     (
         {
@@ -144,10 +161,11 @@
             }
 */
             ,
-            internal: {id: 'map'} // name of id map
+            internal: { id: 'map'} // name of id map
         },
         function()
         {
+
             var json_array = [
                 {
                     "lat": 0,
@@ -173,12 +191,12 @@
             var polygons = handler.addPolygons(
                 [
                     [
-                        {lat:  48, lng: -3.5}, { lat: 51, lng: -0.5},
-                        {lat:  48, lng:  2.5}, { lat: 51, lng:  5.5},
-                        {lat:  48, lng:  8.5}, { lat: 42, lng:  2.5},
+                        { lat:  48, lng: -3.5}, { lat: 51, lng: -0.5},
+                        { lat:  48, lng:  2.5}, { lat: 51, lng:  5.5},
+                        { lat:  48, lng:  8.5}, { lat: 42, lng:  2.5},
                     ]
                 ],
-                {strokeColor: '#FF0000'}
+                { strokeColor: '#FF0000'}
             );
 
             var circle = handler.addCircles(
@@ -196,24 +214,27 @@
             );
 
             // need to get markers of database
-            var markers = handler.addMarkers(json_array);
+            var markers = handler.addMarkers( json_array);
+            // add markers by BD
+            // var markers = handler.addMarkers( <%= raw @hash.to_json %>);
+            handler.addMarkers( <%= raw @hash.to_json %>);
 
             // call functon to create sidebar - start
-            _.each(json_array, function(json, index){
-                json.marker = markers[index];
+            _.each(json_array, function( json, index){
+                json.marker = markers[ index];
             });
 
             createSidebar(json_array);
             // call functon to create sidebar - finish
 
             // add map with directions
-            directionsDisplay.setMap(handler.getMap());
-            handler.bounds.extendWith(polygons); // auto adjust
-            handler.bounds.extendWith(circle); // auto adjust
-            handler.bounds.extendWith(circleIntern); // auto adjust
-            handler.bounds.extendWith(markers); // auto adjust
+            directionsDisplay.setMap( handler.getMap());
+            handler.bounds.extendWith( polygons); // auto adjust
+            handler.bounds.extendWith( circle); // auto adjust
+            handler.bounds.extendWith( circleIntern); // auto adjust
+            handler.bounds.extendWith( markers); // auto adjust
             handler.fitMapToBounds(); // clustering
-            handler.getMap().setZoom(2); // set zoon
+            handler.getMap().setZoom( 2); // set zoon
 //            handler.getMap().setType(); // set type of the map
 
 
