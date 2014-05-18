@@ -8,6 +8,12 @@ class LocationsController < ApplicationController
       @locations = Location.paginate(:page => params[:page], :per_page => 30)
     end
 
+    @hash = Gmaps4rails.build_markers( @locations) do | location, marker|
+      marker.lat location.latitude
+      marker.lng location.longitude
+      marker.title location.address
+    end
+
   end
 
   def show
